@@ -21,7 +21,6 @@ public class ReviewsController {
     ReviewService reviewService;
 
     @PostMapping("post")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     ReviewPojo addReview(@RequestBody ReviewPojo review) {
         return reviewService.addReview(review);
     }
