@@ -1,5 +1,6 @@
 package com.project3.revtech.E2E.runner;
 
+import com.project3.revtech.E2E.poms.UserRegisterPOM;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -17,15 +18,21 @@ import java.io.File;
     public class TestRunner {
     public static WebDriver driver;
     public static WebDriverWait explicitWait;
+    public static UserRegisterPOM userRegisterPOM;
 
 
     @BeforeClass
     public static void setup() {
         File file = new File("src/test/resources/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+        System.out.println(file.getAbsolutePath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         explicitWait = new WebDriverWait(driver, 10);
+        userRegisterPOM = new UserRegisterPOM(driver);
+
+
+
         System.out.println("Set up complete!");
 
     }
