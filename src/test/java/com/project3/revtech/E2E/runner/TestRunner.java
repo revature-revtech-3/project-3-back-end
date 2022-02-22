@@ -3,6 +3,7 @@ package com.project3.revtech.E2E.runner;
 import com.project3.revtech.E2E.poms.UserLoginPOM;
 import com.project3.revtech.E2E.poms.UserLogoutPOM;
 import com.project3.revtech.E2E.poms.UserRegisterPOM;
+import com.project3.revtech.E2E.poms.UserSearchProductsPOM;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -24,6 +25,7 @@ import java.io.File;
     public static UserRegisterPOM userRegisterPOM;
     public static UserLoginPOM userLoginPOM;
     public static UserLogoutPOM userLogoutPOM;
+    public static UserSearchProductsPOM userSearchProductsPOM;
 
 
     @BeforeClass
@@ -37,6 +39,7 @@ import java.io.File;
         userRegisterPOM = new UserRegisterPOM(driver);
         userLoginPOM = new UserLoginPOM(driver);
         userLogoutPOM = new UserLogoutPOM(driver);
+        userSearchProductsPOM = new UserSearchProductsPOM(driver);
 
 
 
