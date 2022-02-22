@@ -1,5 +1,6 @@
 package com.project3.revtech.E2E.runner;
 
+import com.project3.revtech.E2E.poms.UserLoginPOM;
 import com.project3.revtech.E2E.poms.UserRegisterPOM;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -13,12 +14,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 
 @RunWith(Cucumber.class)
-    @CucumberOptions(features = "classpath:features", glue = "E2E.steps", plugin = {"pretty",
+    @CucumberOptions(features = "classpath:features", glue = "com.project3.revtech.E2E.steps", plugin = {"pretty",
             "html:src/test/java/resources/reports/html-reports.html"})
     public class TestRunner {
     public static WebDriver driver;
     public static WebDriverWait explicitWait;
     public static UserRegisterPOM userRegisterPOM;
+    public static UserLoginPOM userLoginPOM;
 
 
     @BeforeClass
@@ -30,6 +32,7 @@ import java.io.File;
         driver.manage().window().maximize();
         explicitWait = new WebDriverWait(driver, 10);
         userRegisterPOM = new UserRegisterPOM(driver);
+        userLoginPOM = new UserLoginPOM(driver);
 
 
 
