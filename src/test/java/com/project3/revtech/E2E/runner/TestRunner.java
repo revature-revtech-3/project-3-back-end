@@ -19,6 +19,7 @@ import java.io.File;
     public class TestRunner {
     public static WebDriver driver;
     public static WebDriverWait explicitWait;
+    public static WebDriverWait implicitWait;
     public static UserRegisterPOM userRegisterPOM;
     public static UserLoginPOM userLoginPOM;
 
@@ -31,6 +32,7 @@ import java.io.File;
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         explicitWait = new WebDriverWait(driver, 10);
+        implicitWait = new WebDriverWait(driver, 5);
         userRegisterPOM = new UserRegisterPOM(driver);
         userLoginPOM = new UserLoginPOM(driver);
 
