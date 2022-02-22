@@ -11,8 +11,8 @@ public class UserLogoutSteps {
     @Given("The user is on the home page")
     public void the_user_is_on_the_home_page() {
         TestRunner.driver.get("http://localhost:4200/product");
-        TestRunner.driver.findElement(By.xpath("//img[@src=\"https://i.postimg.cc/xdm3qnyD/Picture1.png\"]"));
     }
+
     @When("The user clicks on the logout button")
     public void the_user_clicks_on_the_logout_button() {
         TestRunner.userLogoutPOM.logoutButton.click();
