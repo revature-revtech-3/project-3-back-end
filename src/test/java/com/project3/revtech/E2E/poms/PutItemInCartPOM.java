@@ -17,7 +17,7 @@ public class PutItemInCartPOM {
     @FindBy(xpath = "//button[contains(text(), \"View Details\")]")
     public WebElement viewDetailsButton;
 
-    @FindBy(xpath = "/html/body/app-root/app-product-page/section/div/article[1]/div/div/main/article/div[5]/div/span[2]")
+    @FindBy(xpath = "//span[@class=\"up\" and contains(text(), \"+\")]")
     public WebElement plusIcon;
 
     @FindBy(xpath = "/html/body/app-root/app-product-page/section/div/article[1]/div/div/main/article/div[5]/button")

@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 @RunWith(Cucumber.class)
     @CucumberOptions(features = "classpath:features", glue = "com.project3.revtech.E2E.steps", plugin = {"pretty",
@@ -24,6 +25,7 @@ import java.io.File;
     public static UserLogoutPOM userLogoutPOM;
     public static UserSearchProductsPOM userSearchProductsPOM;
     public static PutItemInCartPOM putItemInCartPOM;
+    public static PurchaseDiscountedPOM purchaseDiscountedPOM;
 
 
     @BeforeClass
@@ -34,11 +36,13 @@ import java.io.File;
         driver.manage().window().maximize();
         explicitWait = new WebDriverWait(driver, 10);
         implicitWait = new WebDriverWait(driver, 5);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         userRegisterPOM = new UserRegisterPOM(driver);
         userLoginPOM = new UserLoginPOM(driver);
         userLogoutPOM = new UserLogoutPOM(driver);
         userSearchProductsPOM = new UserSearchProductsPOM(driver);
         putItemInCartPOM = new PutItemInCartPOM(driver);
+        purchaseDiscountedPOM = new PurchaseDiscountedPOM(driver);
 
         System.out.println("Set up complete!");
     }
