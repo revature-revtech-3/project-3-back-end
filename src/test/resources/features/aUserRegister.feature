@@ -10,6 +10,7 @@ Feature: Register account
     When The user enters password into the register form
     When The user enters  address into the register form
     When The user enters phone number into the register form
+    When The user scrolls down the page
     When The user clicks on the sign up button
     Then The user is redirected to the login page
 

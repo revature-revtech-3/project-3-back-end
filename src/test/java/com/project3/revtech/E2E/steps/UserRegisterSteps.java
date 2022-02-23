@@ -5,6 +5,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class UserRegisterSteps {
@@ -59,10 +62,19 @@ public class UserRegisterSteps {
         TestRunner.userRegisterPOM.phoneNumberInput.sendKeys("555-555-5555");
     }
 
+    @When("The user scrolls down the page")
+    public void the_user_scrolls_down_the_page(){
+        WebElement element = TestRunner.userRegisterPOM.signUpButton;
+        Actions actions = new Actions(TestRunner.driver);
+        actions.moveToElement(element).perform();
+
+    }
     @When("The user clicks on the sign up button")
     public void the_user_clicks_on_the_sign_up_button() {
-        TestRunner.explicitWait.until(ExpectedConditions.elementToBeClickable(TestRunner.userRegisterPOM.signUpButton));
-        TestRunner.userRegisterPOM.signUpButton.click();
+        WebElement element = TestRunner.userRegisterPOM.signUpButton;
+        if(element.isDisplayed() && element.isEnabled()){
+            element.click();
+        }
     }
 
     @Then("The user is redirected to the login page")
