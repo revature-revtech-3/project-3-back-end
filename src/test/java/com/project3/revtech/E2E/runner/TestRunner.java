@@ -1,9 +1,6 @@
 package com.project3.revtech.E2E.runner;
 
-import com.project3.revtech.E2E.poms.UserLoginPOM;
-import com.project3.revtech.E2E.poms.UserLogoutPOM;
-import com.project3.revtech.E2E.poms.UserRegisterPOM;
-import com.project3.revtech.E2E.poms.UserSearchProductsPOM;
+import com.project3.revtech.E2E.poms.*;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -26,6 +23,7 @@ import java.io.File;
     public static UserLoginPOM userLoginPOM;
     public static UserLogoutPOM userLogoutPOM;
     public static UserSearchProductsPOM userSearchProductsPOM;
+    public static PutItemInCartPOM putItemInCartPOM;
 
 
     @BeforeClass
@@ -40,12 +38,11 @@ import java.io.File;
         userLoginPOM = new UserLoginPOM(driver);
         userLogoutPOM = new UserLogoutPOM(driver);
         userSearchProductsPOM = new UserSearchProductsPOM(driver);
-
-
+        putItemInCartPOM = new PutItemInCartPOM(driver);
 
         System.out.println("Set up complete!");
-
     }
+
     @AfterClass
     public static void teardown(){
         driver.quit();

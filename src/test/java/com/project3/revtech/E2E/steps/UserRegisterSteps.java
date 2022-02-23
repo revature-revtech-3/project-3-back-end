@@ -65,13 +65,14 @@ public class UserRegisterSteps {
     @When("The user scrolls down the page")
     public void the_user_scrolls_down_the_page(){
         WebElement element = TestRunner.userRegisterPOM.signUpButton;
-        Actions actions = new Actions(TestRunner.driver);
-        actions.moveToElement(element).perform();
+        JavascriptExecutor js = (JavascriptExecutor) TestRunner.driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
 
     }
     @When("The user clicks on the sign up button")
     public void the_user_clicks_on_the_sign_up_button() {
         WebElement element = TestRunner.userRegisterPOM.signUpButton;
+        TestRunner.explicitWait.until(ExpectedConditions.elementToBeClickable(element));
         if(element.isDisplayed() && element.isEnabled()){
             element.click();
         }
