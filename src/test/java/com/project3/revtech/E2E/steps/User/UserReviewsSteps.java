@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -38,7 +39,7 @@ public class UserReviewsSteps {
         WebElement element = TestRunner.userReviewsPOM.submitButton;
         JavascriptExecutor js = (JavascriptExecutor) TestRunner.driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
-        element.submit();
+        element.sendKeys(Keys.ENTER);
     }
 
     @Then("the user should see the review at the bottom of the page")
