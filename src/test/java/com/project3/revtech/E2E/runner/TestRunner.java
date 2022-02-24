@@ -26,6 +26,8 @@ import java.util.concurrent.TimeUnit;
     public static UserSearchProductsPOM userSearchProductsPOM;
     public static PutItemInCartPOM putItemInCartPOM;
     public static PurchaseDiscountedPOM purchaseDiscountedPOM;
+    public static OrderHistoryPOM orderHistoryPOM;
+    public static UserAccountInfoPOM userAccountInfoPOM;
 
 
     @BeforeClass
@@ -43,6 +45,8 @@ import java.util.concurrent.TimeUnit;
         userSearchProductsPOM = new UserSearchProductsPOM(driver);
         putItemInCartPOM = new PutItemInCartPOM(driver);
         purchaseDiscountedPOM = new PurchaseDiscountedPOM(driver);
+        orderHistoryPOM = new OrderHistoryPOM(driver);
+        userAccountInfoPOM = new UserAccountInfoPOM(driver);
 
         System.out.println("Set up complete!");
     }
