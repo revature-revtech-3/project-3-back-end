@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(Cucumber.class)
-    @CucumberOptions(features = "classpath:features/User", glue = "com.project3.revtech.E2E.steps", plugin = {"pretty",
+    @CucumberOptions(features = "classpath:features/System", glue = "com.project3.revtech.E2E.steps", plugin = {"pretty",
             "html:src/test/java/resources/reports/html-reports.html"})
     public class TestRunner {
     public static WebDriver driver;

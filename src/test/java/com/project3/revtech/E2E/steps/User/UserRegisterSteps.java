@@ -52,7 +52,7 @@ public class UserRegisterSteps {
         TestRunner.userRegisterPOM.passwordInput.sendKeys("123456");
     }
 
-    @When("The user enters  address into the register form")
+    @When("The user enters address into the register form")
     public void the_user_enters_address_into_the_register_form() {
         TestRunner.userRegisterPOM.addressInput.sendKeys("123 Enterprise Way, Palo Alto, CA 94020");
     }
