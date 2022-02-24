@@ -1,20 +1,19 @@
-package com.project3.revtech.E2E.poms;
+package com.project3.revtech.E2E.poms.User;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class UserSearchProductsPOM {
-
+public class UserLogoutPOM {
     private WebDriver webDriver;
 
-    public UserSearchProductsPOM(WebDriver webDriver){
+    public UserLogoutPOM(WebDriver webDriver){
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
     }
 
-    @FindBy(xpath = "//input[@id=\"search_text\"]")
-    public WebElement searchBar;
+    @FindBy(xpath = "//a[contains(text(), \"Logout\")]")
+    public WebElement logoutButton;
 
 }

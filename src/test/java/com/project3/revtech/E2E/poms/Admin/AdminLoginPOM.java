@@ -1,19 +1,16 @@
-package com.project3.revtech.E2E.poms;
+package com.project3.revtech.E2E.poms.Admin;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class UserLogoutPOM {
+public class AdminLoginPOM {
     private WebDriver webDriver;
 
-    public UserLogoutPOM(WebDriver webDriver){
+    public AdminLoginPOM(WebDriver webDriver){
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
     }
 
-    @FindBy(xpath = "//a[contains(text(), \"Logout\")]")
-    public WebElement logoutButton;
-
+    //See UserLoginPOM
 }

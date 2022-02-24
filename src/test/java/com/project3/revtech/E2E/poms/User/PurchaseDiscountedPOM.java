@@ -1,4 +1,4 @@
-package com.project3.revtech.E2E.poms;
+package com.project3.revtech.E2E.poms.User;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

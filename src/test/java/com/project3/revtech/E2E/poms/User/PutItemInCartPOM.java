@@ -1,4 +1,4 @@
-package com.project3.revtech.E2E.poms;
+package com.project3.revtech.E2E.poms.User;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +22,9 @@ public class PutItemInCartPOM {
 
     @FindBy(xpath = "/html/body/app-root/app-product-page/section/div/article[1]/div/div/main/article/div[5]/button")
     public WebElement goToCartButton;
+
+    @FindBy(xpath = "//button[@class=\"remove\"]")
+    public WebElement removeButton;
 
 
 }

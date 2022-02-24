@@ -1,4 +1,4 @@
-package com.project3.revtech.E2E.steps;
+package com.project3.revtech.E2E.steps.User;
 
 import com.project3.revtech.E2E.runner.TestRunner;
 import io.cucumber.java.en.Given;
