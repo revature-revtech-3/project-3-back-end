@@ -25,7 +25,7 @@ public class AdminAddProductPOM {
     @FindBy(id="InputProductCost")
     public WebElement productCost;
 
-    @FindBy(id="InputProductQty")
+    @FindBy(xpath="/html/body/app-root/app-admin/div[1]/div/div/div[2]/form/div[5]/input")
     public WebElement productQuantity;
 
     @FindBy(id="InputProductImgUrl")

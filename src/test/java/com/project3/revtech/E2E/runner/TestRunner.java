@@ -1,9 +1,6 @@
 package com.project3.revtech.E2E.runner;
 
-import com.project3.revtech.E2E.poms.Admin.AdminAddDiscountPOM;
-import com.project3.revtech.E2E.poms.Admin.AdminAddProductPOM;
-import com.project3.revtech.E2E.poms.Admin.AdminRemoveDiscountPOM;
-import com.project3.revtech.E2E.poms.Admin.AdminRemoveProductPOM;
+import com.project3.revtech.E2E.poms.Admin.*;
 import com.project3.revtech.E2E.poms.User.*;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -18,7 +15,7 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(Cucumber.class)
-    @CucumberOptions(features = "classpath:features/System", glue = "com.project3.revtech.E2E.steps", plugin = {"pretty",
+    @CucumberOptions(features = "classpath:features", glue = "com.project3.revtech.E2E.steps", plugin = {"pretty",
             "html:src/test/java/resources/reports/html-reports.html"})
     public class TestRunner {
     public static WebDriver driver;
@@ -37,6 +34,7 @@ import java.util.concurrent.TimeUnit;
     public static AdminRemoveDiscountPOM adminRemoveDiscountPOM;
     public static AdminRemoveProductPOM adminRemoveProductPOM;
     public static AdminAddProductPOM adminAddProductPOM;
+    public static AdminLogoutPOM adminLogoutPOM;
 
 
     @BeforeClass
@@ -45,8 +43,8 @@ import java.util.concurrent.TimeUnit;
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        explicitWait = new WebDriverWait(driver, 10);
-        implicitWait = new WebDriverWait(driver, 5);
+        explicitWait = new WebDriverWait(driver, 2);
+        implicitWait = new WebDriverWait(driver, 2);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         userRegisterPOM = new UserRegisterPOM(driver);
         userLoginPOM = new UserLoginPOM(driver);
@@ -61,6 +59,7 @@ import java.util.concurrent.TimeUnit;
         adminRemoveDiscountPOM = new AdminRemoveDiscountPOM(driver);
         adminRemoveProductPOM = new AdminRemoveProductPOM(driver);
         adminAddProductPOM = new AdminAddProductPOM(driver);
+        adminLogoutPOM = new AdminLogoutPOM(driver);
 
 
 

@@ -9,4 +9,5 @@ Feature: Add Product
     When the admin enters a product quantity
     When the admin selects an image file
     When the admin enters a product description
+    When the admin clicks the modal add product button
     Then a new product is added to the end of the table
