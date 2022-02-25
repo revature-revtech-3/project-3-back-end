@@ -43,7 +43,7 @@ import java.util.concurrent.TimeUnit;
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        explicitWait = new WebDriverWait(driver, 2);
+        explicitWait = new WebDriverWait(driver, 5);
         implicitWait = new WebDriverWait(driver, 2);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         userRegisterPOM = new UserRegisterPOM(driver);

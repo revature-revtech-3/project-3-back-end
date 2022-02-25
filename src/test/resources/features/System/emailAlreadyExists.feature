@@ -5,7 +5,7 @@ Feature: Reject existing email register
     When The user is redirected to the register page
     When The user enters first name into the register form
     When The user enters last name into the register form
-    When The user enters username into the register form
+    When The user enters a username into the register form
     When The user enters an existing email into the register form
     When The user enters password into the register form
     When The user enters address into the register form

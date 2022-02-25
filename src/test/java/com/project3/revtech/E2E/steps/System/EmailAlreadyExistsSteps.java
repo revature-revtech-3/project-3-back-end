@@ -11,6 +11,11 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class EmailAlreadyExistsSteps {
 
+    @When("The user enters a username into the register form")
+    public void the_user_enters_username_into_the_register_form() {
+        TestRunner.userRegisterPOM.usernameInput.sendKeys("Rev");
+    }
+
     @When("The user enters an existing email into the register form")
     public void the_user_enters_an_existing_email_into_the_register_form() {
         TestRunner.userRegisterPOM.emailInput.sendKeys("admin@example.com");
