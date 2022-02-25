@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -71,6 +72,7 @@ public class UserRegisterSteps {
     }
     @When("The user clicks on the sign up button")
     public void the_user_clicks_on_the_sign_up_button() {
+        TestRunner.driver.findElement(By.xpath("//body")).sendKeys(Keys.CONTROL, Keys.END);
         WebElement element = TestRunner.userRegisterPOM.signUpButton;
         TestRunner.explicitWait.until(ExpectedConditions.elementToBeClickable(element));
         if(element.isDisplayed() && element.isEnabled()){
