@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,6 +29,23 @@ public class CartItemProductControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    //------------------------------------------------ Positive Test ---------------------------------------
+
+    @Test
+    @WithMockUser(roles = "ADMIN", username = "admin")
+    public void getCartAuthorizedLoggedInTest() throws Exception {
+        this.mockMvc.perform(get("/api/cart-and-items/cart/{bid}/get", 1)).andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    @WithMockUser(roles = "ADMIN", username = "admin")
+    public void getCartByUserAuthorizedLoggedInTest() throws Exception {
+        this.mockMvc.perform(get("/api/cart-and-items/user/{bid}/get", 1)).andDo(print()).andExpect(status().isOk());
+    }
+
+
+
+    //------------------------------------------------ Negative Test -------------------------------------------
 
     @Test
     public void contextLoads() throws Exception {
