@@ -59,11 +59,11 @@ public class UserDetailsImpl implements UserDetails {
 				.collect(Collectors.toList());
 
 		return new UserDetailsImpl(
-				user.getUser_id(), 
+				user.getUserId(), 
 				user.getUsername(), 
 				user.getEmail(),
 				user.getPassword(), 
-				authorities, user.getFirst_name(), user.getLast_name(), user.getAddress(), user.getContact());
+				authorities, user.getFirstName(), user.getLastName(), user.getAddress(), user.getContact());
 	}
 
 	@Override

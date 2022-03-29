@@ -57,11 +57,11 @@ class CartItemServiceImplTest {
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
-        user.setFirst_name("Jane");
-        user.setLast_name("Doe");
+        user.setFirstName("Jane");
+        user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRoles(new HashSet<>());
-        user.setUser_id(1);
+        user.setUserId(1);
         user.setUsername("janedoe");
 
         CartEntity cart = new CartEntity();
@@ -150,11 +150,11 @@ class CartItemServiceImplTest {
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
-        user.setFirst_name("Jane");
-        user.setLast_name("Doe");
+        user.setFirstName("Jane");
+        user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRoles(new HashSet<>());
-        user.setUser_id(1);
+        user.setUserId(1);
         user.setUsername("janedoe");
 
         CartEntity cart = new CartEntity();
@@ -226,11 +226,11 @@ class CartItemServiceImplTest {
         user1.setAddress("42 Main St");
         user1.setContact("Contact");
         user1.setEmail("jane.doe@example.org");
-        user1.setFirst_name("Jane");
-        user1.setLast_name("Doe");
+        user1.setFirstName("Jane");
+        user1.setLastName("Doe");
         user1.setPassword("iloveyou");
         user1.setRoles(new HashSet<>());
-        user1.setUser_id(1);
+        user1.setUserId(1);
         user1.setUsername("janedoe");
 
         CartEntity cart1 = new CartEntity();
@@ -320,11 +320,11 @@ class CartItemServiceImplTest {
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
-        user.setFirst_name("Jane");
-        user.setLast_name("Doe");
+        user.setFirstName("Jane");
+        user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRoles(new HashSet<>());
-        user.setUser_id(1);
+        user.setUserId(1);
         user.setUsername("janedoe");
 
         CartEntity cart = new CartEntity();
@@ -411,11 +411,11 @@ class CartItemServiceImplTest {
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
-        user.setFirst_name("Jane");
-        user.setLast_name("Doe");
+        user.setFirstName("Jane");
+        user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRoles(new HashSet<>());
-        user.setUser_id(1);
+        user.setUserId(1);
         user.setUsername("janedoe");
 
         CartEntity cart = new CartEntity();
@@ -487,11 +487,11 @@ class CartItemServiceImplTest {
         user1.setAddress("42 Main St");
         user1.setContact("Contact");
         user1.setEmail("jane.doe@example.org");
-        user1.setFirst_name("Jane");
-        user1.setLast_name("Doe");
+        user1.setFirstName("Jane");
+        user1.setLastName("Doe");
         user1.setPassword("iloveyou");
         user1.setRoles(new HashSet<>());
-        user1.setUser_id(1);
+        user1.setUserId(1);
         user1.setUsername("janedoe");
 
         CartEntity cart1 = new CartEntity();
