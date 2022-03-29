@@ -22,7 +22,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "image_details")
-public class Image {
+public class ImageEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +35,12 @@ public class Image {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
-	private Product product;
+	private ProductEntity productEntity;
 
 	@Column(name = "product_id")
 	private int productId;
 
-	public Image(int imageId, String imageUrl, int productId) {
+	public ImageEntity(int imageId, String imageUrl, int productId) {
 		this.imageId = imageId;
 		this.imageUrl = imageUrl;
 		this.productId = productId;

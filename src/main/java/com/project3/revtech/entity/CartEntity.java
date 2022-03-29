@@ -23,25 +23,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "cart_details")
-public class Cart {
+public class CartEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cart_id")
 	private int cartId;
 
-	@OneToOne(mappedBy = "cart")
-	private Transaction transaction;
+	@OneToOne(mappedBy = "cartEntity")
+	private TransactionEntity transactionEntity;
 
 	@Column(name = "user_id")
 	private int userId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
-	private User user;
+	private UserEntity userEntity;
 
-	@OneToMany(mappedBy = "cart")
-	private List<CartItem> cartItems;
+	@OneToMany(mappedBy = "cartEntity")
+	private List<CartItemEntity> cartItems;
 	
 	@Column(name = "cart_total")
 	private int cartTotal;
@@ -52,7 +52,7 @@ public class Cart {
 	@Column(name = "cart_removed")
 	private boolean cartRemoved;
 
-	public Cart(int cartId, int userId, int cartTotal, boolean cartPaid, boolean cartRemoved) {
+	public CartEntity(int cartId, int userId, int cartTotal, boolean cartPaid, boolean cartRemoved) {
 		this.cartId = cartId;
 		this.userId = userId;
 		this.cartTotal = cartTotal;
@@ -60,7 +60,7 @@ public class Cart {
 		this.cartRemoved = cartRemoved;
 	}
 
-	public Cart(int userId, int cartTotal, boolean cartPaid, boolean cartRemoved) {
+	public CartEntity(int userId, int cartTotal, boolean cartPaid, boolean cartRemoved) {
 		this.userId = userId;
 		this.cartTotal = cartTotal;
 		this.cartPaid = cartPaid;

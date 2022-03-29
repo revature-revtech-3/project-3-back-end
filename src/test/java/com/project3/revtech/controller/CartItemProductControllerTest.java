@@ -1,8 +1,8 @@
 package com.project3.revtech.controller;
 
 import com.project3.revtech.service.CartItemProductServiceImpl;
-import com.project3.revtech.entity.Cart;
-import com.project3.revtech.entity.CartItem;
+import com.project3.revtech.entity.CartEntity;
+import com.project3.revtech.entity.CartItemEntity;
 import com.project3.revtech.joinedpojo.CartAndItemsPojo;
 
 import org.junit.Assert;

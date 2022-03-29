@@ -1,7 +1,6 @@
 package com.project3.revtech.entity;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -22,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "product_details")
-public class Product {
+public class ProductEntity {
 
 
 	@Id
@@ -31,11 +30,11 @@ public class Product {
 	private int productId;
 
 
-	@OneToOne(mappedBy = "product")
-	private Discount discount;
+	@OneToOne(mappedBy = "productEntity")
+	private DiscountEntity discountEntity;
 
-	@OneToMany(mappedBy = "product")
-	private List<PurchasedItem> purchasedItem;
+	@OneToMany(mappedBy = "productEntity")
+	private List<PurchasedItemEntity> purchasedItemEntity;
 
 	@NotNull
 	@Column(name = "product_sku")
@@ -65,21 +64,21 @@ public class Product {
 	private String imageUrl;
 
 	@OneToMany(mappedBy = "product")
-	private List<Image> images;
+	private List<ImageEntity> images;
 
 	@Column(name = "product_removed")
 	private boolean productRemoved;
 
-	@OneToMany(mappedBy = "product")
-	private List<CartItem> cartItems;
+	@OneToMany(mappedBy = "productEntity")
+	private List<CartItemEntity> cartItems;
 
 
-	public Product(int productId, Discount discount, @NotNull String productSku, @NotNull String productName,
+	public ProductEntity(int productId, DiscountEntity discountEntity, @NotNull String productSku, @NotNull String productName,
 				   @Min(1) BigDecimal productCost, @NotNull String productCategory, @NotNull String productDescription,
-				   int productQty, @NotNull String imageUrl, List<Image> images, boolean productRemoved,
-				   List<CartItem> cartItems, ArrayList<String> getImageUrls) {
+				   int productQty, @NotNull String imageUrl, List<ImageEntity> images, boolean productRemoved,
+				   List<CartItemEntity> cartItems) {
 		this.productId = productId;
-		this.discount = discount;
+		this.discountEntity = discountEntity;
 		this.productSku = productSku;
 		this.productName = productName;
 		this.productCost = productCost;
@@ -92,7 +91,7 @@ public class Product {
 		this.cartItems = cartItems;
 	}
 
-	public Product(int productId, String productSku, String productName, BigDecimal productCost, String productCategory, String productDescription, int productQty, String imageUrl, boolean productRemoved) {
+	public ProductEntity(int productId, String productSku, String productName, BigDecimal productCost, String productCategory, String productDescription, int productQty, String imageUrl, boolean productRemoved) {
 		this.productId = productId;
 		this.productSku = productSku;
 		this.productName = productName;

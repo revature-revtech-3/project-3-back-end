@@ -22,7 +22,7 @@ uniqueConstraints = {
 		@UniqueConstraint(columnNames = "username"),
 		@UniqueConstraint(columnNames = "email") 
 })
-public class User {
+public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int user_id;
@@ -57,15 +57,15 @@ public class User {
 	private String contact;
 
 	@OneToMany(mappedBy = "product")
-	private List<Review> reviews;
+	private List<ReviewEntity> reviews;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(  name = "user_roles", 
 	joinColumns = @JoinColumn(name = "uid"), 
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
+	private Set<RoleEntity> roles = new HashSet<>();
 
-	public User(String username, String email, String password, String first_name, String last_name, String address, String contact) {
+	public UserEntity(String username, String email, String password, String first_name, String last_name, String address, String contact) {
 		this.username = username;
 		this.email = email;
 		this.password = password;

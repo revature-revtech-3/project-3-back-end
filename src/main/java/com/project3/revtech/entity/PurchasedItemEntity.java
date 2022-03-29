@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "purchased_items")
-public class PurchasedItem {
+public class PurchasedItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,13 +55,13 @@ public class PurchasedItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "transaction_id", nullable = false, insertable = false, updatable = false)
-    private Transaction transaction;
+    private TransactionEntity transactionEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
-    private Product product;
+    private ProductEntity productEntity;
 
-    public PurchasedItem(int itemId, int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
+    public PurchasedItemEntity(int itemId, int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
         this.itemId = itemId;
         this.transactionId = transactionId;
         this.userId = userId;
@@ -72,7 +72,7 @@ public class PurchasedItem {
         this.purchaseDate = purchaseDate;
     }
 
-    public PurchasedItem(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
+    public PurchasedItemEntity(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
         this.transactionId = transactionId;
         this.userId = userId;
         this.cartId = cartId;
@@ -82,7 +82,7 @@ public class PurchasedItem {
         this.purchaseDate = purchaseDate;
     }
 
-    public PurchasedItem(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost) {
+    public PurchasedItemEntity(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost) {
         this.transactionId = transactionId;
         this.userId = userId;
         this.cartId = cartId;

@@ -1,9 +1,7 @@
 package com.project3.revtech.service;
 
-import com.project3.revtech.entity.PurchasedItem;
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.CartItemPojo;
-import com.project3.revtech.pojo.PurchasedItemPojo;
 
 import java.util.List;
 

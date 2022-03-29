@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "reviews")
-public class Review {
+public class ReviewEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
@@ -50,13 +50,13 @@ public class Review {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
-    private Product product;
+    private ProductEntity productEntity;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
-    private User user;
+    private UserEntity userEntity;
 
-    public Review(int reviewId, int userId, int productId, Date date, String title, int rating, String review) {
+    public ReviewEntity(int reviewId, int userId, int productId, Date date, String title, int rating, String review) {
         this.reviewId = reviewId;
         this.userId = userId;
         this.productId = productId;
@@ -66,7 +66,7 @@ public class Review {
         this.review = review;
     }
 
-    public Review(int userId, int productId, Date date, String title, int rating, String review) {
+    public ReviewEntity(int userId, int productId, Date date, String title, int rating, String review) {
         this.userId = userId;
         this.productId = productId;
         this.date = date;
@@ -75,7 +75,7 @@ public class Review {
         this.review = review;
     }
 
-    public Review(int userId, int productId, String title, int rating, String review) {
+    public ReviewEntity(int userId, int productId, String title, int rating, String review) {
         this.userId = userId;
         this.productId = productId;
         this.title = title;

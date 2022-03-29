@@ -1,7 +1,7 @@
 package com.project3.revtech.service;
 
 import com.project3.revtech.dao.ReviewRepository;
-import com.project3.revtech.entity.Review;
+import com.project3.revtech.entity.ReviewEntity;
 import com.project3.revtech.joinedpojo.UserReviewPojo;
 import com.project3.revtech.pojo.ReviewPojo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public ReviewPojo addReview(ReviewPojo review) {
-        Review newReview = new Review(review.getUserId(), review.getProductId(), review.getTitle(), review.getRating(), review.getReview());
+        ReviewEntity newReview = new ReviewEntity(review.getUserId(), review.getProductId(), review.getTitle(), review.getRating(), review.getReview());
         newReview =  reviewRepository.saveAndFlush(newReview);
         review.setReviewId(newReview.getReviewId());
         return review;
@@ -33,11 +33,11 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<UserReviewPojo> getReviewsOfProduct(int productId) {
-        List<Review> allReviews = reviewRepository.findAllByProductIdEquals(productId);
+        List<ReviewEntity> allReviews = reviewRepository.findAllByProductIdEquals(productId);
         List<UserReviewPojo> returningReviews = new ArrayList<UserReviewPojo>();
-        for (Review review : allReviews) {
-            UserReviewPojo temp = new UserReviewPojo(   review.getReviewId(), review.getUserId(), review.getUser().getFirst_name(),
-                                                        review.getUser().getLast_name(), review.getProductId(), review.getDate(),
+        for (ReviewEntity review : allReviews) {
+            UserReviewPojo temp = new UserReviewPojo(   review.getReviewId(), review.getUserId(), review.getUserEntity().getFirst_name(),
+                                                        review.getUserEntity().getLast_name(), review.getProductId(), review.getDate(),
                                                         review.getTitle(), review.getRating(), review.getReview()
             );
             returningReviews.add(temp);

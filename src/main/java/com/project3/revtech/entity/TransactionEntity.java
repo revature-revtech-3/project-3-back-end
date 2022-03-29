@@ -25,7 +25,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @AllArgsConstructor
 @Entity
 @Table(name = "transaction_details")
-public class Transaction {
+public class TransactionEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,27 +41,26 @@ public class Transaction {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cart_id", nullable = false, insertable = false, updatable = false)
-	private Cart cart;
+	private CartEntity cartEntity;
 
 	@OneToMany(mappedBy = "transaction")
-	private List<PurchasedItem> purchasedItems;
+	private List<PurchasedItemEntity> purchasedItems;
 
 
-	public Transaction(int transactionId, @NotNull Timestamp transactionDate, int cartId, Cart cart) {
-		super();
+	public TransactionEntity(int transactionId, @NotNull Timestamp transactionDate, int cartId, CartEntity cartEntity) {
 		this.transactionId = transactionId;
 		this.transactionDate = transactionDate;
 		this.cartId = cartId;
-		this.cart = cart;
+		this.cartEntity = cartEntity;
 	}
 
-	public Transaction(int transactionId, Timestamp transactionDate, int cartId) {
+	public TransactionEntity(int transactionId, Timestamp transactionDate, int cartId) {
 		this.transactionId = transactionId;
 		this.transactionDate = transactionDate;
 		this.cartId = cartId;
 	}
 
-	public Transaction(int cartId) {
+	public TransactionEntity(int cartId) {
 		this.cartId = cartId;
 	}
 

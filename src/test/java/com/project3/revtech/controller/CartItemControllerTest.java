@@ -2,7 +2,7 @@ package com.project3.revtech.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project3.revtech.dao.CartItemRepository;
-import com.project3.revtech.entity.CartItem;
+import com.project3.revtech.entity.CartItemEntity;
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.CartItemPojo;
 import com.project3.revtech.service.CartItemServiceImpl;

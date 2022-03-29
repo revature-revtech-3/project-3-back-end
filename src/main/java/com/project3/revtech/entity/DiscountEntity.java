@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "discount_details")
-public class Discount {
+public class DiscountEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Discount {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
-	private Product product;
+	private ProductEntity productEntity;
 
 	@Column(name = "discount_description")
 	private String discountDescription;
@@ -41,14 +41,14 @@ public class Discount {
 	@Column(name = "discount_percentage")
 	private BigDecimal discountPercentage;
 
-	public Discount(int discountId, int productId, String discountDescription, BigDecimal discountPercentage) {
+	public DiscountEntity(int discountId, int productId, String discountDescription, BigDecimal discountPercentage) {
 		this.discountId = discountId;
 		this.productId = productId;
 		this.discountDescription = discountDescription;
 		this.discountPercentage = discountPercentage;
 	}
 
-	public Discount(boolean isNull) {
+	public DiscountEntity(boolean isNull) {
 		if(isNull) {
 			this.discountId = -1;
 			this.productId = -1;
