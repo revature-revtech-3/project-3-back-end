@@ -3,7 +3,7 @@ package com.project3.revtech.service;
 import com.project3.revtech.dao.PurchasedItemRepository;
 import com.project3.revtech.entity.Product;
 import com.project3.revtech.entity.PurchasedItem;
-import com.project3.revtech.joinedPojo.PurchasedItemProduct;
+import com.project3.revtech.joinedpojo.PurchasedItemProduct;
 import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.PurchasedItemPojo;
 import org.jetbrains.annotations.NotNull;

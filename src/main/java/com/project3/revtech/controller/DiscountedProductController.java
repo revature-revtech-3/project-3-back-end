@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedPojo.ProductAndDiscountPojo;
+import com.project3.revtech.joinedpojo.ProductAndDiscountPojo;
 import com.project3.revtech.service.ProductDiscountService;
 
 @RestController

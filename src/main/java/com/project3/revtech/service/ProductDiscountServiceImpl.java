@@ -5,7 +5,8 @@ import com.project3.revtech.dao.ProductRepository;
 import com.project3.revtech.entity.Discount;
 import com.project3.revtech.entity.Product;
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedPojo.ProductAndDiscountPojo;
+import com.project3.revtech.joinedpojo.ProductAndDiscountPojo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

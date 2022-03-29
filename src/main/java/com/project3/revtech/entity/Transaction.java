@@ -3,24 +3,29 @@ package com.project3.revtech.entity;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-// @Getter
-// @Setter
-// @NoArgsConstructor
-@ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "transaction_details")
 public class Transaction {
-
-	public Transaction() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,35 +65,4 @@ public class Transaction {
 		this.cartId = cartId;
 	}
 
-	public int getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId(int transactionId) {
-		this.transactionId = transactionId;
-	}
-
-	public Timestamp getTransactionDate() {
-		return transactionDate;
-	}
-
-	public void setTransactionDate(Timestamp transactionDate) {
-		this.transactionDate = transactionDate;
-	}
-
-	public int getCartId() {
-		return cartId;
-	}
-
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
-	}
-
-	public List<PurchasedItem> getPurchasedItems() {
-		return purchasedItems;
-	}
-
-	public void setPurchasedItems(List<PurchasedItem> purchasedItems) {
-		this.purchasedItems = purchasedItems;
-	}
 }

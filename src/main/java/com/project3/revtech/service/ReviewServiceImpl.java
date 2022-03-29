@@ -2,7 +2,7 @@ package com.project3.revtech.service;
 
 import com.project3.revtech.dao.ReviewRepository;
 import com.project3.revtech.entity.Review;
-import com.project3.revtech.joinedPojo.UserReviewPojo;
+import com.project3.revtech.joinedpojo.UserReviewPojo;
 import com.project3.revtech.pojo.ReviewPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

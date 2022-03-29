@@ -12,7 +12,7 @@ import com.project3.revtech.entity.CartItem;
 import com.project3.revtech.entity.Discount;
 import com.project3.revtech.entity.Product;
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedPojo.ProductAndDiscountPojo;
+import com.project3.revtech.joinedpojo.ProductAndDiscountPojo;
 
 import java.math.BigDecimal;
 

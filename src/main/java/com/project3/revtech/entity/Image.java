@@ -11,13 +11,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
-// @Getter
-// @Setter
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
@@ -40,49 +40,10 @@ public class Image {
 	@Column(name = "product_id")
 	private int productId;
 
-	public Image(int imageId, @NotNull String imageUrl, Product product, int productId) {
-		super();
-		this.imageId = imageId;
-		this.imageUrl = imageUrl;
-		this.product = product;
-		this.productId = productId;
-	}
-
 	public Image(int imageId, String imageUrl, int productId) {
 		this.imageId = imageId;
 		this.imageUrl = imageUrl;
 		this.productId = productId;
 	}
 
-	public int getImageId() {
-		return imageId;
-	}
-
-	public void setImageId(int imageId) {
-		this.imageId = imageId;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public int getProductId() {
-		return productId;
-	}
-
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
 }

@@ -1,6 +1,6 @@
 package com.project3.revtech.service;
 
-import com.project3.revtech.joinedPojo.PurchasedItemProduct;
+import com.project3.revtech.joinedpojo.PurchasedItemProduct;
 import com.project3.revtech.pojo.PurchasedItemPojo;
 
 import java.util.ArrayList;

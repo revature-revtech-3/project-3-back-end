@@ -15,15 +15,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-// @Getter
-// @Setter
-// @NoArgsConstructor
-@ToString
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "product_details")
 public class Product {
@@ -77,17 +73,11 @@ public class Product {
 	@OneToMany(mappedBy = "product")
 	private List<CartItem> cartItems;
 
-	public Product() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 
 	public Product(int productId, Discount discount, @NotNull String productSku, @NotNull String productName,
 				   @Min(1) BigDecimal productCost, @NotNull String productCategory, @NotNull String productDescription,
 				   int productQty, @NotNull String imageUrl, List<Image> images, boolean productRemoved,
 				   List<CartItem> cartItems, ArrayList<String> getImageUrls) {
-		super();
 		this.productId = productId;
 		this.discount = discount;
 		this.productSku = productSku;
@@ -112,102 +102,6 @@ public class Product {
 		this.productQty = productQty;
 		this.imageUrl = imageUrl;
 		this.productRemoved = productRemoved;
-	}
-
-	public int getProductId() {
-		return productId;
-	}
-
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-
-	public Discount getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(Discount discount) {
-		this.discount = discount;
-	}
-
-	public String getProductSku() {
-		return productSku;
-	}
-
-	public void setProductSku(String productSku) {
-		this.productSku = productSku;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public BigDecimal getProductCost() {
-		return productCost;
-	}
-
-	public void setProductCost(BigDecimal productCost) {
-		this.productCost = productCost;
-	}
-
-	public String getProductCategory() {
-		return productCategory;
-	}
-
-	public void setProductCategory(String productCategory) {
-		this.productCategory = productCategory;
-	}
-
-	public String getProductDescription() {
-		return productDescription;
-	}
-
-	public void setProductDescription(String productDescription) {
-		this.productDescription = productDescription;
-	}
-
-	public int getProductQty() {
-		return productQty;
-	}
-
-	public void setProductQty(int productQty) {
-		this.productQty = productQty;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-
-	public List<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
-
-	public boolean isProductRemoved() {
-		return productRemoved;
-	}
-
-	public void setProductRemoved(boolean productRemoved) {
-		this.productRemoved = productRemoved;
-	}
-
-	public List<CartItem> getCartItems() {
-		return cartItems;
-	}
-
-	public void setCartItems(List<CartItem> cartItems) {
-		this.cartItems = cartItems;
 	}
 
 }

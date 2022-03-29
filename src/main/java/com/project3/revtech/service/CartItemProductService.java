@@ -1,6 +1,6 @@
 package com.project3.revtech.service;
 
-import com.project3.revtech.joinedPojo.CartAndItemsPojo;
+import com.project3.revtech.joinedpojo.CartAndItemsPojo;
 
 public interface CartItemProductService {
 
