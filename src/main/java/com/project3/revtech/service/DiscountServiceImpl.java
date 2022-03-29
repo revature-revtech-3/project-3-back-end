@@ -11,8 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.project3.revtech.pojo.DiscountPojo;
 import com.project3.revtech.dao.DiscountRepository;
-import com.project3.revtech.entity.Discount;
-import com.project3.revtech.entity.Product;
+import com.project3.revtech.entity.DiscountEntity;
 import com.project3.revtech.exception.ApplicationException;
 
 
@@ -23,17 +22,12 @@ public class DiscountServiceImpl implements DiscountService{
 	
 	
 	@Autowired
-	DiscountRepository discountRepository;
-	
-	public DiscountServiceImpl(){
-		
-	}
-	
+	DiscountRepository discountRepository;	
 	
 	//Get all Discounts
 	@Override
 	public List<DiscountPojo> getAllDiscounts(){
-		List<Discount> allDiscountsEntity = this.discountRepository.findAll();
+		List<DiscountEntity> allDiscountsEntity = this.discountRepository.findAll();
 		List<DiscountPojo>  allDiscountsPojo = new ArrayList<DiscountPojo>();
 		System.out.println(allDiscountsEntity);
 		allDiscountsEntity.forEach((discount) -> {
@@ -52,7 +46,7 @@ public class DiscountServiceImpl implements DiscountService{
 	@Override
 	public DiscountPojo addDiscount(DiscountPojo product) throws ApplicationException {
 		
-		Discount newDiscount = new Discount(0,product.getProductId(),null, product.getDiscountDescription(),product.getDiscountPercentage());
+		DiscountEntity newDiscount = new DiscountEntity(0,product.getProductId(),null, product.getDiscountDescription(),product.getDiscountPercentage());
 		
 //		Discount returnDiscount =
 		discountRepository.saveAndFlush(newDiscount);
@@ -70,7 +64,7 @@ public class DiscountServiceImpl implements DiscountService{
 
 	@Override
 	public DiscountPojo updateDiscount(DiscountPojo discountPojo) throws ApplicationException {
-        Discount updateDiscount = new  Discount(
+        DiscountEntity updateDiscount = new  DiscountEntity(
                 discountPojo.getDiscountId(),discountPojo.getProductId(),discountPojo.getDiscountDescription(),
                 discountPojo.getDiscountPercentage());
         //Entity Discount object

@@ -9,9 +9,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.project3.revtech.dao.DiscountRepository;
-import com.project3.revtech.entity.CartItem;
-import com.project3.revtech.entity.Discount;
-import com.project3.revtech.entity.Product;
+import com.project3.revtech.entity.CartItemEntity;
+import com.project3.revtech.entity.DiscountEntity;
+import com.project3.revtech.entity.ProductEntity;
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.DiscountPojo;
 
@@ -44,16 +44,16 @@ class DiscountServiceTest {
 
     @Test
     void testAddDiscount() throws ApplicationException {
-        Discount discount = new Discount();
+        DiscountEntity discount = new DiscountEntity();
         discount.setDiscountDescription("3");
         discount.setDiscountId(3);
         discount.setDiscountPercentage(null);
-        discount.setProduct(new Product());
+        discount.setProductEntity(new ProductEntity());
         discount.setProductId(123);
 
-        Product product = new Product();
+        ProductEntity product = new ProductEntity();
         product.setCartItems(new ArrayList<>());
-        product.setDiscount(discount);
+        product.setDiscountEntity(discount);
         product.setImageUrl("https://media.istockphoto.com/photos/newly-released-iphone-13-pro-mockup-set-with-back-and-front-angles-picture-id1356372494?k=20&m=1356372494&s=612x612&w=0&h=4IyK75PK9dd4zY-CPAF_scPK-HwsoYS2mmWJZzBwp2A=");
         product.setImages(new ArrayList<>());
         product.setProductCategory("Phone");
@@ -65,17 +65,17 @@ class DiscountServiceTest {
         product.setProductRemoved(true);
         product.setProductSku("Pro123ductSku");
 
-        Discount discount1 = new Discount();
+        DiscountEntity discount1 = new DiscountEntity();
         discount1.setDiscountDescription("3");
         discount1.setDiscountId(3);
         discount1.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount1.setProduct(product);
+        discount1.setProductEntity(product);
         discount1.setProductId(123);
 
-        Product product1 = new Product();
-        ArrayList<CartItem> cartItemList = new ArrayList<>();
+        ProductEntity product1 = new ProductEntity();
+        ArrayList<CartItemEntity> cartItemList = new ArrayList<>();
         product1.setCartItems(cartItemList);
-        product1.setDiscount(discount1);
+        product1.setDiscountEntity(discount1);
         product1.setImageUrl("https://media.istockphoto.com/photos/newly-released-iphone-13-pro-mockup-set-with-back-and-front-angles-picture-id1356372494?k=20&m=1356372494&s=612x612&w=0&h=4IyK75PK9dd4zY-CPAF_scPK-HwsoYS2mmWJZzBwp2A=");
         product1.setImages(new ArrayList<>());
         product1.setProductCategory("Phone");
@@ -87,19 +87,19 @@ class DiscountServiceTest {
         product1.setProductRemoved(true);
         product1.setProductSku("Pro123ductSku");
 
-        Discount discount2 = new Discount();
+        DiscountEntity discount2 = new DiscountEntity();
         discount2.setDiscountDescription("3");
         discount2.setDiscountId(3);
         discount2.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount2.setProduct(product1);
+        discount2.setProductEntity(product1);
         discount2.setProductId(123);
-        when(this.discountRepository.saveAndFlush((Discount) any())).thenReturn(discount2);
+        when(this.discountRepository.saveAndFlush((DiscountEntity) any())).thenReturn(discount2);
         DiscountPojo discountPojo = new DiscountPojo(3, 123, "3", BigDecimal.valueOf(42L));
 
         DiscountPojo actualAddDiscountResult = this.discountService.addDiscount(discountPojo);
         assertSame(discountPojo, actualAddDiscountResult);
         assertEquals("42", actualAddDiscountResult.getDiscountPercentage().toString());
-        verify(this.discountRepository).saveAndFlush((Discount) any());
+        verify(this.discountRepository).saveAndFlush((DiscountEntity) any());
         assertEquals(cartItemList, this.discountService.getAllDiscounts());
     }
 
@@ -113,16 +113,16 @@ class DiscountServiceTest {
 
     @Test
     void testUpdateDiscount() throws ApplicationException {
-        Discount discount = new Discount();
+        DiscountEntity discount = new DiscountEntity();
         discount.setDiscountDescription("3");
         discount.setDiscountId(3);
         discount.setDiscountPercentage(null);
-        discount.setProduct(new Product());
+        discount.setProductEntity(new ProductEntity());
         discount.setProductId(123);
 
-        Product product = new Product();
+        ProductEntity product = new ProductEntity();
         product.setCartItems(new ArrayList<>());
-        product.setDiscount(discount);
+        product.setDiscountEntity(discount);
         product.setImageUrl("https://media.istockphoto.com/photos/newly-released-iphone-13-pro-mockup-set-with-back-and-front-angles-picture-id1356372494?k=20&m=1356372494&s=612x612&w=0&h=4IyK75PK9dd4zY-CPAF_scPK-HwsoYS2mmWJZzBwp2A=");
         product.setImages(new ArrayList<>());
         product.setProductCategory("Phone");
@@ -134,17 +134,17 @@ class DiscountServiceTest {
         product.setProductRemoved(true);
         product.setProductSku("Pro123ductSku");
 
-        Discount discount1 = new Discount();
+        DiscountEntity discount1 = new DiscountEntity();
         discount1.setDiscountDescription("3");
         discount1.setDiscountId(3);
         discount1.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount1.setProduct(product);
+        discount1.setProductEntity(product);
         discount1.setProductId(123);
 
-        Product product1 = new Product();
-        ArrayList<CartItem> cartItemList = new ArrayList<>();
+        ProductEntity product1 = new ProductEntity();
+        ArrayList<CartItemEntity> cartItemList = new ArrayList<>();
         product1.setCartItems(cartItemList);
-        product1.setDiscount(discount1);
+        product1.setDiscountEntity(discount1);
         product1.setImageUrl("https://media.istockphoto.com/photos/newly-released-iphone-13-pro-mockup-set-with-back-and-front-angles-picture-id1356372494?k=20&m=1356372494&s=612x612&w=0&h=4IyK75PK9dd4zY-CPAF_scPK-HwsoYS2mmWJZzBwp2A=");
         product1.setImages(new ArrayList<>());
         product1.setProductCategory("Phone");
@@ -156,19 +156,19 @@ class DiscountServiceTest {
         product1.setProductRemoved(true);
         product1.setProductSku("Pro123ductSku");
 
-        Discount discount2 = new Discount();
+        DiscountEntity discount2 = new DiscountEntity();
         discount2.setDiscountDescription("3");
         discount2.setDiscountId(3);
         discount2.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount2.setProduct(product1);
+        discount2.setProductEntity(product1);
         discount2.setProductId(123);
-        when(this.discountRepository.save((Discount) any())).thenReturn(discount2);
+        when(this.discountRepository.save((DiscountEntity) any())).thenReturn(discount2);
         DiscountPojo discountPojo = new DiscountPojo(3, 123, "3", BigDecimal.valueOf(42L));
 
         DiscountPojo actualUpdateDiscountResult = this.discountService.updateDiscount(discountPojo);
         assertSame(discountPojo, actualUpdateDiscountResult);
         assertEquals("42", actualUpdateDiscountResult.getDiscountPercentage().toString());
-        verify(this.discountRepository).save((Discount) any());
+        verify(this.discountRepository).save((DiscountEntity) any());
         assertEquals(cartItemList, this.discountService.getAllDiscounts());
     }
 }

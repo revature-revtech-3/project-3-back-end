@@ -1,6 +1,6 @@
 package com.project3.revtech.service;
 
-import com.project3.revtech.joinedPojo.UserReviewPojo;
+import com.project3.revtech.joinedpojo.UserReviewPojo;
 import com.project3.revtech.pojo.ReviewPojo;
 
 import java.util.List;

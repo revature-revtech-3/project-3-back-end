@@ -1,12 +1,12 @@
 package com.project3.revtech.service;
 
 import com.project3.revtech.dao.CartItemRepository;
-import com.project3.revtech.entity.Cart;
-import com.project3.revtech.entity.CartItem;
-import com.project3.revtech.entity.Discount;
-import com.project3.revtech.entity.Product;
-import com.project3.revtech.entity.Transaction;
-import com.project3.revtech.entity.User;
+import com.project3.revtech.entity.CartEntity;
+import com.project3.revtech.entity.CartItemEntity;
+import com.project3.revtech.entity.DiscountEntity;
+import com.project3.revtech.entity.ProductEntity;
+import com.project3.revtech.entity.TransactionEntity;
+import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.CartItemPojo;
 
@@ -48,12 +48,12 @@ class CartItemServiceImplTest {
 
     @Test
     void testAddItem() throws ApplicationException {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -64,26 +64,26 @@ class CartItemServiceImplTest {
         user.setUser_id(1);
         user.setUsername("janedoe");
 
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setCartId(123);
         cart.setCartItems(new ArrayList<>());
         cart.setCartPaid(true);
         cart.setCartRemoved(true);
         cart.setCartTotal(1);
-        cart.setTransaction(transaction);
-        cart.setUser(user);
+        cart.setTransactionEntity(transaction);
+        cart.setUserEntity(user);
         cart.setUserId(123);
 
-        Discount discount = new Discount();
+        DiscountEntity discount = new DiscountEntity();
         discount.setDiscountDescription("3");
         discount.setDiscountId(3);
         discount.setDiscountPercentage(null);
-        discount.setProduct(new Product());
+        discount.setProductEntity(new ProductEntity());
         discount.setProductId(123);
 
-        Product product = new Product();
+        ProductEntity product = new ProductEntity();
         product.setCartItems(new ArrayList<>());
-        product.setDiscount(discount);
+        product.setDiscountEntity(discount);
         product.setImageUrl("https://example.org/example");
         product.setImages(new ArrayList<>());
         product.setProductCategory("Product Category");
@@ -95,16 +95,16 @@ class CartItemServiceImplTest {
         product.setProductRemoved(true);
         product.setProductSku("Product Sku");
 
-        Discount discount1 = new Discount();
+        DiscountEntity discount1 = new DiscountEntity();
         discount1.setDiscountDescription("3");
         discount1.setDiscountId(3);
         discount1.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount1.setProduct(product);
+        discount1.setProductEntity(product);
         discount1.setProductId(123);
 
-        Product product1 = new Product();
+        ProductEntity product1 = new ProductEntity();
         product1.setCartItems(new ArrayList<>());
-        product1.setDiscount(discount1);
+        product1.setDiscountEntity(discount1);
         product1.setImageUrl("https://example.org/example");
         product1.setImages(new ArrayList<>());
         product1.setProductCategory("Product Category");
@@ -116,12 +116,12 @@ class CartItemServiceImplTest {
         product1.setProductRemoved(true);
         product1.setProductSku("Product Sku");
 
-        CartItem cartItem = new CartItem();
-        cartItem.setCart(cart);
+        CartItemEntity cartItem = new CartItemEntity();
+        cartItem.setCartEntity(cart);
         cartItem.setCartId(123);
         cartItem.setCartItemId(123);
         cartItem.setCartQty(1);
-        cartItem.setProduct(product1);
+        cartItem.setProductEntity(product1);
         cartItem.setProductId(123);
         doNothing().when(this.cartItemRepository).deleteById((Integer) any());
         when(this.cartItemRepository.existsByCartQtyIsLessThanAndCartIdAndProductId(anyInt(), anyInt(), anyInt()))
@@ -141,12 +141,12 @@ class CartItemServiceImplTest {
 
     @Test
     void testAddItem2() throws ApplicationException {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -157,26 +157,26 @@ class CartItemServiceImplTest {
         user.setUser_id(1);
         user.setUsername("janedoe");
 
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setCartId(123);
         cart.setCartItems(new ArrayList<>());
         cart.setCartPaid(true);
         cart.setCartRemoved(true);
         cart.setCartTotal(1);
-        cart.setTransaction(transaction);
-        cart.setUser(user);
+        cart.setTransactionEntity(transaction);
+        cart.setUserEntity(user);
         cart.setUserId(123);
 
-        Discount discount = new Discount();
+        DiscountEntity discount = new DiscountEntity();
         discount.setDiscountDescription("3");
         discount.setDiscountId(3);
         discount.setDiscountPercentage(null);
-        discount.setProduct(new Product());
+        discount.setProductEntity(new ProductEntity());
         discount.setProductId(123);
 
-        Product product = new Product();
+        ProductEntity product = new ProductEntity();
         product.setCartItems(new ArrayList<>());
-        product.setDiscount(discount);
+        product.setDiscountEntity(discount);
         product.setImageUrl("https://example.org/example");
         product.setImages(new ArrayList<>());
         product.setProductCategory("Product Category");
@@ -188,16 +188,16 @@ class CartItemServiceImplTest {
         product.setProductRemoved(true);
         product.setProductSku("Product Sku");
 
-        Discount discount1 = new Discount();
+        DiscountEntity discount1 = new DiscountEntity();
         discount1.setDiscountDescription("3");
         discount1.setDiscountId(3);
         discount1.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount1.setProduct(product);
+        discount1.setProductEntity(product);
         discount1.setProductId(123);
 
-        Product product1 = new Product();
+        ProductEntity product1 = new ProductEntity();
         product1.setCartItems(new ArrayList<>());
-        product1.setDiscount(discount1);
+        product1.setDiscountEntity(discount1);
         product1.setImageUrl("https://example.org/example");
         product1.setImages(new ArrayList<>());
         product1.setProductCategory("Product Category");
@@ -209,20 +209,20 @@ class CartItemServiceImplTest {
         product1.setProductRemoved(true);
         product1.setProductSku("Product Sku");
 
-        CartItem cartItem = new CartItem();
-        cartItem.setCart(cart);
+        CartItemEntity cartItem = new CartItemEntity();
+        cartItem.setCartEntity(cart);
         cartItem.setCartId(123);
         cartItem.setCartItemId(123);
         cartItem.setCartQty(1);
-        cartItem.setProduct(product1);
+        cartItem.setProductEntity(product1);
         cartItem.setProductId(123);
 
-        Transaction transaction1 = new Transaction();
+        TransactionEntity transaction1 = new TransactionEntity();
         transaction1.setCartId(123);
         transaction1.setTransactionDate(mock(Timestamp.class));
         transaction1.setTransactionId(123);
 
-        User user1 = new User();
+        UserEntity user1 = new UserEntity();
         user1.setAddress("42 Main St");
         user1.setContact("Contact");
         user1.setEmail("jane.doe@example.org");
@@ -233,26 +233,26 @@ class CartItemServiceImplTest {
         user1.setUser_id(1);
         user1.setUsername("janedoe");
 
-        Cart cart1 = new Cart();
+        CartEntity cart1 = new CartEntity();
         cart1.setCartId(123);
         cart1.setCartItems(new ArrayList<>());
         cart1.setCartPaid(true);
         cart1.setCartRemoved(true);
         cart1.setCartTotal(1);
-        cart1.setTransaction(transaction1);
-        cart1.setUser(user1);
+        cart1.setTransactionEntity(transaction1);
+        cart1.setUserEntity(user1);
         cart1.setUserId(123);
 
-        Discount discount2 = new Discount();
+        DiscountEntity discount2 = new DiscountEntity();
         discount2.setDiscountDescription("3");
         discount2.setDiscountId(3);
         discount2.setDiscountPercentage(null);
-        discount2.setProduct(new Product());
+        discount2.setProductEntity(new ProductEntity());
         discount2.setProductId(123);
 
-        Product product2 = new Product();
+        ProductEntity product2 = new ProductEntity();
         product2.setCartItems(new ArrayList<>());
-        product2.setDiscount(discount2);
+        product2.setDiscountEntity(discount2);
         product2.setImageUrl("https://example.org/example");
         product2.setImages(new ArrayList<>());
         product2.setProductCategory("Product Category");
@@ -264,16 +264,16 @@ class CartItemServiceImplTest {
         product2.setProductRemoved(true);
         product2.setProductSku("Product Sku");
 
-        Discount discount3 = new Discount();
+        DiscountEntity discount3 = new DiscountEntity();
         discount3.setDiscountDescription("3");
         discount3.setDiscountId(3);
         discount3.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount3.setProduct(product2);
+        discount3.setProductEntity(product2);
         discount3.setProductId(123);
 
-        Product product3 = new Product();
+        ProductEntity product3 = new ProductEntity();
         product3.setCartItems(new ArrayList<>());
-        product3.setDiscount(discount3);
+        product3.setDiscountEntity(discount3);
         product3.setImageUrl("https://example.org/example");
         product3.setImages(new ArrayList<>());
         product3.setProductCategory("Product Category");
@@ -285,14 +285,14 @@ class CartItemServiceImplTest {
         product3.setProductRemoved(true);
         product3.setProductSku("Product Sku");
 
-        CartItem cartItem1 = new CartItem();
-        cartItem1.setCart(cart1);
+        CartItemEntity cartItem1 = new CartItemEntity();
+        cartItem1.setCartEntity(cart1);
         cartItem1.setCartId(123);
         cartItem1.setCartItemId(123);
         cartItem1.setCartQty(1);
-        cartItem1.setProduct(product3);
+        cartItem1.setProductEntity(product3);
         cartItem1.setProductId(123);
-        when(this.cartItemRepository.save((CartItem) any())).thenReturn(cartItem1);
+        when(this.cartItemRepository.save((CartItemEntity) any())).thenReturn(cartItem1);
         doNothing().when(this.cartItemRepository).deleteById((Integer) any());
         when(this.cartItemRepository.existsByCartQtyIsLessThanAndCartIdAndProductId(anyInt(), anyInt(), anyInt()))
                 .thenReturn(false);
@@ -306,17 +306,17 @@ class CartItemServiceImplTest {
         verify(this.cartItemRepository).existsByCartIdAndProductId(anyInt(), anyInt());
         verify(this.cartItemRepository).existsByCartQtyIsLessThanAndCartIdAndProductId(anyInt(), anyInt(), anyInt());
         verify(this.cartItemRepository, atLeast(1)).findByCartIdAndProductId(anyInt(), anyInt());
-        verify(this.cartItemRepository).save((CartItem) any());
+        verify(this.cartItemRepository).save((CartItemEntity) any());
     }
 
     @Test
     void testUpdateItem() throws ApplicationException {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -327,26 +327,26 @@ class CartItemServiceImplTest {
         user.setUser_id(1);
         user.setUsername("janedoe");
 
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setCartId(123);
         cart.setCartItems(new ArrayList<>());
         cart.setCartPaid(true);
         cart.setCartRemoved(true);
         cart.setCartTotal(1);
-        cart.setTransaction(transaction);
-        cart.setUser(user);
+        cart.setTransactionEntity(transaction);
+        cart.setUserEntity(user);
         cart.setUserId(123);
 
-        Discount discount = new Discount();
+        DiscountEntity discount = new DiscountEntity();
         discount.setDiscountDescription("3");
         discount.setDiscountId(3);
         discount.setDiscountPercentage(null);
-        discount.setProduct(new Product());
+        discount.setProductEntity(new ProductEntity());
         discount.setProductId(123);
 
-        Product product = new Product();
+        ProductEntity product = new ProductEntity();
         product.setCartItems(new ArrayList<>());
-        product.setDiscount(discount);
+        product.setDiscountEntity(discount);
         product.setImageUrl("https://example.org/example");
         product.setImages(new ArrayList<>());
         product.setProductCategory("Product Category");
@@ -358,16 +358,16 @@ class CartItemServiceImplTest {
         product.setProductRemoved(true);
         product.setProductSku("Product Sku");
 
-        Discount discount1 = new Discount();
+        DiscountEntity discount1 = new DiscountEntity();
         discount1.setDiscountDescription("3");
         discount1.setDiscountId(3);
         discount1.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount1.setProduct(product);
+        discount1.setProductEntity(product);
         discount1.setProductId(123);
 
-        Product product1 = new Product();
+        ProductEntity product1 = new ProductEntity();
         product1.setCartItems(new ArrayList<>());
-        product1.setDiscount(discount1);
+        product1.setDiscountEntity(discount1);
         product1.setImageUrl("https://example.org/example");
         product1.setImages(new ArrayList<>());
         product1.setProductCategory("Product Category");
@@ -379,12 +379,12 @@ class CartItemServiceImplTest {
         product1.setProductRemoved(true);
         product1.setProductSku("Product Sku");
 
-        CartItem cartItem = new CartItem();
-        cartItem.setCart(cart);
+        CartItemEntity cartItem = new CartItemEntity();
+        cartItem.setCartEntity(cart);
         cartItem.setCartId(123);
         cartItem.setCartItemId(123);
         cartItem.setCartQty(1);
-        cartItem.setProduct(product1);
+        cartItem.setProductEntity(product1);
         cartItem.setProductId(123);
         doNothing().when(this.cartItemRepository).deleteById((Integer) any());
         when(this.cartItemRepository.existsByCartQtyIsLessThanAndCartIdAndProductId(anyInt(), anyInt(), anyInt()))
@@ -402,12 +402,12 @@ class CartItemServiceImplTest {
 
     @Test
     void testUpdateItem2() throws ApplicationException {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -418,26 +418,26 @@ class CartItemServiceImplTest {
         user.setUser_id(1);
         user.setUsername("janedoe");
 
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setCartId(123);
         cart.setCartItems(new ArrayList<>());
         cart.setCartPaid(true);
         cart.setCartRemoved(true);
         cart.setCartTotal(1);
-        cart.setTransaction(transaction);
-        cart.setUser(user);
+        cart.setTransactionEntity(transaction);
+        cart.setUserEntity(user);
         cart.setUserId(123);
 
-        Discount discount = new Discount();
+        DiscountEntity discount = new DiscountEntity();
         discount.setDiscountDescription("3");
         discount.setDiscountId(3);
         discount.setDiscountPercentage(null);
-        discount.setProduct(new Product());
+        discount.setProductEntity(new ProductEntity());
         discount.setProductId(123);
 
-        Product product = new Product();
+        ProductEntity product = new ProductEntity();
         product.setCartItems(new ArrayList<>());
-        product.setDiscount(discount);
+        product.setDiscountEntity(discount);
         product.setImageUrl("https://example.org/example");
         product.setImages(new ArrayList<>());
         product.setProductCategory("Product Category");
@@ -449,16 +449,16 @@ class CartItemServiceImplTest {
         product.setProductRemoved(true);
         product.setProductSku("Product Sku");
 
-        Discount discount1 = new Discount();
+        DiscountEntity discount1 = new DiscountEntity();
         discount1.setDiscountDescription("3");
         discount1.setDiscountId(3);
         discount1.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount1.setProduct(product);
+        discount1.setProductEntity(product);
         discount1.setProductId(123);
 
-        Product product1 = new Product();
+        ProductEntity product1 = new ProductEntity();
         product1.setCartItems(new ArrayList<>());
-        product1.setDiscount(discount1);
+        product1.setDiscountEntity(discount1);
         product1.setImageUrl("https://example.org/example");
         product1.setImages(new ArrayList<>());
         product1.setProductCategory("Product Category");
@@ -470,20 +470,20 @@ class CartItemServiceImplTest {
         product1.setProductRemoved(true);
         product1.setProductSku("Product Sku");
 
-        CartItem cartItem = new CartItem();
-        cartItem.setCart(cart);
+        CartItemEntity cartItem = new CartItemEntity();
+        cartItem.setCartEntity(cart);
         cartItem.setCartId(123);
         cartItem.setCartItemId(123);
         cartItem.setCartQty(1);
-        cartItem.setProduct(product1);
+        cartItem.setProductEntity(product1);
         cartItem.setProductId(123);
 
-        Transaction transaction1 = new Transaction();
+        TransactionEntity transaction1 = new TransactionEntity();
         transaction1.setCartId(123);
         transaction1.setTransactionDate(mock(Timestamp.class));
         transaction1.setTransactionId(123);
 
-        User user1 = new User();
+        UserEntity user1 = new UserEntity();
         user1.setAddress("42 Main St");
         user1.setContact("Contact");
         user1.setEmail("jane.doe@example.org");
@@ -494,26 +494,26 @@ class CartItemServiceImplTest {
         user1.setUser_id(1);
         user1.setUsername("janedoe");
 
-        Cart cart1 = new Cart();
+        CartEntity cart1 = new CartEntity();
         cart1.setCartId(123);
         cart1.setCartItems(new ArrayList<>());
         cart1.setCartPaid(true);
         cart1.setCartRemoved(true);
         cart1.setCartTotal(1);
-        cart1.setTransaction(transaction1);
-        cart1.setUser(user1);
+        cart1.setTransactionEntity(transaction1);
+        cart1.setUserEntity(user1);
         cart1.setUserId(123);
 
-        Discount discount2 = new Discount();
+        DiscountEntity discount2 = new DiscountEntity();
         discount2.setDiscountDescription("3");
         discount2.setDiscountId(3);
         discount2.setDiscountPercentage(null);
-        discount2.setProduct(new Product());
+        discount2.setProductEntity(new ProductEntity());
         discount2.setProductId(123);
 
-        Product product2 = new Product();
+        ProductEntity product2 = new ProductEntity();
         product2.setCartItems(new ArrayList<>());
-        product2.setDiscount(discount2);
+        product2.setDiscountEntity(discount2);
         product2.setImageUrl("https://example.org/example");
         product2.setImages(new ArrayList<>());
         product2.setProductCategory("Product Category");
@@ -525,16 +525,16 @@ class CartItemServiceImplTest {
         product2.setProductRemoved(true);
         product2.setProductSku("Product Sku");
 
-        Discount discount3 = new Discount();
+        DiscountEntity discount3 = new DiscountEntity();
         discount3.setDiscountDescription("3");
         discount3.setDiscountId(3);
         discount3.setDiscountPercentage(BigDecimal.valueOf(42L));
-        discount3.setProduct(product2);
+        discount3.setProductEntity(product2);
         discount3.setProductId(123);
 
-        Product product3 = new Product();
+        ProductEntity product3 = new ProductEntity();
         product3.setCartItems(new ArrayList<>());
-        product3.setDiscount(discount3);
+        product3.setDiscountEntity(discount3);
         product3.setImageUrl("https://example.org/example");
         product3.setImages(new ArrayList<>());
         product3.setProductCategory("Product Category");
@@ -546,14 +546,14 @@ class CartItemServiceImplTest {
         product3.setProductRemoved(true);
         product3.setProductSku("Product Sku");
 
-        CartItem cartItem1 = new CartItem();
-        cartItem1.setCart(cart1);
+        CartItemEntity cartItem1 = new CartItemEntity();
+        cartItem1.setCartEntity(cart1);
         cartItem1.setCartId(123);
         cartItem1.setCartItemId(123);
         cartItem1.setCartQty(1);
-        cartItem1.setProduct(product3);
+        cartItem1.setProductEntity(product3);
         cartItem1.setProductId(123);
-        when(this.cartItemRepository.save((CartItem) any())).thenReturn(cartItem1);
+        when(this.cartItemRepository.save((CartItemEntity) any())).thenReturn(cartItem1);
         doNothing().when(this.cartItemRepository).deleteById((Integer) any());
         when(this.cartItemRepository.existsByCartQtyIsLessThanAndCartIdAndProductId(anyInt(), anyInt(), anyInt()))
                 .thenReturn(false);
@@ -565,7 +565,7 @@ class CartItemServiceImplTest {
         assertEquals(123, actualUpdateItemResult.getCartItemId());
         verify(this.cartItemRepository).existsByCartQtyIsLessThanAndCartIdAndProductId(anyInt(), anyInt(), anyInt());
         verify(this.cartItemRepository).findByCartIdAndProductId(anyInt(), anyInt());
-        verify(this.cartItemRepository).save((CartItem) any());
+        verify(this.cartItemRepository).save((CartItemEntity) any());
     }
 
     @Test

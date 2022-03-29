@@ -4,17 +4,14 @@ import com.project3.revtech.dao.CartItemRepository;
 import com.project3.revtech.dao.CartRepository;
 import com.project3.revtech.dao.DiscountRepository;
 import com.project3.revtech.dao.ProductRepository;
-import com.project3.revtech.entity.Cart;
 
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedPojo.CartAndItemsPojo;
+import com.project3.revtech.joinedpojo.CartAndItemsPojo;
+
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;

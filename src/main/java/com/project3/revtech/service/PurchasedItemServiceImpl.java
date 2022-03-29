@@ -1,9 +1,9 @@
 package com.project3.revtech.service;
 
 import com.project3.revtech.dao.PurchasedItemRepository;
-import com.project3.revtech.entity.Product;
-import com.project3.revtech.entity.PurchasedItem;
-import com.project3.revtech.joinedPojo.PurchasedItemProduct;
+import com.project3.revtech.entity.ProductEntity;
+import com.project3.revtech.entity.PurchasedItemEntity;
+import com.project3.revtech.joinedpojo.PurchasedItemProduct;
 import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.PurchasedItemPojo;
 import org.jetbrains.annotations.NotNull;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +23,12 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
 
     @Override
     public PurchasedItemPojo addItem(PurchasedItemPojo item) {
-        PurchasedItem newItem = new PurchasedItem(  item.getTransactionId(), item.getUserId(), item.getCartId(),
+        PurchasedItemEntity newItemEntity = new PurchasedItemEntity(  item.getTransactionId(), item.getUserId(), item.getCartId(),
                                                     item.getProductId(), item.getItemQty(), item.getPurchaseCost(),
                                                     item.getPurchaseDate()
         );
-        newItem = purchasedItemRepository.saveAndFlush(newItem);
-        item.setItemId(newItem.getItemId());
+        newItemEntity = purchasedItemRepository.saveAndFlush(newItemEntity);
+        item.setItemId(newItemEntity.getItemId());
         return item;
     }
 
@@ -48,22 +47,22 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
 
     @Override
     public List<PurchasedItemProduct> getAllPurchasedProductsByTransactionId(int transactionId) {
-        List<PurchasedItem> allItems = purchasedItemRepository.findAllByTransactionId(transactionId);
+        List<PurchasedItemEntity> allItems = purchasedItemRepository.findAllByTransactionId(transactionId);
         return getPurchasedItemProducts(allItems);
     }
 
     @Override
     public List<PurchasedItemProduct> getAllPurchasedProductsByUserId(int userId) {
-        List<PurchasedItem> allItems = purchasedItemRepository.findAllByUserId(userId);
+        List<PurchasedItemEntity> allItems = purchasedItemRepository.findAllByUserId(userId);
         return getPurchasedItemProducts(allItems);
     }
 
 
     @NotNull
-    private List<PurchasedItemProduct> getPurchasedItemProducts(List<PurchasedItem> allItems) {
+    private List<PurchasedItemProduct> getPurchasedItemProducts(List<PurchasedItemEntity> allItems) {
         List<PurchasedItemProduct> returningItems = new ArrayList<PurchasedItemProduct>();
-        for (PurchasedItem item : allItems) {
-            Product tempProduct = item.getProduct();
+        for (PurchasedItemEntity item : allItems) {
+            ProductEntity tempProduct = item.getProductEntity();
             ProductPojo productPojo = new  ProductPojo(tempProduct.getProductId(), tempProduct.getProductSku(),
                     tempProduct.getProductName(), tempProduct.getProductCost(),
                     tempProduct.getProductCategory(), tempProduct.getProductDescription(),

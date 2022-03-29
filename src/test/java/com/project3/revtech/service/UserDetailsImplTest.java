@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.project3.revtech.entity.ERole;
-import com.project3.revtech.entity.Role;
-import com.project3.revtech.entity.User;
+import com.project3.revtech.entity.RoleEntity;
+import com.project3.revtech.entity.UserEntity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -53,7 +53,7 @@ class UserDetailsImplTest {
 
     @Test
     void testBuild() {
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -77,14 +77,14 @@ class UserDetailsImplTest {
 
     @Test
     void testBuild2() {
-        Role role = new Role();
+        RoleEntity role = new RoleEntity();
         role.setId(1);
         role.setName(ERole.ROLE_USER);
 
-        HashSet<Role> roleSet = new HashSet<>();
+        HashSet<RoleEntity> roleSet = new HashSet<>();
         roleSet.add(role);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -110,19 +110,19 @@ class UserDetailsImplTest {
 
     @Test
     void testBuild3() {
-        Role role = new Role();
+        RoleEntity role = new RoleEntity();
         role.setId(1);
         role.setName(ERole.ROLE_USER);
 
-        Role role1 = new Role();
+        RoleEntity role1 = new RoleEntity();
         role1.setId(1);
         role1.setName(ERole.ROLE_USER);
 
-        HashSet<Role> roleSet = new HashSet<>();
+        HashSet<RoleEntity> roleSet = new HashSet<>();
         roleSet.add(role1);
         roleSet.add(role);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -149,13 +149,13 @@ class UserDetailsImplTest {
 
     @Test
     void testEquals() {
-        assertFalse(UserDetailsImpl.build(new User()).equals(null));
-        assertFalse(UserDetailsImpl.build(new User()).equals("Different type to UserDetailsImpl"));
+        assertFalse(UserDetailsImpl.build(new UserEntity()).equals(null));
+        assertFalse(UserDetailsImpl.build(new UserEntity()).equals("Different type to UserDetailsImpl"));
     }
 
     @Test
     void testEquals2() {
-        UserDetailsImpl buildResult = UserDetailsImpl.build(new User());
+        UserDetailsImpl buildResult = UserDetailsImpl.build(new UserEntity());
         assertTrue(buildResult.equals(buildResult));
         int expectedHashCodeResult = buildResult.hashCode();
         assertEquals(expectedHashCodeResult, buildResult.hashCode());
@@ -163,8 +163,8 @@ class UserDetailsImplTest {
 
     @Test
     void testEquals3() {
-        UserDetailsImpl buildResult = UserDetailsImpl.build(new User());
-        UserDetailsImpl buildResult1 = UserDetailsImpl.build(new User());
+        UserDetailsImpl buildResult = UserDetailsImpl.build(new UserEntity());
+        UserDetailsImpl buildResult1 = UserDetailsImpl.build(new UserEntity());
         assertTrue(buildResult.equals(buildResult1));
         int notExpectedHashCodeResult = buildResult.hashCode();
         assertFalse(Objects.equals(notExpectedHashCodeResult, buildResult1.hashCode()));
@@ -174,7 +174,7 @@ class UserDetailsImplTest {
     void testEquals4() {
         UserDetailsImpl userDetailsImpl = new UserDetailsImpl(1, "janedoe", "jane.doe@example.org", "iloveyou", null,
                 "Jane", "Doe", "42 Main St", null);
-        assertFalse(userDetailsImpl.equals(UserDetailsImpl.build(new User())));
+        assertFalse(userDetailsImpl.equals(UserDetailsImpl.build(new UserEntity())));
     }
 }
 

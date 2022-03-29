@@ -1,6 +1,6 @@
 package com.project3.revtech.controller;
 
-import com.project3.revtech.joinedPojo.PurchasedItemProduct;
+import com.project3.revtech.joinedpojo.PurchasedItemProduct;
 import com.project3.revtech.pojo.PurchasedItemPojo;
 import com.project3.revtech.service.PurchasedItemService;
 import org.springframework.beans.factory.annotation.Autowired;

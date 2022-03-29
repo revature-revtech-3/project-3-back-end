@@ -1,13 +1,14 @@
 package com.project3.revtech.service;
 
 import com.project3.revtech.dao.CartRepository;
-import com.project3.revtech.entity.Cart;
-import com.project3.revtech.entity.CartItem;
-import com.project3.revtech.entity.Discount;
-import com.project3.revtech.entity.Product;
-import com.project3.revtech.joinedPojo.CartAndItemsPojo;
-import com.project3.revtech.joinedPojo.ItemProductDiscountPojo;
-import com.project3.revtech.joinedPojo.ProductAndDiscountPojo;
+import com.project3.revtech.entity.CartEntity;
+import com.project3.revtech.entity.CartItemEntity;
+import com.project3.revtech.entity.DiscountEntity;
+import com.project3.revtech.entity.ProductEntity;
+import com.project3.revtech.joinedpojo.CartAndItemsPojo;
+import com.project3.revtech.joinedpojo.ItemProductDiscountPojo;
+import com.project3.revtech.joinedpojo.ProductAndDiscountPojo;
+
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,28 +31,27 @@ public class CartItemProductServiceImpl implements CartItemProductService {
         @Override
     public CartAndItemsPojo getAllCartItemProducts(int cartId) {
 
-        Cart cartEntity = cartRepository.getById(cartId);
+        CartEntity cartEntity = cartRepository.getById(cartId);
             return getCartAndItemsPojo(cartEntity);
         }
 
     @Override
     public CartAndItemsPojo getAllCartItemProductsForUser(int userId) {
-        Cart cartEntity = cartRepository.findByUserIdAndCartRemovedFalseAndCartPaidFalse(userId);
+        CartEntity cartEntity = cartRepository.findByUserIdAndCartRemovedFalseAndCartPaidFalse(userId);
         if (cartEntity == null) {
-            cartEntity = new Cart(userId, 0, false, false);
+            cartEntity = new CartEntity(userId, 0, false, false);
             cartEntity = cartRepository.saveAndFlush(cartEntity);
-            System.out.println();
         }
         return getCartAndItemsPojo(cartEntity);
     }
 
     @NotNull
-    private CartAndItemsPojo getCartAndItemsPojo(Cart cartEntity) {
-        List<CartItem> cartItems = cartEntity.getCartItems() == null ? new ArrayList<CartItem>(): cartEntity.getCartItems();
+    private CartAndItemsPojo getCartAndItemsPojo(CartEntity cartEntity) {
+        List<CartItemEntity> cartItems = cartEntity.getCartItems() == null ? new ArrayList<CartItemEntity>(): cartEntity.getCartItems();
         List<ItemProductDiscountPojo> joinedDataItems = new ArrayList<ItemProductDiscountPojo>();
-        for (CartItem tempItem : cartItems) {
-            Product tempProduct = tempItem.getProduct();
-            Discount tempDiscount = (tempProduct.getDiscount() == null ? new Discount(true) : tempProduct.getDiscount());
+        for (CartItemEntity tempItem : cartItems) {
+            ProductEntity tempProduct = tempItem.getProductEntity();
+            DiscountEntity tempDiscount = (tempProduct.getDiscountEntity() == null ? new DiscountEntity(true) : tempProduct.getDiscountEntity());
 
             ProductAndDiscountPojo tempPAD = new ProductAndDiscountPojo(tempProduct.getProductId(), tempProduct.getProductSku(),
                     tempProduct.getProductName(), tempProduct.getProductCost(), tempProduct.getProductCategory(),

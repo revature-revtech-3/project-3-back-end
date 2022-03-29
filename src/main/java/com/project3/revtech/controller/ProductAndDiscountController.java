@@ -1,7 +1,7 @@
 package com.project3.revtech.controller;
 
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedPojo.ProductAndDiscountPojo;
+import com.project3.revtech.joinedpojo.ProductAndDiscountPojo;
 import com.project3.revtech.pojo.CartPojo;
 import com.project3.revtech.service.ProductDiscountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

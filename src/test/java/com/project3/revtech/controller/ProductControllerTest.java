@@ -1,15 +1,8 @@
 package com.project3.revtech.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project3.revtech.dao.ProductRepository;
-import com.project3.revtech.entity.Product;
-import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.ProductPojo;
-import com.project3.revtech.service.ProductService;
-import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;

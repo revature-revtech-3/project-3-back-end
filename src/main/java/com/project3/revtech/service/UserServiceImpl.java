@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.project3.revtech.dao.UserRepository;
-import com.project3.revtech.entity.User;
+import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.UserPojo;
 
@@ -33,9 +33,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserPojo getAUserService(int user_id) throws ApplicationException{
 		 UserPojo userPojo = null;
-	        Optional<User> optional = this.userRepositoryDao.findById(user_id);
+	        Optional<UserEntity> optional = this.userRepositoryDao.findById(user_id);
 	        if (optional.isPresent()) {
-	            User user = optional.get();
+	            UserEntity user = optional.get();
 	            userPojo = new  UserPojo(user.getUser_id(), user.getUsername(), encoder.encode(user.getPassword()), user.getEmail(), user.getFirst_name(), user.getLast_name(),
 	                    user.getAddress(), user.getContact());
 	        }

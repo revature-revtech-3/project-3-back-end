@@ -1,6 +1,6 @@
 package com.project3.revtech.controller;
 
-import com.project3.revtech.joinedPojo.CartAndItemsPojo;
+import com.project3.revtech.joinedpojo.CartAndItemsPojo;
 import com.project3.revtech.service.CartItemProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

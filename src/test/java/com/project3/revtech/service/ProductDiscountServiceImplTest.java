@@ -3,7 +3,8 @@ package com.project3.revtech.service;
 import com.project3.revtech.dao.DiscountRepository;
 import com.project3.revtech.dao.ProductRepository;
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedPojo.ProductAndDiscountPojo;
+import com.project3.revtech.joinedpojo.ProductAndDiscountPojo;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;

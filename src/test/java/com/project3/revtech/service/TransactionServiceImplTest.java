@@ -1,7 +1,7 @@
 package com.project3.revtech.service;
 
 import com.project3.revtech.dao.TransactionRepository;
-import com.project3.revtech.entity.Transaction;
+import com.project3.revtech.entity.TransactionEntity;
 import com.project3.revtech.pojo.TransactionPojo;
 
 import java.sql.Timestamp;
@@ -15,13 +15,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static com.project3.revtech.prototype.TransactionPrototype.transactionPojoTestObj;
-import static com.project3.revtech.prototype.TransactionPrototype.transactionTestObj;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.doNothing;
@@ -52,12 +49,12 @@ class TransactionServiceImplTest {
 
     @Test
     void testGetAllTransactions2() {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        ArrayList<Transaction> transactionList = new ArrayList<>();
+        ArrayList<TransactionEntity> transactionList = new ArrayList<>();
         transactionList.add(transaction);
         when(this.transactionRepository.findAll()).thenReturn(transactionList);
         List<TransactionPojo> actualAllTransactions = this.transactionServiceImpl.getAllTransactions();
@@ -70,17 +67,17 @@ class TransactionServiceImplTest {
 
     @Test
     void testGetAllTransactions3() {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        Transaction transaction1 = new Transaction();
+        TransactionEntity transaction1 = new TransactionEntity();
         transaction1.setCartId(123);
         transaction1.setTransactionDate(mock(Timestamp.class));
         transaction1.setTransactionId(123);
 
-        ArrayList<Transaction> transactionList = new ArrayList<>();
+        ArrayList<TransactionEntity> transactionList = new ArrayList<>();
         transactionList.add(transaction1);
         transactionList.add(transaction);
         when(this.transactionRepository.findAll()).thenReturn(transactionList);
@@ -97,7 +94,7 @@ class TransactionServiceImplTest {
 
     @Test
     void testGetTransactionById() {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
@@ -119,12 +116,12 @@ class TransactionServiceImplTest {
 
     @Test
     void testFindAllTransactionsInCart2() {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        ArrayList<Transaction> transactionList = new ArrayList<>();
+        ArrayList<TransactionEntity> transactionList = new ArrayList<>();
         transactionList.add(transaction);
         when(this.transactionRepository.findAllByCartId(anyInt())).thenReturn(transactionList);
         List<TransactionPojo> actualFindAllTransactionsInCartResult = this.transactionServiceImpl
@@ -139,17 +136,17 @@ class TransactionServiceImplTest {
 
     @Test
     void testFindAllTransactionsInCart3() {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        Transaction transaction1 = new Transaction();
+        TransactionEntity transaction1 = new TransactionEntity();
         transaction1.setCartId(123);
         transaction1.setTransactionDate(mock(Timestamp.class));
         transaction1.setTransactionId(123);
 
-        ArrayList<Transaction> transactionList = new ArrayList<>();
+        ArrayList<TransactionEntity> transactionList = new ArrayList<>();
         transactionList.add(transaction1);
         transactionList.add(transaction);
         when(this.transactionRepository.findAllByCartId(anyInt())).thenReturn(transactionList);
@@ -168,42 +165,42 @@ class TransactionServiceImplTest {
 
     @Test
     void testCreateTransaction() {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
-        when(this.transactionRepository.saveAndFlush((Transaction) any())).thenReturn(transaction);
+        when(this.transactionRepository.saveAndFlush((TransactionEntity) any())).thenReturn(transaction);
         TransactionPojo transactionPojo = new TransactionPojo(123, mock(Timestamp.class), 123);
 
         TransactionPojo actualCreateTransactionResult = this.transactionServiceImpl.createTransaction(transactionPojo);
         assertSame(transactionPojo, actualCreateTransactionResult);
         assertEquals(123, actualCreateTransactionResult.getCartId());
         assertEquals(123, actualCreateTransactionResult.getTransactionId());
-        verify(this.transactionRepository).saveAndFlush((Transaction) any());
+        verify(this.transactionRepository).saveAndFlush((TransactionEntity) any());
         assertTrue(this.transactionServiceImpl.getAllTransactions().isEmpty());
     }
 
     @Test
     void testDeleteTransaction() {
-        doNothing().when(this.transactionRepository).delete((com.project3.revtech.entity.Transaction) any());
+        doNothing().when(this.transactionRepository).delete((com.project3.revtech.entity.TransactionEntity) any());
         TransactionPojo transactionPojo = new TransactionPojo(123, mock(Timestamp.class), 123);
 
         assertSame(transactionPojo, this.transactionServiceImpl.deleteTransaction(transactionPojo));
-        verify(this.transactionRepository).delete((com.project3.revtech.entity.Transaction) any());
+        verify(this.transactionRepository).delete((com.project3.revtech.entity.TransactionEntity) any());
         assertTrue(this.transactionServiceImpl.getAllTransactions().isEmpty());
     }
 
     @Test
     void testUpdateTransaction() {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
-        when(this.transactionRepository.saveAndFlush((Transaction) any())).thenReturn(transaction);
+        when(this.transactionRepository.saveAndFlush((TransactionEntity) any())).thenReturn(transaction);
         TransactionPojo transactionPojo = new TransactionPojo(123, mock(Timestamp.class), 123);
 
         assertSame(transactionPojo, this.transactionServiceImpl.updateTransaction(transactionPojo));
-        verify(this.transactionRepository).saveAndFlush((Transaction) any());
+        verify(this.transactionRepository).saveAndFlush((TransactionEntity) any());
         assertTrue(this.transactionServiceImpl.getAllTransactions().isEmpty());
     }
 

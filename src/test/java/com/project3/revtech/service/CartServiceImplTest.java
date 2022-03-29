@@ -11,9 +11,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.project3.revtech.dao.CartRepository;
-import com.project3.revtech.entity.Cart;
-import com.project3.revtech.entity.Transaction;
-import com.project3.revtech.entity.User;
+import com.project3.revtech.entity.CartEntity;
+import com.project3.revtech.entity.TransactionEntity;
+import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.CartPojo;
 
@@ -39,12 +39,12 @@ class CartServiceImplTest {
 
     @Test
     void testAddCart() throws ApplicationException {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -55,32 +55,32 @@ class CartServiceImplTest {
         user.setUser_id(1);
         user.setUsername("janedoe");
 
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setCartId(123);
         cart.setCartItems(new ArrayList<>());
         cart.setCartPaid(true);
         cart.setCartRemoved(true);
         cart.setCartTotal(1);
-        cart.setTransaction(transaction);
-        cart.setUser(user);
+        cart.setTransactionEntity(transaction);
+        cart.setUserEntity(user);
         cart.setUserId(123);
-        when(this.cartRepository.saveAndFlush((Cart) any())).thenReturn(cart);
+        when(this.cartRepository.saveAndFlush((CartEntity) any())).thenReturn(cart);
         CartPojo cartPojo = new CartPojo(123, 123, 1, true, true);
 
         CartPojo actualAddCartResult = this.cartServiceImpl.addCart(cartPojo);
         assertSame(cartPojo, actualAddCartResult);
         assertEquals(123, actualAddCartResult.getCartId());
-        verify(this.cartRepository).saveAndFlush((Cart) any());
+        verify(this.cartRepository).saveAndFlush((CartEntity) any());
     }
 
     @Test
     void testUpdateCart() throws ApplicationException {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -91,32 +91,32 @@ class CartServiceImplTest {
         user.setUser_id(1);
         user.setUsername("janedoe");
 
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setCartId(123);
         cart.setCartItems(new ArrayList<>());
         cart.setCartPaid(true);
         cart.setCartRemoved(true);
         cart.setCartTotal(1);
-        cart.setTransaction(transaction);
-        cart.setUser(user);
+        cart.setTransactionEntity(transaction);
+        cart.setUserEntity(user);
         cart.setUserId(123);
-        when(this.cartRepository.saveAndFlush((Cart) any())).thenReturn(cart);
+        when(this.cartRepository.saveAndFlush((CartEntity) any())).thenReturn(cart);
         CartPojo cartPojo = new CartPojo(123, 123, 1, true, true);
 
         CartPojo actualUpdateCartResult = this.cartServiceImpl.updateCart(cartPojo);
         assertSame(cartPojo, actualUpdateCartResult);
         assertEquals(123, actualUpdateCartResult.getCartId());
-        verify(this.cartRepository).saveAndFlush((Cart) any());
+        verify(this.cartRepository).saveAndFlush((CartEntity) any());
     }
 
     @Test
     void testGetCart() throws ApplicationException {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -127,14 +127,14 @@ class CartServiceImplTest {
         user.setUser_id(1);
         user.setUsername("janedoe");
 
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setCartId(123);
         cart.setCartItems(new ArrayList<>());
         cart.setCartPaid(true);
         cart.setCartRemoved(true);
         cart.setCartTotal(1);
-        cart.setTransaction(transaction);
-        cart.setUser(user);
+        cart.setTransactionEntity(transaction);
+        cart.setUserEntity(user);
         cart.setUserId(123);
         when(this.cartRepository.findByCartId(anyInt())).thenReturn(cart);
         CartPojo actualCart = this.cartServiceImpl.getCart(123);
@@ -148,12 +148,12 @@ class CartServiceImplTest {
 
     @Test
     void testGetCartByUserId() throws ApplicationException {
-        Transaction transaction = new Transaction();
+        TransactionEntity transaction = new TransactionEntity();
         transaction.setCartId(123);
         transaction.setTransactionDate(mock(Timestamp.class));
         transaction.setTransactionId(123);
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
@@ -164,14 +164,14 @@ class CartServiceImplTest {
         user.setUser_id(1);
         user.setUsername("janedoe");
 
-        Cart cart = new Cart();
+        CartEntity cart = new CartEntity();
         cart.setCartId(123);
         cart.setCartItems(new ArrayList<>());
         cart.setCartPaid(true);
         cart.setCartRemoved(true);
         cart.setCartTotal(1);
-        cart.setTransaction(transaction);
-        cart.setUser(user);
+        cart.setTransactionEntity(transaction);
+        cart.setUserEntity(user);
         cart.setUserId(123);
         when(this.cartRepository.findByUserId(anyInt())).thenReturn(cart);
         CartPojo actualCartByUserId = this.cartServiceImpl.getCartByUserId(123);

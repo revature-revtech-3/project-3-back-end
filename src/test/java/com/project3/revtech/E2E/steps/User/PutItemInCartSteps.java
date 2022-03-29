@@ -1,11 +1,8 @@
 package com.project3.revtech.E2E.steps.User;
 
 import com.project3.revtech.E2E.runner.TestRunner;
-import com.project3.revtech.entity.User;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
