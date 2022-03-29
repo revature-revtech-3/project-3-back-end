@@ -63,7 +63,7 @@ public class ProductEntity {
 	@Column(name = "image_url")
 	private String imageUrl;
 
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "productEntity")
 	private List<ImageEntity> images;
 
 	@Column(name = "product_removed")

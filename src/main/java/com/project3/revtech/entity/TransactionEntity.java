@@ -43,7 +43,7 @@ public class TransactionEntity {
 	@JoinColumn(name = "cart_id", nullable = false, insertable = false, updatable = false)
 	private CartEntity cartEntity;
 
-	@OneToMany(mappedBy = "transaction")
+	@OneToMany(mappedBy = "transactionEntity")
 	private List<PurchasedItemEntity> purchasedItems;
 
 

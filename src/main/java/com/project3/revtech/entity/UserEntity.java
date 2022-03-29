@@ -56,7 +56,7 @@ public class UserEntity {
 	@Size(min = 10)
 	private String contact;
 
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "productEntity")
 	private List<ReviewEntity> reviews;
 
 	@ManyToMany(fetch = FetchType.LAZY)
