@@ -46,11 +46,11 @@ public class WishlistEntity {
 	
 	  //Object of product entity to store the product information
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private ProductEntity productEntity;
     
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "product_id",  insertable = false, updatable = false)
     private UserEntity userEntity;
 	
 	
