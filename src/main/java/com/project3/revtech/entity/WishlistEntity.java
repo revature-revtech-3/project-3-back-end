@@ -11,7 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import javax.validation.constraints.NotNull;
+
+import org.springframework.data.annotation.CreatedDate;
+
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +37,7 @@ public class WishlistEntity {
 	
 	@NotNull
 	@Column(name = "created_date")
+	@CreatedDate
 	private Date createdDate;
 	
 	@NotNull
@@ -43,6 +48,10 @@ public class WishlistEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
     private ProductEntity productEntity;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private UserEntity userEntity;
 	
 	
 	
