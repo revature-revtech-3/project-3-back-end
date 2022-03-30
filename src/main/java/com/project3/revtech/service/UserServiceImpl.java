@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 	        Optional<UserEntity> optional = this.userRepositoryDao.findById(user_id);
 	        if (optional.isPresent()) {
 	            UserEntity user = optional.get();
-	            userPojo = new  UserPojo(user.getUser_id(), user.getUsername(), encoder.encode(user.getPassword()), user.getEmail(), user.getFirst_name(), user.getLast_name(),
+	            userPojo = new  UserPojo(user.getUserId(), user.getUsername(), encoder.encode(user.getPassword()), user.getEmail(), user.getFirstName(), user.getLastName(),
 	                    user.getAddress(), user.getContact());
 	        }
 	        return  userPojo;

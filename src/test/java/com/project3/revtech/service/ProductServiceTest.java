@@ -320,6 +320,5 @@ class ProductServiceTest {
         verify(this.productRepository).findAll();
         assertEquals(1, this.productService.getAllDiscountProductService().size());
     }
-
 }
 

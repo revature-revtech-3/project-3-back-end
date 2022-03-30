@@ -23,9 +23,11 @@ uniqueConstraints = {
 		@UniqueConstraint(columnNames = "email") 
 })
 public class UserEntity {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int user_id;
+	@Column(name="user_id")
+	private int userId;
 
 	@NotBlank
 	@Size(max = 20)
@@ -42,11 +44,13 @@ public class UserEntity {
 
 	@NotBlank
 	@Size(max = 20)
-	private String first_name;
+	@Column(name = "first_name")
+	private String firstName;
 
 	@NotBlank
 	@Size(max = 20)
-	private String last_name;
+	@Column(name="last_name")
+	private String lastName;
 
 	@NotBlank
 	@Size(max = 200)
@@ -69,8 +73,8 @@ public class UserEntity {
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstName = first_name;
+		this.lastName = last_name;
 		this.address = address;
 		this.contact = contact;
 
