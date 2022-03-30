@@ -2,7 +2,7 @@ package com.project3.revtech.joinedpojo;
 
 import org.springframework.stereotype.Component;
 
-import com.project3.revtech.pojo.UserSettings;
+import com.project3.revtech.pojo.UserSettingsPojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +25,7 @@ public class UserUserSettingsPojo {
      private String password;
 	 private String address;
 	 private String contact;
-	 private UserSettings userSettings;
+	 private UserSettingsPojo userSettings;
 	 
 
 }
