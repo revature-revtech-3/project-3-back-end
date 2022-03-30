@@ -5,7 +5,7 @@ pipeline {
         stage('clone code') {
             steps {
                 // Get some code from a GitHub repository
-                git (url: 'https://github.com/BenBarnhill/ERS-backend-spring.git', branch:'main')
+                git (url: 'https://github.com/BenBarnhill/project-3-back-end.git', branch:'main')
                 
                 echo 'clone step'
             }
