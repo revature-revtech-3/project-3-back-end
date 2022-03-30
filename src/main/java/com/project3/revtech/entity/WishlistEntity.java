@@ -50,7 +50,7 @@ public class WishlistEntity {
     private ProductEntity productEntity;
     
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id",  insertable = false, updatable = false)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private UserEntity userEntity;
 	
 	
