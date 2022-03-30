@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserSettings {
+public class UserSettingsPojo {
 	int user_settings_id;
 	int user_id;
 	String css_mode;
