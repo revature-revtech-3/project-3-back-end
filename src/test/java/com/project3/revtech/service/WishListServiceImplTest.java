@@ -56,6 +56,7 @@ public class WishListServiceImplTest {
 
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
+		wishList.setUserEntity(user);
 		wishList.setUserId(1);
 		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
 		WishListPojo wishListPojo = new WishListPojo();
@@ -83,6 +84,7 @@ public class WishListServiceImplTest {
 
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
+		wishList.setUserEntity(user);
 		wishList.setUserId(1);
 
 		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
@@ -110,6 +112,7 @@ public class WishListServiceImplTest {
 
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
+		wishList.setUserEntity(user);
 		wishList.setUserId(1);
 
 		when(this.wishListRepository.findByWishListId(anyInt())).thenReturn(wishList);
@@ -135,6 +138,7 @@ public class WishListServiceImplTest {
 
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
+		wishList.setUserEntity(user);
 		wishList.setUserId(1);
 
 		when(this.wishListRepository.findByUserId(anyInt())).thenReturn(wishList);
