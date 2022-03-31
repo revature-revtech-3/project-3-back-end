@@ -10,7 +10,17 @@ import com.project3.revtech.pojo.WishListPojo;
 public interface WishListService {
 
 //	WishListAndItemPojo getWishListByUserId(int userId);
+  
+  	WishListPojo addWishList(WishListPojo wishList) throws ApplicationException;
+
 	
-	WishListPojo addWishList(WishListPojo wishList) throws ApplicationException;
+
+	WishListPojo updateWishList(WishListPojo wishListPojo);
+
+	WishListPojo getWishListByUserId(int i);
+
+	boolean removeWishList(WishListPojo wishListPojo);
+
+	WishListPojo getWishList(int i);
 
 }

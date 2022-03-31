@@ -1,14 +1,13 @@
 package com.project3.revtech.service;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.project3.revtech.dao.WishListRepository;
-import com.project3.revtech.entity.CartEntity;
+
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedpojo.WishListAndItemPojo;
 
 import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListPojo;
@@ -25,6 +24,51 @@ public class WishListServiceImpl implements WishListService {
 		wishList.setWishListId(returnWishList.getWishListId());
 		return wishList;
 	}
+	
+
+	@Override
+	public WishListPojo getWishList(int i) {
+		WishListEntity wishListEntity =  wishListRepository.findByWishListId(i);
+		WishListPojo cart = new WishListPojo(wishListEntity.getWishListId(),wishListEntity.getUserId());
+		         return cart;
+	}
+	
+	@Override
+	public WishListPojo getWishListByUserId(int i) {
+		WishListEntity wishListEntity =  wishListRepository.findByUserId(i);
+	        if(wishListEntity == null) {
+	        	WishListPojo newWishList = new WishListPojo(11, i);
+	            try {
+					return addWishList(newWishList);
+				} catch (ApplicationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        }
+	        WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
+	        return wishList;
+	}
+	
+	@Override
+	public boolean removeWishList(WishListPojo wishListPojo) {
+		wishListRepository.deleteById(wishListPojo.getWishListId());
+	        return true;
+	}
+	
+	
+	@Override
+	public WishListPojo updateWishList(WishListPojo wishListPojo) {
+		   WishListEntity wishListEntity = new WishListEntity(wishListPojo.getWishListId(), wishListPojo.getUserId());
+	        WishListEntity returnCart = wishListRepository.saveAndFlush(wishListEntity);
+	        wishListPojo.setWishListId(returnCart.getWishListId());
+	        return wishListPojo;
+	}
+}
+
+
+	
+
+
 
 
 //	@Override
@@ -38,31 +82,10 @@ public class WishListServiceImpl implements WishListService {
 //        return cart;
 //	}
 
-//	@Override
-//	public WishlistPojo updateWishList(WishlistPojo wishlistPojo) throws ApplicationException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public ProductPojo getWishListItem(int productId) throws ApplicationException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public boolean removeProduct(int productId) throws ApplicationException {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
 
 
-//	@Override
-//	public List<WishlistPojo> readWishList(int userId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
 
 	
 
-}
+

@@ -9,6 +9,12 @@ import com.project3.revtech.entity.WishListEntity;
 
 public interface WishListRepository extends JpaRepository<WishListEntity, Integer> {
 
+	WishListEntity findByWishListId(int anyInt);
+
+	WishListEntity findByUserId(int anyInt);
+
+	
+
 //	WishListEntity findByWishListId(Integer wishListId);
 //	
 //	WishListEntity findByUserId(Integer userId);
