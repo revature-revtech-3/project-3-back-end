@@ -13,14 +13,12 @@ public interface WishListService {
   
   	WishListPojo addWishList(WishListPojo wishList) throws ApplicationException;
 
-	
+	WishListPojo updateWishList(WishListPojo wishListPojo)throws ApplicationException;
 
-	WishListPojo updateWishList(WishListPojo wishListPojo);
+	WishListPojo getWishListByUserId(int userId) throws ApplicationException;
 
-	WishListPojo getWishListByUserId(int i);
+	boolean removeWishList(WishListPojo wishListPojo)throws ApplicationException;
 
-	boolean removeWishList(WishListPojo wishListPojo);
-
-	WishListPojo getWishList(int i);
+	WishListPojo getWishList(int wishListId)throws ApplicationException;
 
 }

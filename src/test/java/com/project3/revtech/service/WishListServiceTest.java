@@ -100,7 +100,7 @@ public class WishListServiceTest {
 	}
 	  
 	  @Test
-	    void getWishListByUserId() throws ApplicationException {
+	    void testGetWishListByUserId() throws ApplicationException {
 	   
 	        UserEntity user = new UserEntity();
 	        user.setAddress("42 Main St");
@@ -146,12 +146,12 @@ public class WishListServiceTest {
 	        user.setUsername("janedoe");
 	        
 	        WishListEntity wishList = new WishListEntity();
-	        wishList.setWishListId(1);
-	        wishList.setUserId(123);
+	        wishList.setWishListId(123);
+	        wishList.setUserId(1);
 
 	   
 	        when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
-	        WishListPojo wishListPojo = new WishListPojo(1, 123 );
+	        WishListPojo wishListPojo = new WishListPojo( );
 
 	        WishListPojo actualUpdateWishListResult = this.wishListServiceImpl.updateWishList(wishListPojo);
 //	        assertSame(wishListPojo, actualUpdateWishListResult);
