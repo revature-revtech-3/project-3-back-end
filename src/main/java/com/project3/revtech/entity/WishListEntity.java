@@ -30,17 +30,25 @@ public class WishListEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "wish_list_id")
-	private int  wishlistId;
+	private int wishListId;
 	
 	@NotNull
 	@Column(name = "user_id")
-	private int  userId;
+	private int userId;
 	
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private UserEntity userEntity;
+
+	public WishListEntity(int wishListId, @NotNull int userId) {
+		super();
+		this.wishListId = wishListId;
+		this.userId = userId;
+	}
     
-    @OneToMany(mappedBy = "wishListEntity")
-    private List<WishListItemEntity> wishListItems;
+//    @OneToMany(mappedBy = "wishListEntity")
+//    private List<WishListItemEntity> wishListItems;
+    
+    
     
 }
