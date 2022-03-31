@@ -77,12 +77,14 @@ public class AuthController {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
           .badRequest()
+          .header("Access-Control-Allow-Origin", "*")
           .body(new MessageResponse("Username is already taken!"));
     }
 
     if (userRepository.existsByEmail(signUpRequest.getEmail())) {
       return ResponseEntity
           .badRequest()
+          .header("Access-Control-Allow-Origin", "*")
           .body(new MessageResponse("Email is already in use!"));
     }
 
@@ -125,6 +127,8 @@ public class AuthController {
     userEntity.setRoles(roles);
     userRepository.save(userEntity);
 
-    return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    return ResponseEntity.ok()
+    		.header("Access-Control-Allow-Origin", "*")
+    		.body(new MessageResponse("User registered successfully!"));
   }
 }
