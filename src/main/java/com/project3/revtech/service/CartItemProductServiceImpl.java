@@ -28,12 +28,12 @@ public class CartItemProductServiceImpl implements CartItemProductService {
     @Autowired CartServiceImpl cartService;
 
 
-    @Override
+        @Override
     public CartAndItemsPojo getAllCartItemProducts(int cartId) {
 
         CartEntity cartEntity = cartRepository.getById(cartId);
-        return getCartAndItemsPojo(cartEntity);
-    }
+            return getCartAndItemsPojo(cartEntity);
+        }
 
     @Override
     public CartAndItemsPojo getAllCartItemProductsForUser(int userId) {
