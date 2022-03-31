@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 // no interface to implement atm.
 @Service
 @Transactional
-public class EmailServiceImpl {
+public class EmailDiscountService {
+	
+	
+	
 	
 	
 	public void sendByDiscount(int discountID) {
