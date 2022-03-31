@@ -3,25 +3,20 @@ package com.project3.revtech.service;
 import java.util.List;
 
 import com.project3.revtech.exception.ApplicationException;
+import com.project3.revtech.joinedpojo.WishListAndItemPojo;
 import com.project3.revtech.pojo.ProductPojo;
-import com.project3.revtech.pojo.WishlistPojo;
+import com.project3.revtech.pojo.WishListPojo;
 
 public interface WishListService {
+  
+  	WishListPojo addWishList(WishListPojo wishList) throws ApplicationException;
+
+	WishListPojo updateWishList(WishListPojo wishListPojo) throws ApplicationException;
 	
-	 
-	   WishlistPojo updateWishList(WishlistPojo wishlistPojo) throws ApplicationException;
-	   
-	   ProductPojo getWishListItem(int productId) throws ApplicationException;
-	     
-	   boolean removeProduct(int productId) throws ApplicationException;
-	   
-	   void createWishList(WishlistPojo wishlistPojo);
-	   
-	   public List<WishlistPojo> readWishList(int userId);
-	   
-	  //If problems occur, change type to Integer
-	   
-	   
-	    
+	WishListPojo getWishList(int wishListId) throws ApplicationException;
+
+	WishListPojo getWishListByUserId(int userId) throws ApplicationException;
+
+	boolean removeWishList(WishListPojo wishList) throws ApplicationException;
 
 }

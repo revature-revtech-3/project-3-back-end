@@ -4,11 +4,18 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.project3.revtech.entity.WishlistEntity;
+import com.project3.revtech.entity.WishListEntity;
 
 
-public interface WishListRepository extends JpaRepository<WishlistEntity, Integer> {
+public interface WishListRepository extends JpaRepository<WishListEntity, Integer> {
 
-	//to fetch wish list of a user and ordered by create date
-	List<WishlistEntity> findAllByUserIdOrderByCreatedDateDesc(Integer userId);
+	WishListEntity findByWishListId(int anyInt);
+
+	WishListEntity findByUserId(int anyInt);
+
+	
+
+//	WishListEntity findByWishListId(Integer wishListId);
+//	
+//	WishListEntity findByUserId(Integer userId);
 }
