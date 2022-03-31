@@ -139,11 +139,19 @@ DROP TABLE IF EXISTS wish_list_details;
 CREATE TABLE wish_list_details (	
 	wishlist_id INT GENERATED ALWAYS AS IDENTITY,
 	user_id INT NOT NULL,
-	created_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	product_id INT NOT NULL,
 	PRIMARY KEY(wishlist_id),
-	FOREIGN KEY(product_id) REFERENCES product_details(product_id) ON DELETE CASCADE,
 	FOREIGN KEY(user_id) REFERENCES user_details(user_id)
+);
+
+DROP TABLE IF EXISTS wish_items;
+
+CREATE TABLE wish_items(
+	wish_item_id INT GENERATED ALWAYS AS IDENTITY,
+	wishlist_id INT,
+	product_id INT,
+	PRIMARY KEY(wish_item_id),
+	FOREIGN KEY(wishlist_id) REFERENCES wish_list_details(wishlist_id),
+	FOREIGN KEY(product_id) REFERENCES product_details(product_id)
 );
 	 
 
