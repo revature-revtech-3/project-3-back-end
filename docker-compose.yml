@@ -18,3 +18,6 @@ services:
       - my-postgres
     links:
       - my-postgres
+      
+      
+      
