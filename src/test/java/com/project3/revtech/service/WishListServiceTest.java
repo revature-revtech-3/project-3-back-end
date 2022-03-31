@@ -95,7 +95,7 @@ public class WishListServiceTest {
 	        when(this.wishListRepository.findByWishListId(anyInt())).thenReturn(wishList);
 	        WishListPojo actualWishList = this.wishListServiceImpl.getWishList(123);
 	        assertEquals(123, actualWishList.getWishListId());
-	        assertEquals(123, actualWishList.getUserId());
+	        assertEquals(1, actualWishList.getUserId());
 	        verify(this.wishListRepository).findByWishListId(anyInt());
 	}
 	  
@@ -114,20 +114,20 @@ public class WishListServiceTest {
 	        user.setUsername("janedoe");
 
 	        WishListEntity wishList = new WishListEntity();
-	        wishList.setWishListId(1);
-	        wishList.setUserId(123);
+	        wishList.setWishListId(123);
+	        wishList.setUserId(1);
 	        
 	        when(this.wishListRepository.findByUserId(anyInt())).thenReturn(wishList);
-	        WishListPojo actualWishListByUserId = this.wishListServiceImpl.getWishListByUserId(123);
-	        assertEquals(1, actualWishListByUserId.getWishListId());
-	        assertEquals(123, actualWishListByUserId.getUserId());
+	        WishListPojo actualWishListByUserId = this.wishListServiceImpl.getWishListByUserId(1);
+	        assertEquals(123, actualWishListByUserId.getWishListId());
+	        assertEquals(1, actualWishListByUserId.getUserId());
 	        verify(this.wishListRepository).findByUserId(anyInt());
 	    }
 	  
 	  @Test
 	    void testRemoveWishList() throws ApplicationException {
 	        doNothing().when(this.wishListRepository).deleteById((Integer) any());
-	        assertTrue(this.wishListServiceImpl.removeWishList(new WishListPojo(1, 123 )));
+	        assertTrue(this.wishListServiceImpl.removeWishList(new WishListPojo(123, 1 )));
 	        verify(this.wishListRepository).deleteById((Integer) any());
 	    }
 	  
