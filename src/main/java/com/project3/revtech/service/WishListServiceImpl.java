@@ -7,7 +7,7 @@ import com.project3.revtech.dao.WishListRepository;
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.exception.ApplicationException;
 
-
+import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListPojo;
 
 public class WishListServiceImpl implements WishListService {
@@ -22,9 +22,17 @@ public class WishListServiceImpl implements WishListService {
 		wishList.setWishListId(returnWishList.getWishListId());
 		return wishList;
 	}
+	
+	@Override
+	public WishListPojo updateWishList(WishListPojo wishListPojo) throws ApplicationException {
+		WishListEntity wishListEntity = new WishListEntity(wishListPojo.getWishListId(), wishListPojo.getUserId());
+		WishListEntity returnWishList = wishListRepository.saveAndFlush(wishListEntity);
+		wishListPojo.setWishListId(returnWishList.getWishListId());
+		return wishListPojo;
+	}
 
 	@Override
-	public WishListPojo getWishList(int wishListId)throws ApplicationException {
+	public WishListPojo getWishList(int wishListId) throws ApplicationException {
 		WishListEntity wishListEntity = wishListRepository.findByWishListId(wishListId);
 		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
 		return wishList;
@@ -34,9 +42,8 @@ public class WishListServiceImpl implements WishListService {
 	public WishListPojo getWishListByUserId(int userId) throws ApplicationException {
 		WishListEntity wishListEntity = wishListRepository.findByUserId(userId);
 		if (wishListEntity == null) {
-			WishListPojo newWishList = new WishListPojo(11, userId);
+			WishListPojo newWishList = new WishListPojo(1, userId);
 			return addWishList(newWishList);
-		
 		}
 		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
 		return wishList;
@@ -48,20 +55,8 @@ public class WishListServiceImpl implements WishListService {
 		return true;
 	}
 
-	@Override
-	public WishListPojo updateWishList(WishListPojo wishListPojo) throws ApplicationException {
-		WishListEntity wishListEntity = new WishListEntity(wishListPojo.getWishListId(), wishListPojo.getUserId());
-		WishListEntity returnWishList = wishListRepository.saveAndFlush(wishListEntity);
-		wishListPojo.setWishListId(returnWishList.getWishListId());
-		return wishListPojo;
-	}
-}
-
-
 	
-
-
-
+}
 
 //	@Override
 //	public WishListAndItemPojo getWishListByUserId(int userId) {
@@ -73,11 +68,3 @@ public class WishListServiceImpl implements WishListService {
 //        CartPojo cart = new CartPojo(WishListEntity.getCartId(), cartEntity.getUserId(), cartEntity.getCartTotal(), cartEntity.isCartPaid(), cartEntity.isCartRemoved());
 //        return cart;
 //	}
-
-
-
-
-
-	
-
-
