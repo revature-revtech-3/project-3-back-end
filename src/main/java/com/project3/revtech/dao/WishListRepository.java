@@ -9,6 +9,7 @@ import com.project3.revtech.entity.WishListEntity;
 
 public interface WishListRepository extends JpaRepository<WishListEntity, Integer> {
 
-//	//to fetch wish list of a user and ordered by create date
-//	List<WishListEntity> findAllByUserIdOrderByCreatedDateDesc(Integer userId);
+	WishListEntity findByWishListId(Integer wishListId);
+	
+	WishListEntity findByUserId(Integer userId);
 }
