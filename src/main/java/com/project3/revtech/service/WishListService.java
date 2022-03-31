@@ -8,28 +8,20 @@ import com.project3.revtech.pojo.WishlistPojo;
 
 public interface WishListService {
 	
-	   WishlistPojo addWishList(WishlistPojo wishlistPojo) throws ApplicationException;
-	   
+	 
 	   WishlistPojo updateWishList(WishlistPojo wishlistPojo) throws ApplicationException;
 	   
-	   WishlistPojo getWishList(int wishlistId) throws ApplicationException;
-	   
-	   WishlistPojo getWishListByUserId(int userId) throws ApplicationException;
-	   
-	   boolean removeWishList(WishlistPojo wishListPojo) throws ApplicationException;
-	    
-	   ProductPojo addProduct(ProductPojo productPojo) throws ApplicationException;
-	    
-	   ProductPojo updateProduct(ProductPojo productPojo) throws ApplicationException;
-	    
 	   ProductPojo getWishListItem(int productId) throws ApplicationException;
-	    
-	   List<ProductPojo> getAllItemsOfWishlist(int wishlistId) throws ApplicationException;
-	    
+	     
 	   boolean removeProduct(int productId) throws ApplicationException;
+	   
+	   void createWishList(WishlistPojo wishlistPojo);
+	   
+	   public List<WishlistPojo> readWishList(int userId);
+	   
+	  //If problems occur, change to Integer
+	   
+	   
 	    
-	   boolean checkIfExistsInCart(int wishlistId, int productId) throws ApplicationException;
-	    
-	   boolean checkIfNoQty(int wishlistId, int productId) throws ApplicationException;
 
 }
