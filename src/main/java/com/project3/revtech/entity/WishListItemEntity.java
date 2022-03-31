@@ -25,11 +25,17 @@ public class WishListItemEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "wish_item_id")
 	private int wishItemId;
-
+	
+	@Column(name = "wishlist_id")
+	private int wishListId;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "wishlist_id", nullable = false, insertable = false, updatable = false)
 	private WishListEntity wishListEntity;
-
+	
+	@Column(name = "product_id")
+	private int productId;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
 	private ProductEntity productEntity;
