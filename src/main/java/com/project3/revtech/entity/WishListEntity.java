@@ -1,5 +1,7 @@
 package com.project3.revtech.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import javax.validation.constraints.NotNull;
@@ -25,15 +29,18 @@ public class WishListEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "wishlist_id")
+	@Column(name = "wish_list_id")
 	private int  wishlistId;
 	
 	@NotNull
 	@Column(name = "user_id")
 	private int  userId;
 	
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private UserEntity userEntity;
+    
+    @OneToMany(mappedBy = "wishListEntity")
+    private List<WishListItemEntity> wishListItems;
     
 }

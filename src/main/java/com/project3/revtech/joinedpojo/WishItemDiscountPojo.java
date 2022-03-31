@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class WishItemProductPojo {
+public class WishItemDiscountPojo {
 	
 	private int wishItemId;
 	private int wishListId;

@@ -15,5 +15,4 @@ public class WishListItemPojo {
 	private int wishListId;
 	private int productId;
 	
-	
 }

@@ -26,11 +26,11 @@ public class WishListItemEntity {
 	@Column(name = "wish_item_id")
 	private int wishItemId;
 	
-	@Column(name = "wishlist_id")
+	@Column(name = "wish_list_id")
 	private int wishListId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "wishlist_id", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "wish_list_id", nullable = false, insertable = false, updatable = false)
 	private WishListEntity wishListEntity;
 	
 	@Column(name = "product_id")
