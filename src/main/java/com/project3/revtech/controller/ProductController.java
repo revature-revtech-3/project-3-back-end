@@ -59,7 +59,6 @@ public class ProductController {
     // http://localhost:7777/api/products/getAll
     //@GetMapping("products")
     //For Rowel Team Product - JWT Specific Mapping
-    //all product without discount
     @GetMapping("products/getall")
     List<ProductPojo> getAllProducts() throws ApplicationException{
         return productService.getAllProductService();
