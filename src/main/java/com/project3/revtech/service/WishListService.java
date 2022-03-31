@@ -19,7 +19,7 @@ public interface WishListService {
 	   
 	   public List<WishlistPojo> readWishList(int userId);
 	   
-	  //If problems occur, change to Integer
+	  //If problems occur, change type to Integer
 	   
 	   
 	    
