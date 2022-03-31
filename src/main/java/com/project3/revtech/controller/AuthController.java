@@ -71,8 +71,7 @@ public class AuthController {
             userDetails.getEmail(), 
             roles, userDetails.getFirst_name(), userDetails.getLast_name(), userDetails.getAddress(), userDetails.getContact()));
   }
-
-  @CrossOrigin(origins = "*", maxAge = 3600)
+  
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {

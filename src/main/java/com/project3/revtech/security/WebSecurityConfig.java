@@ -96,7 +96,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests().antMatchers("/cart/{bid}").permitAll().and()
       .authorizeRequests().antMatchers("/user/{bid}").permitAll()
 	  .anyRequest().authenticated();
-	   http.headers().frameOptions().disable();
+	   http.headers().frameOptions();
 
 		  
 	   
