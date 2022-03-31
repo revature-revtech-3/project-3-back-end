@@ -1,7 +1,5 @@
 package com.project3.revtech.service;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.project3.revtech.dao.WishListRepository;
@@ -25,51 +23,40 @@ public class WishListServiceImpl implements WishListService {
 		return wishList;
 	}
 	
+	@Override
+	public WishListPojo updateWishList(WishListPojo wishListPojo) throws ApplicationException {
+		WishListEntity wishListEntity = new WishListEntity(wishListPojo.getWishListId(), wishListPojo.getUserId());
+		WishListEntity returnWishList = wishListRepository.saveAndFlush(wishListEntity);
+		wishListPojo.setWishListId(returnWishList.getWishListId());
+		return wishListPojo;
+	}
 
 	@Override
-	public WishListPojo getWishList(int i) {
-		WishListEntity wishListEntity =  wishListRepository.findByWishListId(i);
-		WishListPojo cart = new WishListPojo(wishListEntity.getWishListId(),wishListEntity.getUserId());
-		         return cart;
+	public WishListPojo getWishList(int wishListId) throws ApplicationException {
+		WishListEntity wishListEntity = wishListRepository.findByWishListId(wishListId);
+		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
+		return wishList;
 	}
-	
+
 	@Override
-	public WishListPojo getWishListByUserId(int i) {
-		WishListEntity wishListEntity =  wishListRepository.findByUserId(i);
-	        if(wishListEntity == null) {
-	        	WishListPojo newWishList = new WishListPojo(11, i);
-	            try {
-					return addWishList(newWishList);
-				} catch (ApplicationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	        }
-	        WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
-	        return wishList;
+	public WishListPojo getWishListByUserId(int userId) throws ApplicationException {
+		WishListEntity wishListEntity = wishListRepository.findByUserId(userId);
+		if (wishListEntity == null) {
+			WishListPojo newWishList = new WishListPojo(1, userId);
+			return addWishList(newWishList);
+		}
+		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
+		return wishList;
 	}
-	
+
 	@Override
-	public boolean removeWishList(WishListPojo wishListPojo) {
+	public boolean removeWishList(WishListPojo wishListPojo) throws ApplicationException {
 		wishListRepository.deleteById(wishListPojo.getWishListId());
-	        return true;
+		return true;
 	}
+
 	
-	
-	@Override
-	public WishListPojo updateWishList(WishListPojo wishListPojo) {
-		   WishListEntity wishListEntity = new WishListEntity(wishListPojo.getWishListId(), wishListPojo.getUserId());
-	        WishListEntity returnCart = wishListRepository.saveAndFlush(wishListEntity);
-	        wishListPojo.setWishListId(returnCart.getWishListId());
-	        return wishListPojo;
-	}
 }
-
-
-	
-
-
-
 
 //	@Override
 //	public WishListAndItemPojo getWishListByUserId(int userId) {
@@ -81,11 +68,3 @@ public class WishListServiceImpl implements WishListService {
 //        CartPojo cart = new CartPojo(WishListEntity.getCartId(), cartEntity.getUserId(), cartEntity.getCartTotal(), cartEntity.isCartPaid(), cartEntity.isCartRemoved());
 //        return cart;
 //	}
-
-
-
-
-
-	
-
-
