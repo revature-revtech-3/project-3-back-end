@@ -17,7 +17,16 @@ public class WishListServiceImpl implements WishListService {
 
 	@Autowired
 	WishListRepository wishListRepository;
-	
+
+	@Override
+	public WishListPojo addWishList(WishListPojo wishList) throws ApplicationException {
+		WishListEntity wishListEntity = new WishListEntity(wishList.getWishListId(), wishList.getUserId());
+		WishListEntity returnWishList = wishListRepository.saveAndFlush(wishListEntity);
+		wishList.setWishListId(returnWishList.getWishListId());
+		return wishList;
+	}
+
+
 //	@Override
 //	public WishListAndItemPojo getWishListByUserId(int userId) {
 //		WishListEntity wishListEntity =  wishListRepository.findByUserId(userId);
@@ -46,13 +55,8 @@ public class WishListServiceImpl implements WishListService {
 //		// TODO Auto-generated method stub
 //		return false;
 //	}
-//
-//	@Override
-//	public void createWishList(WishlistPojo wishlistPojo) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+
+
 //	@Override
 //	public List<WishlistPojo> readWishList(int userId) {
 //		// TODO Auto-generated method stub
