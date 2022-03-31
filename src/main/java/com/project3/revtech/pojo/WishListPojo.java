@@ -8,11 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class WishlistPojo {
+public class WishListPojo {
 	
-	private int  wishlistId;
+	private int  wishListId;
 	private int  userId;
-	private Date createdDate;
-	private int  productId;
 
 }

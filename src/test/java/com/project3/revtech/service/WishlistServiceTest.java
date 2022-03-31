@@ -17,6 +17,6 @@ public class WishlistServiceTest {
 //		actualRestul
 //		
 //		assertEquals(0, 0);
-	}
+	
 
 }
