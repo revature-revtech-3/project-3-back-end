@@ -36,8 +36,8 @@ public class ReviewServiceImpl implements ReviewService {
         List<ReviewEntity> allReviews = reviewRepository.findAllByProductIdEquals(productId);
         List<UserReviewPojo> returningReviews = new ArrayList<UserReviewPojo>();
         for (ReviewEntity review : allReviews) {
-            UserReviewPojo temp = new UserReviewPojo(   review.getReviewId(), review.getUserId(), review.getUserEntity().getFirst_name(),
-                                                        review.getUserEntity().getLast_name(), review.getProductId(), review.getDate(),
+            UserReviewPojo temp = new UserReviewPojo(   review.getReviewId(), review.getUserId(), review.getUserEntity().getFirstName(),
+                                                        review.getUserEntity().getLastName(), review.getProductId(), review.getDate(),
                                                         review.getTitle(), review.getRating(), review.getReview()
             );
             returningReviews.add(temp);
