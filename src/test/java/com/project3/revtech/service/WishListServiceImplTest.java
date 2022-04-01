@@ -6,6 +6,8 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -46,7 +48,9 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserId(1);
+		wishList.setWishListTotal(5);
 		wishList.setUserEntity(user);
+		wishList.setWishListItems(new ArrayList<>());
 		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
 		WishListPojo wishListPojo = new WishListPojo();
 
@@ -74,7 +78,9 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserId(1);
+		wishList.setWishListTotal(5);
 		wishList.setUserEntity(user);
+		wishList.setWishListItems(new ArrayList<>());
 
 		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
 		WishListPojo wishListPojo = new WishListPojo();
@@ -102,7 +108,9 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserId(1);
+		wishList.setWishListTotal(5);
 		wishList.setUserEntity(user);
+		wishList.setWishListItems(new ArrayList<>());
 
 		when(this.wishListRepository.findByWishListId(anyInt())).thenReturn(wishList);
 		WishListPojo actualWishList = this.wishListServiceImpl.getWishList(123);
@@ -128,7 +136,9 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserId(1);
+		wishList.setWishListTotal(5);
 		wishList.setUserEntity(user);
+		wishList.setWishListItems(new ArrayList<>());
 
 		when(this.wishListRepository.findByUserId(anyInt())).thenReturn(wishList);
 		WishListPojo actualWishListByUserId = this.wishListServiceImpl.getWishListByUserId(1);
