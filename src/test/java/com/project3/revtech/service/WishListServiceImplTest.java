@@ -159,21 +159,4 @@ public class WishListServiceImplTest {
 		assertTrue(this.wishListServiceImpl.removeWishList(new WishListPojo(123, 1)));
 		verify(this.wishListRepository).deleteById((Integer) any());
 	}
-
-	
-
-//	@Test
-//	public void testTotalWishList() {
-//		
-//		WishListAndItemPojo expectResult = new WishListAndItemPojo(1, 1, 
-//											new ArrayList<WishItemPojo>() {
-//			{add(new WishItemPojo(1, 1, 1, new ProductAndDiscountPojo(1, "", "", BigDecimal.valueOf(1), "", "", 1, "", true, 1, "", BigDecimal.valueOf(1))));
-//			}});
-//		
-//		
-//		WishListAndItemPojo actualResult = wishListService.getWishListByUserId(1);
-//
-//		assertEquals(expectResult, actualResult);
-//	}
-
 }

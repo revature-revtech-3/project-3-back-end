@@ -13,5 +13,13 @@ public class WishListPojo {
 	private int  wishListId;
 	private int  userId;
 	private int wishListTotal;
+	
+	
+	public WishListPojo(int wishListId, int userId) {
+		this.wishListId = wishListId;
+		this.userId = userId;
+	}
+	
+	
 
 }
