@@ -43,10 +43,7 @@ public class WishListItemEntity {
 	@JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
 	private ProductEntity productEntity;
 
-	public int getUserId() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 	
 	
 }

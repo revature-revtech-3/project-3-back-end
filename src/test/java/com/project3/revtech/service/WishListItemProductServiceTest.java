@@ -2,6 +2,9 @@ package com.project3.revtech.service;
 
 
 import static org.junit.Assert.assertEquals;
+
+
+
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -20,10 +23,15 @@ import com.project3.revtech.dao.DiscountRepository;
 import com.project3.revtech.dao.ProductRepository;
 import com.project3.revtech.dao.WishItemRepository;
 import com.project3.revtech.dao.WishListRepository;
-import com.project3.revtech.entity.WishListEntity;
+
 import com.project3.revtech.exception.ApplicationException;
 
 import com.project3.revtech.joinedpojo.WishListAndItemPojo;
+import com.project3.revtech.pojo.WishListItemPojo;
+
+import static com.project3.revtech.prototype.WishListAndItemsPrototype.*;
+import static com.project3.revtech.prototype.WishListAndItemsPrototype.wishListAndItemsTestObj;
+
 
 @ContextConfiguration(classes = {   WishListItemProductServiceImpl.class,
         							WishListItemServiceImpl.class,
@@ -51,6 +59,8 @@ public class WishListItemProductServiceTest {
 	@Autowired
 	WishListService wishListService;
 	
+	
+	
 	@Before
     public void beforeClass() {}
 		
@@ -69,7 +79,7 @@ public class WishListItemProductServiceTest {
 
 
 		@Test
-	    public void testGetCartItemProductService() throws ApplicationException {
+	    public void testGetWishListItemProductService() throws ApplicationException {
 	        when(wishListRepository.getById(eq(1))).thenReturn(wishListTestObj());
 	        WishListAndItemPojo wishListAndItems = wishListItemProductService.getAllWishListItemProducts(1);
 	        WishListAndItemPojo testObj = wishListAndItemsTestObj();
