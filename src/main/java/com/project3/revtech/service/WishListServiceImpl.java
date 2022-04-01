@@ -1,15 +1,16 @@
 package com.project3.revtech.service;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project3.revtech.dao.WishListRepository;
-
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.exception.ApplicationException;
-
-import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListPojo;
 
+
+
+
+@Service
 public class WishListServiceImpl implements WishListService {
 
 	@Autowired
