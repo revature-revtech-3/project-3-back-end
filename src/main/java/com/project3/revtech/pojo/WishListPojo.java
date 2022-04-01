@@ -12,5 +12,6 @@ public class WishListPojo {
 	
 	private int  wishListId;
 	private int  userId;
+	private int wishListTotal;
 
 }
