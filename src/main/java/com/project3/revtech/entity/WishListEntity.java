@@ -41,11 +41,9 @@ public class WishListEntity {
 	@Column(name = "wishList_total")
 	private int wishListTotal;
 
-	
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private UserEntity userEntity;
-    
+    private UserEntity userEntity; 
 	
 	@OneToMany(mappedBy = "wishListItemEntity")
     private List<WishListItemEntity> wishListItems;
