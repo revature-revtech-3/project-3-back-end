@@ -28,10 +28,11 @@ public class WishListAndItemsPrototype {
 	        		wishListEntity.getUserId(),
 	        		wishListEntity.getWishListTotal(),
 	        		wishListItems);
+	        
 	    }
 	  
 	   public static WishListEntity wishListTestObj() {
-		   WishListEntity wishList = new WishListEntity();
+		   WishListEntity wishList = new WishListEntity(1,1);
 	        wishList.setWishListItems(wishListItemTestList());
 	        return wishList;
 	    }
@@ -42,6 +43,8 @@ public class WishListAndItemsPrototype {
 	        		wishListEntity.getWishListId(),
 	        		wishListEntity.getUserId(),
 	        		wishListEntity.getWishListTotal());
+	        
+	        
 	    }
 	   public static List<WishListItemEntity> wishListItemTestList() {
 	        List <WishListItemEntity> items = new ArrayList<WishListItemEntity>();
@@ -50,7 +53,7 @@ public class WishListAndItemsPrototype {
 	    }
 	   
 	   public static WishListItemEntity wishListItemTestObj() {
-	        WishListItemEntity item = new WishListItemEntity(1, 1, wishListTestObj(), 1, 15, productTestObj());
+	        WishListItemEntity item = new WishListItemEntity(1, 1, 1);
 	        item.setProductEntity(productTestObj());
 	        return item;
 	    }
