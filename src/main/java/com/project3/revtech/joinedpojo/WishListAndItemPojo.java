@@ -13,6 +13,7 @@ public class WishListAndItemPojo {
 
 	private int wishListId;
 	private int userId;
+	private int wishListTotal;
 	private List<WishItemDiscountPojo> wishItems;
 	
 }
