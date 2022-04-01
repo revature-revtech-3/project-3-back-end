@@ -142,10 +142,6 @@ CREATE TABLE wish_list_details (
 	wishList_total INT,
 	PRIMARY KEY(wish_list_id),
 	FOREIGN KEY(user_id) REFERENCES user_details(user_id)
-	
-	
-
-
 );
 
 DROP TABLE IF EXISTS wish_items;
