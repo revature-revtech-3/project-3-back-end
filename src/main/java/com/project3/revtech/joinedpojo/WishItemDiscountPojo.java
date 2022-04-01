@@ -12,6 +12,7 @@ public class WishItemDiscountPojo {
 	private int wishItemId;
 	private int wishListId;
 	private int productId;
+	private int wishListQty;
 	private ProductAndDiscountPojo productAndDiscount;
 
 }
