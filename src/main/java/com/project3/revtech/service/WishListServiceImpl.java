@@ -56,16 +56,5 @@ public class WishListServiceImpl implements WishListService {
 		return true;
 	}
 
-	
 }
 
-//	@Override
-//	public WishListAndItemPojo getWishListByUserId(int userId) {
-//		WishListEntity wishListEntity =  wishListRepository.findByUserId(userId);
-//        if(wishListEntity == null) {
-//            WishListAndItemPojo newWishList = new WishListAndItemPojo(wishListEntity.getWishlistId(), wishListEntity.getUserId(), wishListEntity.getWishListItems());
-//            return addCart(newCart);
-//        }
-//        CartPojo cart = new CartPojo(WishListEntity.getCartId(), cartEntity.getUserId(), cartEntity.getCartTotal(), cartEntity.isCartPaid(), cartEntity.isCartRemoved());
-//        return cart;
-//	}

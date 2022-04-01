@@ -15,10 +15,8 @@ public interface WishItemRepository extends JpaRepository<WishListItemEntity, In
 
 	WishListItemEntity findByWishListIdAndProductId(int wishListId, int productId)throws ApplicationException;
 
-	boolean existsByWishListIdAndProductId(int wishListId, int productId)throws ApplicationException;
+	boolean existsByWishListIdAndProductId(int wishListId, int anyInt2)throws ApplicationException;
+	
+	boolean existsByWishListQtyIsLessThanAndWishListIdAndProductId(int cartQty, int cartId, int productId);
 
-	boolean existsByWishListQtyIsLessThanAndWishListIdAndProductId();
 }
-	
-	
-
