@@ -1,5 +1,7 @@
 package com.project3.revtech.entity;
 
+
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -36,18 +38,34 @@ public class WishListEntity {
 	@Column(name = "user_id")
 	private int userId;
 	
+	@Column(name = "wishList_total")
+	private int wishListTotal;
+
+	
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private UserEntity userEntity;
+    
+	
+	@OneToMany(mappedBy = "wishListItemEntity")
+    private List<WishListItemEntity> wishListItems;
 
 	public WishListEntity(int wishListId, @NotNull int userId) {
 		super();
 		this.wishListId = wishListId;
 		this.userId = userId;
 	}
+	
+	
+
+	
+
+
+	
+	
+
     
-//    @OneToMany(mappedBy = "wishListEntity")
-//    private List<WishListItemEntity> wishListItems;
+
     
     
     
