@@ -64,7 +64,7 @@ public class CartItemProductServiceTest {
 
     @Test
     public void testGetCartItemProductServiceByUser() throws ApplicationException {
-        when(cartRepository.findByUserIdAndCartRemovedFalseAndCartPaidFalse(eq(1))).thenReturn(cartTestObj());
+        when(this.cartRepository.findByUserIdAndCartRemovedFalseAndCartPaidFalse(eq(1))).thenReturn(cartTestObj());
         CartAndItemsPojo cartAndItems = cartItemProductService.getAllCartItemProductsForUser(1);
         CartAndItemsPojo testObj = cartAndItemsTestObj();
         assertNotNull(cartAndItems);
@@ -74,7 +74,7 @@ public class CartItemProductServiceTest {
     }
     @Test
     public void testGetCartItemProductService() throws ApplicationException {
-        when(cartRepository.getById(eq(1))).thenReturn(cartTestObj());
+        when(this.cartRepository.getById(eq(1))).thenReturn(cartTestObj());
         CartAndItemsPojo cartAndItems = cartItemProductService.getAllCartItemProducts(1);
         CartAndItemsPojo testObj = cartAndItemsTestObj();
         assertNotNull(cartAndItems);
