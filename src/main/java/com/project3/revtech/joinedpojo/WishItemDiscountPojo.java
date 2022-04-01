@@ -1,15 +1,17 @@
-package com.project3.revtech.pojo;
+package com.project3.revtech.joinedpojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class WishListItemPojo {
+@NoArgsConstructor
+public class WishItemDiscountPojo {
+	
 	private int wishItemId;
 	private int wishListId;
 	private int productId;
+	private ProductAndDiscountPojo productAndDiscount;
 
 }

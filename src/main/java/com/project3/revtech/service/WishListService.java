@@ -3,12 +3,13 @@ package com.project3.revtech.service;
 import java.util.List;
 
 import com.project3.revtech.exception.ApplicationException;
+import com.project3.revtech.joinedpojo.WishListAndItemPojo;
 import com.project3.revtech.pojo.ProductPojo;
-import com.project3.revtech.pojo.WishlistPojo;
+import com.project3.revtech.pojo.WishListPojo;
 
 public interface WishListService {
 	
-//	   WishlistPojo addWishList(WishlistPojo wishlistPojo) throws ApplicationException;
+	   WishListPojo addWishList(WishListPojo wishListPojo) throws ApplicationException;
 //	   
 //	   WishlistPojo updateWishList(WishlistPojo wishlistPojo) throws ApplicationException;
 //	   
@@ -31,5 +32,6 @@ public interface WishListService {
 //	   boolean checkIfExistsInCart(int wishlistId, int productId) throws ApplicationException;
 //	    
 //	   boolean checkIfNoQty(int wishlistId, int productId) throws ApplicationException;
+
 
 }
