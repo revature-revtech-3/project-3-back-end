@@ -36,7 +36,17 @@ public class WishListItemEntity {
 	@Column(name = "product_id")
 	private int productId;
 	
+	@Column(name = "wish_item_qty")
+	private int wishListQty;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
 	private ProductEntity productEntity;
+
+	public int getUserId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 }

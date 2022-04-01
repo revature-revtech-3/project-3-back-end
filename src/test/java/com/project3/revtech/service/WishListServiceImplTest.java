@@ -27,6 +27,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.project3.revtech.dao.WishListRepository;
 import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.entity.WishListEntity;
+import com.project3.revtech.entity.WishListItemEntity;
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.WishListPojo;
 
@@ -57,6 +58,7 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserId(1);
+		wishList.setUserEntity(user);
 		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
 		WishListPojo wishListPojo = new WishListPojo();
 
@@ -84,6 +86,7 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserId(1);
+		wishList.setUserEntity(user);
 
 		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
 		WishListPojo wishListPojo = new WishListPojo();
@@ -111,6 +114,7 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserId(1);
+		wishList.setUserEntity(user);
 
 		when(this.wishListRepository.findByWishListId(anyInt())).thenReturn(wishList);
 		WishListPojo actualWishList = this.wishListServiceImpl.getWishList(123);
@@ -136,6 +140,7 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserId(1);
+		wishList.setUserEntity(user);
 
 		when(this.wishListRepository.findByUserId(anyInt())).thenReturn(wishList);
 		WishListPojo actualWishListByUserId = this.wishListServiceImpl.getWishListByUserId(1);
