@@ -21,6 +21,10 @@ import lombok.NoArgsConstructor;
 @Table(name="wish_items")
 public class WishListItemEntity {
 
+	public WishListItemEntity(int wishItemId2, int wishListId2, int productId2, int wishListQty2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "wish_item_id")
