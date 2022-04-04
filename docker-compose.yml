@@ -13,7 +13,7 @@ services:
     image: revtech-backend
     build: .
     ports:
-      - 9999:4040
+      - 9999:7777
     depends_on:
       - my-postgres
     links:
