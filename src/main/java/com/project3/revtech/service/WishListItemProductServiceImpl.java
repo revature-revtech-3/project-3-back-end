@@ -40,15 +40,15 @@ public class WishListItemProductServiceImpl implements WishListItemProductServic
 		return getWishListAndItemPojo(wishListEntity);
 	}
 
-	@Override
-	public WishListAndItemPojo getAllWIshListItemProductsForUser(int userId) {
-		WishListEntity wishListEntity = wishListRepository.findByUserIdAndWishListRemovedFalse(userId);
-		if (wishListEntity == null) {
-			wishListEntity = new WishListEntity(11, 1);
-			wishListEntity = wishListRepository.saveAndFlush(wishListEntity);
-		}
-		return getWishListAndItemPojo(wishListEntity);
-	}
+//	@Override
+//	public WishListAndItemPojo getAllWIshListItemProductsForUser(int userId) {
+//		WishListEntity wishListEntity = wishListRepository.findByUserIdAndWishListRemovedFalse(userId);
+//		if (wishListEntity == null) {
+//			wishListEntity = new WishListEntity(userId, 0);
+//			wishListEntity = wishListRepository.saveAndFlush(wishListEntity);
+//		}
+//		return getWishListAndItemPojo(wishListEntity);
+//	}
 
 	@NotNull
 	private WishListAndItemPojo getWishListAndItemPojo(WishListEntity wishListEntity) {
