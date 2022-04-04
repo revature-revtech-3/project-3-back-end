@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://ec2-34-230-18-27.compute-1.amazonaws.com:8080")
+@CrossOrigin
 @RequestMapping(path ="api")
 public class ProductController {
 
