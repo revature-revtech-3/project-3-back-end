@@ -139,6 +139,7 @@ DROP TABLE IF EXISTS wish_list_details;
 CREATE TABLE wish_list_details (	
 	wish_list_id INT GENERATED ALWAYS AS IDENTITY,
 	user_id INT NOT NULL,
+	wish_list_total INT,
 	PRIMARY KEY(wish_list_id),
 	FOREIGN KEY(user_id) REFERENCES user_details(user_id)
 );
@@ -149,6 +150,7 @@ CREATE TABLE wish_items(
 	wish_item_id INT GENERATED ALWAYS AS IDENTITY,
 	wish_list_id INT,
 	product_id INT,
+	wish_item_qty INT,
 	PRIMARY KEY(wish_item_id),
 	FOREIGN KEY(wish_list_id) REFERENCES wish_list_details(wish_list_id),
 	FOREIGN KEY(product_id) REFERENCES product_details(product_id)

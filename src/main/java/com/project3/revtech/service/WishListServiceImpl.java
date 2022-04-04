@@ -1,18 +1,17 @@
 package com.project3.revtech.service;
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Service;
+
 import com.project3.revtech.dao.WishListRepository;
-import com.project3.revtech.entity.CartEntity;
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedpojo.WishListAndItemPojo;
-
-import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListPojo;
 
+
+
+
+@Service
 public class WishListServiceImpl implements WishListService {
 
 	@Autowired
@@ -25,44 +24,38 @@ public class WishListServiceImpl implements WishListService {
 		wishList.setWishListId(returnWishList.getWishListId());
 		return wishList;
 	}
-
-
-//	@Override
-//	public WishListAndItemPojo getWishListByUserId(int userId) {
-//		WishListEntity wishListEntity =  wishListRepository.findByUserId(userId);
-//        if(wishListEntity == null) {
-//            WishListAndItemPojo newWishList = new WishListAndItemPojo(wishListEntity.getWishlistId(), wishListEntity.getUserId(), wishListEntity.getWishListItems());
-//            return addCart(newCart);
-//        }
-//        CartPojo cart = new CartPojo(WishListEntity.getCartId(), cartEntity.getUserId(), cartEntity.getCartTotal(), cartEntity.isCartPaid(), cartEntity.isCartRemoved());
-//        return cart;
-//	}
-
-//	@Override
-//	public WishlistPojo updateWishList(WishlistPojo wishlistPojo) throws ApplicationException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public ProductPojo getWishListItem(int productId) throws ApplicationException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public boolean removeProduct(int productId) throws ApplicationException {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
-
-
-//	@Override
-//	public List<WishlistPojo> readWishList(int userId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
 	
+	@Override
+	public WishListPojo updateWishList(WishListPojo wishListPojo) throws ApplicationException {
+		WishListEntity wishListEntity = new WishListEntity(wishListPojo.getWishListId(), wishListPojo.getUserId());
+		WishListEntity returnWishList = wishListRepository.saveAndFlush(wishListEntity);
+		wishListPojo.setWishListId(returnWishList.getWishListId());
+		return wishListPojo;
+	}
+
+	@Override
+	public WishListPojo getWishList(int wishListId) throws ApplicationException {
+		WishListEntity wishListEntity = wishListRepository.findByWishListId(wishListId);
+		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
+		return wishList;
+	}
+
+	@Override
+	public WishListPojo getWishListByUserId(int userId) throws ApplicationException {
+		WishListEntity wishListEntity = wishListRepository.findByUserId(userId);
+		if (wishListEntity == null) {
+			WishListPojo newWishList = new WishListPojo(1, userId);
+			return addWishList(newWishList);
+		}
+		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
+		return wishList;
+	}
+
+	@Override
+	public boolean removeWishList(WishListPojo wishListPojo) throws ApplicationException {
+		wishListRepository.deleteById(wishListPojo.getWishListId());
+		return true;
+	}
 
 }
+
