@@ -123,9 +123,10 @@ public class WishListItemServiceImplTest {
 				anyInt())).thenReturn(true);
 		when(this.wishItemRepository.findByWishListIdAndProductId(anyInt(), anyInt())).thenReturn(wishListItem);
 		when(this.wishItemRepository.existsByWishListIdAndProductId(anyInt(), anyInt())).thenReturn(true);
+		
 		WishListItemPojo wishListItemPojo = new WishListItemPojo(123, 123, 123, 1);
-
 		WishListItemPojo actualAddItemResult = this.wishListItemServiceImpl.addItem(wishListItemPojo);
+		
 		assertSame(wishListItemPojo, actualAddItemResult);
 		assertEquals(-1, actualAddItemResult.getWishItemId());
 		verify(this.wishItemRepository).deleteById((Integer) any());
@@ -151,7 +152,7 @@ public class WishListItemServiceImplTest {
 
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
-		wishList.setUserId(123);
+		wishList.setUserId(1);
 		wishList.setWishListItems(new ArrayList<>());
 		wishList.setWishListTotal(1);
 		wishList.setUserEntity(user);
@@ -200,7 +201,6 @@ public class WishListItemServiceImplTest {
 
 		WishListItemEntity wishListItem = new WishListItemEntity();
 		wishListItem.setWishListEntity(wishList);
-		wishListItem.setProductId(123);
 		wishListItem.setWishItemId(123);
 		wishListItem.setWishListQty(1);
 		wishListItem.setProductEntity(product1);
@@ -466,7 +466,7 @@ public class WishListItemServiceImplTest {
 		wishList1.setWishListId(123);
 		wishList1.setWishListItems(new ArrayList<>());
 		wishList1.setWishListTotal(1);
-		wishList1.setUserEntity(user);
+		wishList1.setUserEntity(user1);
 		wishList1.setUserId(123);
 
 		DiscountEntity discount2 = new DiscountEntity();
