@@ -18,15 +18,6 @@ public interface WishListRepository extends JpaRepository<WishListEntity, Intege
 
 //	WishListEntity findByUserIdAndWishListRemovedFalse(int userId);
 
-	List<WishListPojo> findAllByUserIdOrderByCreatedDateDesc(int userId);
-
-	WishListItemEntity findByWishListIdAndProductId(int wishListId, int productId);
-
-	WishListItemEntity save(WishListItemEntity itemEntity);
 
 	
-
-//	WishListEntity findByWishListId(Integer wishListId);
-//	
-//	WishListEntity findByUserId(Integer userId);
 }

@@ -44,7 +44,7 @@ public class WishListServiceImpl implements WishListService {
 	public WishListPojo getWishListByUserId(int userId) throws ApplicationException {
 		WishListEntity wishListEntity = wishListRepository.findByUserId(userId);
 		if (wishListEntity == null) {
-			WishListPojo newWishList = new WishListPojo(-1, userId);
+			WishListPojo newWishList = new WishListPojo(1, userId);
 			return addWishList(newWishList);
 		}
 		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());

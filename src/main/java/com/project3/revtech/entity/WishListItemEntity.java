@@ -57,11 +57,6 @@ public class WishListItemEntity {
 		this.productId = productId;
 		this.wishListQty = wishListQty;
 	}
-
-	public WishListItemEntity(int i, int j, WishListEntity wishListTestObj, int k, int l,
-			ProductEntity productTestObj) {
-		// TODO Auto-generated constructor stub
-	}
 	
 	
 }

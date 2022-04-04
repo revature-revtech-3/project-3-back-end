@@ -64,7 +64,6 @@ public class WishListEntity {
 		this.userId = userId;
 		this.wishListTotal = wishListTotal;
 	}
-
 	
 	
 }

@@ -21,6 +21,4 @@ public interface WishItemRepository extends JpaRepository<WishListItemEntity, In
 	
 	boolean existsByWishListQtyIsLessThanAndWishListIdAndProductId(int wishListQty, int wishListId, int productId);
 
-	List<WishListItemPojo> findAll(WishListItemPojo wishListItemPojo);
-
 }

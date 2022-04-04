@@ -43,8 +43,8 @@ public class WishListItemProductServiceImpl implements WishListItemProductServic
 //	@Override
 //	public WishListAndItemPojo getAllWIshListItemProductsForUser(int userId) {
 //		WishListEntity wishListEntity = wishListRepository.findByUserIdAndWishListRemovedFalse(userId);
-//	if (wishListEntity == null) {
-//		wishListEntity = new WishListEntity(userId, 0);
+//		if (wishListEntity == null) {
+//			wishListEntity = new WishListEntity(userId, 0);
 //			wishListEntity = wishListRepository.saveAndFlush(wishListEntity);
 //		}
 //		return getWishListAndItemPojo(wishListEntity);

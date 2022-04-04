@@ -25,6 +25,7 @@ import com.project3.revtech.pojo.WishListItemPojo;
 @Transactional
 public class WishListItemServiceImpl implements WishListItemService {
 	
+
 	@Autowired
 	WishItemRepository wishItemRepository;
 
@@ -89,7 +90,7 @@ public class WishListItemServiceImpl implements WishListItemService {
 
 	@Override
 	public List<WishListItemPojo> getAllItemsOfWishList(WishListItemPojo wishListItemPojo) throws ApplicationException {
-		return wishItemRepository.findAll(wishListItemPojo);
+		return null;
 	}
 
 	@Override
