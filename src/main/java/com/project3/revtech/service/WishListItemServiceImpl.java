@@ -89,7 +89,7 @@ public class WishListItemServiceImpl implements WishListItemService {
 
 	@Override
 	public List<WishListItemPojo> getAllItemsOfWishList(WishListItemPojo wishListItemPojo) throws ApplicationException {
-		return null;
+		return wishItemRepository.findAll(wishListItemPojo);
 	}
 
 	@Override

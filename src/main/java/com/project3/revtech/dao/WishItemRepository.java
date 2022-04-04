@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.project3.revtech.entity.CartItemEntity;
 import com.project3.revtech.entity.WishListItemEntity;
 import com.project3.revtech.exception.ApplicationException;
+import com.project3.revtech.pojo.WishListItemPojo;
 
 @Repository
 public interface WishItemRepository extends JpaRepository<WishListItemEntity, Integer> {
@@ -19,5 +20,7 @@ public interface WishItemRepository extends JpaRepository<WishListItemEntity, In
 	boolean existsByWishListIdAndProductId(int wishListId, int anyInt2)throws ApplicationException;
 	
 	boolean existsByWishListQtyIsLessThanAndWishListIdAndProductId(int wishListQty, int wishListId, int productId);
+
+	List<WishListItemPojo> findAll(WishListItemPojo wishListItemPojo);
 
 }

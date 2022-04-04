@@ -64,16 +64,16 @@ public class WishListItemProductServiceTest {
 	@Before
     public void beforeClass() {}
 		
-	    @Test
-	    public void testGetWishListItemProductServiceByUser() throws ApplicationException {
-	        when(wishListRepository.findByUserIdAndWishListRemovedFalse(eq(1))).thenReturn(wishListTestObj());
-	        WishListAndItemPojo wishListAndItems = wishListItemProductService.getAllWIshListItemProductsForUser(1);
-	        WishListAndItemPojo testObj = wishListAndItemsTestObj();
-	        assertNotNull(wishListAndItems);
-	        assertEquals(1, wishListAndItems.getUserId());
-	        assertEquals(testObj.toString(), wishListAndItems.toString());
-
-	    }
+//	    @Test
+//	    public void testGetWishListItemProductServiceByUser() throws ApplicationException {
+//	        when(wishListRepository.findByUserIdAndWishListRemovedFalse(eq(1))).thenReturn(wishListTestObj());
+//	        WishListAndItemPojo wishListAndItems = wishListItemProductService.getAllWIshListItemProductsForUser(1);
+//	        WishListAndItemPojo testObj = wishListAndItemsTestObj();
+//	        assertNotNull(wishListAndItems);
+//	        assertEquals(1, wishListAndItems.getUserId());
+//	        assertEquals(testObj.toString(), wishListAndItems.toString());
+//
+//	    }
 	
 	
 
