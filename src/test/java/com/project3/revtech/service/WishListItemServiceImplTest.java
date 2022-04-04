@@ -151,7 +151,7 @@ public class WishListItemServiceImplTest {
 		discount.setDiscountId(3);
 		discount.setDiscountPercentage(null);
 		discount.setProductEntity(new ProductEntity());
-		discount.setProductId(123);
+		discount.setProductId(1);
 
 		ProductEntity product = new ProductEntity();
 		product.setCartItems(new ArrayList<>());

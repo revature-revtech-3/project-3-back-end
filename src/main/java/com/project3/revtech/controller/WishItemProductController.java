@@ -22,9 +22,9 @@ public class WishItemProductController {
         return wishListItemProductService.getAllWishListItemProducts(wishListId);
     }
 
-    @GetMapping("user/{bid}/get")
-    WishListAndItemPojo getWishListByUser(@PathVariable("bid") int userId)throws ApplicationException  {
-        return wishListItemProductService.getAllWIshListItemProductsForUser(userId);
-    }
+//    @GetMapping("user/{bid}/get")
+//    WishListAndItemPojo getWishListByUser(@PathVariable("bid") int userId)throws ApplicationException  {
+//        return wishListItemProductService.getAllWIshListItemProductsForUser(userId);
+//    }
 
 }

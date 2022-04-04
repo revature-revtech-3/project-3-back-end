@@ -15,15 +15,15 @@ import com.project3.revtech.pojo.WishListPojo;
 
 public class WishListAndItemPojoPrototype {
 	
-	public static WishListAndItemPojo wishListAndItemsTestObj() {
-        List<WishItemDiscountPojo> wishItems = wishItemDiscountPojoTestList();
-        WishListEntity wishListEntity = wishListTestObj();
-        return new WishListAndItemPojo(
-        		wishListEntity.getWishListId(),
-        		wishListEntity.getUserId(),
-        		wishListEntity.getWishListTotal(),
-        		wishItems);
-    }
+//	public static WishListAndItemPojo wishListAndItemsTestObj() {
+//        List<WishItemDiscountPojo> wishItems = wishItemDiscountPojoTestList();
+//        WishListEntity wishListEntity = wishListTestObj();
+//        return new WishListAndItemPojo(
+//        		wishListEntity.getWishListId(),
+//        		wishListEntity.getUserId(),
+//        		wishListEntity.getWishListTotal(),
+//        		wishItems);
+//    }
 	
     public static WishListEntity wishListTestObj() {
         WishListEntity wishList = new WishListEntity(1, 1, 100);
