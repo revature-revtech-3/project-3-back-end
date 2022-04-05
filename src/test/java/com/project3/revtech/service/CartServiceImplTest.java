@@ -48,11 +48,11 @@ class CartServiceImplTest {
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
-        user.setFirst_name("Jane");
-        user.setLast_name("Doe");
+        user.setFirstName("Jane");
+        user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRoles(new HashSet<>());
-        user.setUser_id(1);
+        user.setUserId(1);
         user.setUsername("janedoe");
 
         CartEntity cart = new CartEntity();
@@ -84,11 +84,11 @@ class CartServiceImplTest {
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
-        user.setFirst_name("Jane");
-        user.setLast_name("Doe");
+        user.setFirstName("Jane");
+        user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRoles(new HashSet<>());
-        user.setUser_id(1);
+        user.setUserId(1);
         user.setUsername("janedoe");
 
         CartEntity cart = new CartEntity();
@@ -120,11 +120,11 @@ class CartServiceImplTest {
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
-        user.setFirst_name("Jane");
-        user.setLast_name("Doe");
+        user.setFirstName("Jane");
+        user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRoles(new HashSet<>());
-        user.setUser_id(1);
+        user.setUserId(1);
         user.setUsername("janedoe");
 
         CartEntity cart = new CartEntity();
@@ -157,11 +157,11 @@ class CartServiceImplTest {
         user.setAddress("42 Main St");
         user.setContact("Contact");
         user.setEmail("jane.doe@example.org");
-        user.setFirst_name("Jane");
-        user.setLast_name("Doe");
+        user.setFirstName("Jane");
+        user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRoles(new HashSet<>());
-        user.setUser_id(1);
+        user.setUserId(1);
         user.setUsername("janedoe");
 
         CartEntity cart = new CartEntity();

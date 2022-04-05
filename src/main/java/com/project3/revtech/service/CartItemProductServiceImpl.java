@@ -1,6 +1,7 @@
 package com.project3.revtech.service;
 
 import com.project3.revtech.dao.CartRepository;
+
 import com.project3.revtech.entity.CartEntity;
 import com.project3.revtech.entity.CartItemEntity;
 import com.project3.revtech.entity.DiscountEntity;
@@ -28,12 +29,12 @@ public class CartItemProductServiceImpl implements CartItemProductService {
     @Autowired CartServiceImpl cartService;
 
 
-        @Override
+    @Override
     public CartAndItemsPojo getAllCartItemProducts(int cartId) {
 
         CartEntity cartEntity = cartRepository.getById(cartId);
-            return getCartAndItemsPojo(cartEntity);
-        }
+        return getCartAndItemsPojo(cartEntity);
+    }
 
     @Override
     public CartAndItemsPojo getAllCartItemProductsForUser(int userId) {
