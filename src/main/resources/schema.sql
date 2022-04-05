@@ -127,3 +127,12 @@ CREATE TABLE purchased_items(
     FOREIGN KEY(cart_id) REFERENCES cart_details(cart_id)
 );
 
+CREATE TABLE bunlde_details(
+bundle_id INT GENERATED ALWAYS AS IDENTITY,
+product_one_id INT,
+product_two_id INT,
+bundle_name VARCHAR,
+bundle_percentage DECIMAL(100, 2),
+PRIMARY KEY(bundle_id),
+FOREIGN KEY(product_one_id) REFERENCES product_details(product_id) ON DELETE CASCADE,
+FOREIGN KEY(product_two_id) REFERENCES product_details(product_id) ON DELETE CASCADE);

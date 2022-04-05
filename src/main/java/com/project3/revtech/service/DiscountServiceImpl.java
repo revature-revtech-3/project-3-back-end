@@ -19,8 +19,6 @@ import com.project3.revtech.exception.ApplicationException;
 @Transactional
 public class DiscountServiceImpl implements DiscountService{
 	
-	
-	
 	@Autowired
 	DiscountRepository discountRepository;	
 	
