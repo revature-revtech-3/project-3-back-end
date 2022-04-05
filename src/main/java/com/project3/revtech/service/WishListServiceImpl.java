@@ -1,5 +1,7 @@
 package com.project3.revtech.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,7 @@ import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListPojo;
 
 @Service
+@Transactional
 public class WishListServiceImpl implements WishListService {
 
 	@Autowired

@@ -100,3 +100,4 @@ INSERT INTO discount_details(product_id, discount_description, discount_percenta
 INSERT INTO discount_details(product_id, discount_description, discount_percentage) VALUES ( 4, 'Deal of the Day', 10 );
 INSERT INTO discount_details(product_id, discount_description, discount_percentage) VALUES ( 6, 'Deal of the Day', 10 );
 
+

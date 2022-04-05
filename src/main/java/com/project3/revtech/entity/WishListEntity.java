@@ -39,7 +39,7 @@ public class WishListEntity {
 	private int userId;
 	
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "user_id",nullable = false, insertable = false, updatable = false)
     private UserEntity userEntity; 
     
 	@OneToMany(mappedBy = "wishListEntity")
