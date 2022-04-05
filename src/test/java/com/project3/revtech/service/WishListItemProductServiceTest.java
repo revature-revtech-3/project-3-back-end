@@ -2,6 +2,9 @@ package com.project3.revtech.service;
 
 
 import static org.junit.Assert.assertEquals;
+
+
+
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -24,7 +27,10 @@ import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.exception.ApplicationException;
 
 import com.project3.revtech.joinedpojo.WishListAndItemPojo;
+import com.project3.revtech.pojo.WishListItemPojo;
 
+import static com.project3.revtech.prototype.WishListAndItemPojoPrototype.*;
+import static com.project3.revtech.prototype.WishListAndItemPojoPrototype.wishListAndItemsTestObj;
 @ContextConfiguration(classes = {   WishListItemProductServiceImpl.class,
         							WishListItemServiceImpl.class,
         							ProductDiscountServiceImpl.class,
@@ -51,25 +57,27 @@ public class WishListItemProductServiceTest {
 	@Autowired
 	WishListService wishListService;
 	
+	
+	
 	@Before
     public void beforeClass() {}
 		
-	    @Test
-	    public void testGetWishListItemProductServiceByUser() throws ApplicationException {
-	        when(wishListRepository.findByUserIdAndWishListRemovedFalse(eq(1))).thenReturn(wishListTestObj());
-	        WishListAndItemPojo wishListAndItems = wishListItemProductService.getAllWIshListItemProductsForUser(1);
-	        WishListAndItemPojo testObj = wishListAndItemsTestObj();
-	        assertNotNull(wishListAndItems);
-	        assertEquals(1, wishListAndItems.getUserId());
-	        assertEquals(testObj.toString(), wishListAndItems.toString());
-
-	    }
+//	    @Test
+//	    public void testGetWishListItemProductServiceByUser() throws ApplicationException {
+//	        when(wishListRepository.findByUserIdAndWishListRemovedFalse(eq(1))).thenReturn(wishListTestObj());
+//	        WishListAndItemPojo wishListAndItems = wishListItemProductService.getAllWIshListItemProductsForUser(1);
+//	        WishListAndItemPojo testObj = wishListAndItemsTestObj();
+//	        assertNotNull(wishListAndItems);
+//	        assertEquals(1, wishListAndItems.getUserId());
+//	        assertEquals(testObj.toString(), wishListAndItems.toString());
+//
+//	    }
 	
 	
 
 
 		@Test
-	    public void testGetCartItemProductService() throws ApplicationException {
+	    public void testGetWishListItemProductService() throws ApplicationException {
 	        when(wishListRepository.getById(eq(1))).thenReturn(wishListTestObj());
 	        WishListAndItemPojo wishListAndItems = wishListItemProductService.getAllWishListItemProducts(1);
 	        WishListAndItemPojo testObj = wishListAndItemsTestObj();
@@ -77,6 +85,7 @@ public class WishListItemProductServiceTest {
 	        assertEquals(1, wishListAndItems.getUserId());
 	        assertEquals(testObj.toString(), wishListAndItems.toString());
 	    }
+
     
 	
 	

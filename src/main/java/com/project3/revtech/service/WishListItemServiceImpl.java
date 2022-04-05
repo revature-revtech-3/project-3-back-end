@@ -20,10 +20,12 @@ import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.DiscountPojo;
 import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListItemPojo;
+
 @Service
 @Transactional
 public class WishListItemServiceImpl implements WishListItemService {
 	
+
 	@Autowired
 	WishItemRepository wishItemRepository;
 

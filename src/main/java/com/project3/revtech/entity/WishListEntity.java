@@ -38,33 +38,32 @@ public class WishListEntity {
 	@Column(name = "user_id")
 	private int userId;
 	
-	@Column(name = "wishList_total")
-	private int wishListTotal;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private UserEntity userEntity; 
-	
-	@OneToMany(mappedBy = "wishListItemEntity")
+    
+	@OneToMany(mappedBy = "wishListEntity")
     private List<WishListItemEntity> wishListItems;
+	
+	@Column(name = "wishList_total")
+	private int wishListTotal;
 
-	public WishListEntity(int wishListId, @NotNull int userId) {
+	
+
+	public WishListEntity(@NotNull int userId, int wishListTotal) {
+		super();
+		this.userId = userId;
+		this.wishListTotal = wishListTotal;
+	}
+
+
+
+	public WishListEntity(int wishListId, @NotNull int userId, int wishListTotal) {
 		super();
 		this.wishListId = wishListId;
 		this.userId = userId;
+		this.wishListTotal = wishListTotal;
 	}
 	
 	
-
-	
-
-
-	
-	
-
-    
-
-    
-    
-    
 }

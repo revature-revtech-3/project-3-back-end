@@ -8,6 +8,9 @@ import com.project3.revtech.joinedpojo.WishListAndItemPojo;
 public interface WishListItemProductService {
 	
 	WishListAndItemPojo getAllWishListItemProducts(int wishListId) throws ApplicationException;
-	WishListAndItemPojo getAllWIshListItemProductsForUser(int userId)throws ApplicationException;
+
+//	WishListAndItemPojo getAllWIshListItemProductsForUser(int userId)throws ApplicationException;
+	
+	
 
 }

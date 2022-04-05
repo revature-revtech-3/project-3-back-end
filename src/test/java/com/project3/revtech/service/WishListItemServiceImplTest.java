@@ -1,7 +1,5 @@
 package com.project3.revtech.service;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,33 +7,24 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import com.project3.revtech.dao.WishItemRepository;
-import com.project3.revtech.entity.CartEntity;
-import com.project3.revtech.entity.CartItemEntity;
 import com.project3.revtech.entity.DiscountEntity;
 import com.project3.revtech.entity.ProductEntity;
-import com.project3.revtech.entity.TransactionEntity;
 import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.entity.WishListItemEntity;
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.pojo.CartItemPojo;
 import com.project3.revtech.pojo.WishListItemPojo;
 
 @ContextConfiguration(classes = { WishListItemServiceImpl.class })
@@ -123,9 +112,10 @@ public class WishListItemServiceImplTest {
 				anyInt())).thenReturn(true);
 		when(this.wishItemRepository.findByWishListIdAndProductId(anyInt(), anyInt())).thenReturn(wishListItem);
 		when(this.wishItemRepository.existsByWishListIdAndProductId(anyInt(), anyInt())).thenReturn(true);
+		
 		WishListItemPojo wishListItemPojo = new WishListItemPojo(123, 123, 123, 1);
-
 		WishListItemPojo actualAddItemResult = this.wishListItemServiceImpl.addItem(wishListItemPojo);
+		
 		assertSame(wishListItemPojo, actualAddItemResult);
 		assertEquals(-1, actualAddItemResult.getWishItemId());
 		verify(this.wishItemRepository).deleteById((Integer) any());
@@ -151,7 +141,7 @@ public class WishListItemServiceImplTest {
 
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
-		wishList.setUserId(123);
+		wishList.setUserId(1);
 		wishList.setWishListItems(new ArrayList<>());
 		wishList.setWishListTotal(1);
 		wishList.setUserEntity(user);
@@ -200,7 +190,6 @@ public class WishListItemServiceImplTest {
 
 		WishListItemEntity wishListItem = new WishListItemEntity();
 		wishListItem.setWishListEntity(wishList);
-		wishListItem.setProductId(123);
 		wishListItem.setWishItemId(123);
 		wishListItem.setWishListQty(1);
 		wishListItem.setProductEntity(product1);
@@ -466,7 +455,7 @@ public class WishListItemServiceImplTest {
 		wishList1.setWishListId(123);
 		wishList1.setWishListItems(new ArrayList<>());
 		wishList1.setWishListTotal(1);
-		wishList1.setUserEntity(user);
+		wishList1.setUserEntity(user1);
 		wishList1.setUserId(123);
 
 		DiscountEntity discount2 = new DiscountEntity();
