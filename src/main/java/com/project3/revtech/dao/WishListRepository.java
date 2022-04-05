@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.entity.WishListItemEntity;
+import com.project3.revtech.pojo.WishListPojo;
 
 @Repository
 public interface WishListRepository extends JpaRepository<WishListEntity, Integer> {
@@ -15,11 +16,8 @@ public interface WishListRepository extends JpaRepository<WishListEntity, Intege
 
 	WishListEntity findByUserId(int userId);
 
-	//WishListEntity findByUserIdAndWishListRemovedFalse(int userId);
+//	WishListEntity findByUserIdAndWishListRemovedFalse(int userId);
+
 
 	
-
-//	WishListEntity findByWishListId(Integer wishListId);
-//	
-//	WishListEntity findByUserId(Integer userId);
 }

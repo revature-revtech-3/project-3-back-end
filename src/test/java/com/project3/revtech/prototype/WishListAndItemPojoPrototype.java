@@ -12,7 +12,6 @@ import com.project3.revtech.joinedpojo.ProductAndDiscountPojo;
 import com.project3.revtech.joinedpojo.WishItemDiscountPojo;
 import com.project3.revtech.joinedpojo.WishListAndItemPojo;
 import com.project3.revtech.pojo.WishListPojo;
-
 public class WishListAndItemPojoPrototype {
 	
 	public static WishListAndItemPojo wishListAndItemsTestObj() {

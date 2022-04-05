@@ -1,7 +1,5 @@
 package com.project3.revtech.service;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,33 +7,24 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import com.project3.revtech.dao.WishItemRepository;
-import com.project3.revtech.entity.CartEntity;
-import com.project3.revtech.entity.CartItemEntity;
 import com.project3.revtech.entity.DiscountEntity;
 import com.project3.revtech.entity.ProductEntity;
-import com.project3.revtech.entity.TransactionEntity;
 import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.entity.WishListItemEntity;
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.pojo.CartItemPojo;
 import com.project3.revtech.pojo.WishListItemPojo;
 
 @ContextConfiguration(classes = { WishListItemServiceImpl.class })

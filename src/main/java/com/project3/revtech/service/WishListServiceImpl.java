@@ -1,17 +1,21 @@
 package com.project3.revtech.service;
+<<<<<<< HEAD
 
 import javax.transaction.Transactional;
 
+=======
+>>>>>>> 3e1354d5584df1806118977e28871e67e7be6de1
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.project3.revtech.dao.WishListRepository;
-
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.exception.ApplicationException;
-
-import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListPojo;
+
+
+
 
 @Service
 @Transactional

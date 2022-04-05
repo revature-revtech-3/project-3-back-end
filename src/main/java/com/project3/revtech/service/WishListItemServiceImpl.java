@@ -25,6 +25,7 @@ import com.project3.revtech.pojo.WishListItemPojo;
 @Transactional
 public class WishListItemServiceImpl implements WishListItemService {
 	
+
 	@Autowired
 	WishItemRepository wishItemRepository;
 
