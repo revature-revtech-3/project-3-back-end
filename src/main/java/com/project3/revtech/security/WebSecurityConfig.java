@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
 
-	   http.cors().and()
+	   http.cors().and().csrf().disable()
 	  .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 	  .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).
 	   and().authorizeRequests().antMatchers("/api/auth/**").permitAll().and()
@@ -96,7 +96,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests().antMatchers("/cart/{bid}").permitAll().and()
       .authorizeRequests().antMatchers("/user/{bid}").permitAll()
 	  .anyRequest().authenticated();
-	   http.headers();
+	   http.headers().frameOptions().disable();
 
 		  
 	   
