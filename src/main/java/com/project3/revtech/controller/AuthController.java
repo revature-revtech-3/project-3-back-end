@@ -71,7 +71,7 @@ public class AuthController {
             userDetails.getEmail(), 
             roles, userDetails.getFirst_name(), userDetails.getLast_name(), userDetails.getAddress(), userDetails.getContact()));
   }
-
+  
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
@@ -125,6 +125,7 @@ public class AuthController {
     userEntity.setRoles(roles);
     userRepository.save(userEntity);
 
-    return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    return ResponseEntity.ok()
+    		.body(new MessageResponse("User registered successfully!"));
   }
 }
