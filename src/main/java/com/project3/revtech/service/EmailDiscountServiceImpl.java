@@ -10,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project3.revtech.dao.WishListProductUserRepository;
-import com.project3.revtech.entity.WishlistEntity;
+import com.project3.revtech.entity.WishListEntity;
+import com.project3.revtech.entity.WishListItemEntity;
 import com.project3.revtech.joinedpojo.SentEmailsPojo;
 import com.project3.revtech.pojo.DiscountPojo;
 
@@ -39,28 +40,28 @@ public class EmailDiscountServiceImpl {
 	public List<SentEmailsPojo> sendByDiscount(DiscountPojo discount) {
 		
 		//List<SentEmailsPojo> sentEmails = new ArrayList<SentEmailsPojo>();
-		List<WishlistEntity> wishedDiscounts = wlpuRepository.findByProductId(discount.getProductId());
+		List<WishListEntity> wishedDiscounts = wlpuRepository.findByProductId(discount.getProductId());
 			
-		for(WishlistEntity wishListEntity : wishedDiscounts)
+		for(WishListEntity wishListEntity : wishedDiscounts)
 		{
 			// stops sentEmails from having a dooped entry
 			sentEmails.clear();
-			String messageText = wishListEntity.getProductEntity().getProductName() + "Just went on Sale \n"
+			String messageText = "item" + "Just went on Sale \n"
 			+ "GET " + discount.getDiscountPercentage().multiply(new BigDecimal(100)) + "% OFF!!!!!";			
 			// not sure if necessary
 			try {
 				emailService.sendMessage(wishListEntity.getUserEntity().getEmail(),"Discount",messageText);
-				sent.setProductId(wishListEntity.getProductId());
+				sent.setProductId(1);
 				sent.setDiscountId(discount.getDiscountId());
 				sent.setUserId(wishListEntity.getUserId());
 				sent.setEmail(wishListEntity.getUserEntity().getEmail());
 				sent.setDiscount(discount.getDiscountPercentage());
-				sent.setProductName(wishListEntity.getProductEntity().getProductName());
+				sent.setProductName("name");
 				sentEmails.add(sent);
 				
 				
 			} catch(Exception e) {
-				sent.setProductId(wishListEntity.getProductId());
+				sent.setProductId(0);
 				sent.setDiscountId(discount.getDiscountId());
 				sent.setUserId(wishListEntity.getUserId());
 				sent.setEmail(wishListEntity.getUserEntity().getEmail());

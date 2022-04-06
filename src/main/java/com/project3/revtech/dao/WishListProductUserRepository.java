@@ -6,13 +6,13 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.project3.revtech.entity.WishlistEntity;
+import com.project3.revtech.entity.WishListEntity;
 
 //think this will be better merged with wishList
 @Repository
-public interface WishListProductUserRepository extends JpaRepository<WishlistEntity, Integer>{
+public interface WishListProductUserRepository extends JpaRepository<WishListEntity, Integer>{
 
-	List<WishlistEntity> findByProductId(int productID);
+	List<WishListEntity> findByProductId(int productID);
 	
 	
 }

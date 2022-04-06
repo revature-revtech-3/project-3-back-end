@@ -22,13 +22,12 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.icegreen.greenmail.junit.GreenMailRule;
 import com.icegreen.greenmail.junit5.GreenMailExtension;
 import com.icegreen.greenmail.util.ServerSetupTest;
 import com.project3.revtech.dao.WishListProductUserRepository;
 import com.project3.revtech.entity.ProductEntity;
 import com.project3.revtech.entity.UserEntity;
-import com.project3.revtech.entity.WishlistEntity;
+import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.joinedpojo.SentEmailsPojo;
 import com.project3.revtech.pojo.DiscountPojo;
 
@@ -57,18 +56,17 @@ public class EmailDiscountTest {
 	{
 		DiscountPojo discount = new DiscountPojo(1,1,"high",new BigDecimal(.5));		
 		
-		WishlistEntity first = new WishlistEntity(1,1,new Date(),1);
+		WishListEntity first = new WishListEntity();
 
 		ProductEntity discountedProduct = new ProductEntity();
 		discountedProduct.setProductName("Hello");
 		discountedProduct.setProductId(1);
-		first.setProductEntity(discountedProduct);
 		UserEntity emailReciever = new UserEntity();
 		//need test email
 		emailReciever.setEmail("demoreceiveracct1@gmail.com");
 		first.setUserEntity(emailReciever);
 		
-		List<WishlistEntity> wishlist = new ArrayList<WishlistEntity>();
+		List<WishListEntity> wishlist = new ArrayList<WishListEntity>();
 		wishlist.add(first);
 		List<SentEmailsPojo> sentEmails = new ArrayList<SentEmailsPojo>();
 		SentEmailsPojo sentEmail = new SentEmailsPojo(1,1,1,"demoreceiveracct1@gmail.com",new BigDecimal(.5),"Hello");
@@ -76,7 +74,7 @@ public class EmailDiscountTest {
 		
 		when(wlpuRepository.findByProductId(1)).thenReturn(wishlist);
 		
-		String messageText = wishlist.get(0).getProductEntity().getProductName() + "Just went on Sale \n"
+		String messageText ="Name" + "Just went on Sale \n"
 				+ "GET " + discount.getDiscountPercentage().multiply(new BigDecimal(100)) + "% OFF!!!!!";	
 		
 		doNothing().when(eService).sendMessage("demoreceiveracct1@gmail.com", "Discount", messageText);;

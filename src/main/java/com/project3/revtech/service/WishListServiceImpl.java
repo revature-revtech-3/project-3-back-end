@@ -13,13 +13,11 @@ import com.project3.revtech.pojo.WishListPojo;
 
 @Service
 public class WishListServiceImpl implements WishListService {
-
-	@Override
-	public WishlistPojo updateWishList(WishlistPojo wishlistPojo) throws ApplicationException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
+	@Autowired 
+	WishListRepository wishListRepository; 
+
+
 	@Override
 	public WishListPojo updateWishList(WishListPojo wishListPojo) throws ApplicationException {
 		WishListEntity wishListEntity = new WishListEntity(wishListPojo.getWishListId(), wishListPojo.getUserId());
@@ -50,6 +48,12 @@ public class WishListServiceImpl implements WishListService {
 	public boolean removeWishList(WishListPojo wishListPojo) throws ApplicationException {
 		wishListRepository.deleteById(wishListPojo.getWishListId());
 		return true;
+	}
+
+	@Override
+	public WishListPojo addWishList(WishListPojo wishList) throws ApplicationException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
