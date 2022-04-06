@@ -35,7 +35,6 @@ public class ResetPasswordController {
 	/*
 	 * 
 	 * { "email":"rana@gmail.com" }
-	 * kazi.jafrin89@gmail.com
 	 */
 	// 1- http://localhost:7777/api/reset_password/forgot_password
 	@PostMapping("forgot_password")
