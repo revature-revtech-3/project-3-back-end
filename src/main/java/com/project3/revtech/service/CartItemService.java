@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface CartItemService {
 
-
     CartItemPojo addItem(CartItemPojo item) throws ApplicationException;
     CartItemPojo updateItem(CartItemPojo item) throws ApplicationException;
     CartItemPojo getCartItem(int item) throws ApplicationException;

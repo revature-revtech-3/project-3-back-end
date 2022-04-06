@@ -1,4 +1,5 @@
 package com.project3.revtech.pojo;
+
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -8,18 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class WishListPojo {
+public class WishListItemPojo {
 	
+	private int wishItemId;
 	private int wishListId;
-	private int userId;
-	private int wishListTotal;
+	private int productId;
+	private int wishListQty;
 	
-	
-	public WishListPojo(int wishListId, int userId) {
-		this.wishListId = wishListId;
-		this.userId = userId;
-	}
-	
-	
-
 }
