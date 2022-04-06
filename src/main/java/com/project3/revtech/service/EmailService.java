@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin
 public class EmailService {
 	
+	//@Autowired
+	//SimpleMailMessage message;
+	
 	@Autowired
 	private JavaMailSender emailSender;
 	
-	@Autowired
-	SimpleMailMessage message;
+
 	
 	public void sendMessage(String to, String subject, String text) {
 		
@@ -39,7 +41,7 @@ public class EmailService {
 	    
         emailSender.setJavaMailProperties(props);  */
 		
-		
+		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom("devdemoacct1@gmail.com");
 		message.setTo(to);
 		message.setSubject(subject);

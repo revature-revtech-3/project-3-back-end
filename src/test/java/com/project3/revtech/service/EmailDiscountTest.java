@@ -1,6 +1,7 @@
 package com.project3.revtech.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -8,11 +9,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
-
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,6 +22,9 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.icegreen.greenmail.junit.GreenMailRule;
+import com.icegreen.greenmail.junit5.GreenMailExtension;
+import com.icegreen.greenmail.util.ServerSetupTest;
 import com.project3.revtech.dao.WishListProductUserRepository;
 import com.project3.revtech.entity.ProductEntity;
 import com.project3.revtech.entity.UserEntity;
@@ -43,6 +46,11 @@ public class EmailDiscountTest {
 	EmailDiscountServiceImpl emailDiscountTest;
 	@MockBean
 	WishListProductUserRepository wlpuRepository;
+	@MockBean
+	EmailService eService;
+
+	@RegisterExtension
+	static GreenMailExtension greenMail = new GreenMailExtension(ServerSetupTest.SMTP);
 	
 	@Test
 	void testEmailSendByDiscount() //throws 
@@ -68,8 +76,10 @@ public class EmailDiscountTest {
 		
 		when(wlpuRepository.findByProductId(1)).thenReturn(wishlist);
 		
+		String messageText = wishlist.get(0).getProductEntity().getProductName() + "Just went on Sale \n"
+				+ "GET " + discount.getDiscountPercentage().multiply(new BigDecimal(100)) + "% OFF!!!!!";	
 		
-		
+		doNothing().when(eService).sendMessage("demoreceiveracct1@gmail.com", "Discount", messageText);;
 		List<SentEmailsPojo> actualResult =  emailDiscountTest.sendByDiscount(discount);
 		
 		System.out.println(actualResult);
