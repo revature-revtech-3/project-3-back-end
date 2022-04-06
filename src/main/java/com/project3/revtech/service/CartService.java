@@ -4,6 +4,7 @@ import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.CartPojo;
 
 public interface CartService {
+	
     CartPojo addCart(CartPojo cart) throws ApplicationException;
     CartPojo updateCart(CartPojo cart) throws ApplicationException;
     CartPojo getCart(int cartId) throws ApplicationException;

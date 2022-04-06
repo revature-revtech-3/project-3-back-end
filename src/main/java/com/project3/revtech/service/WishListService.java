@@ -1,37 +1,18 @@
 package com.project3.revtech.service;
 
-import java.util.List;
-
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedpojo.WishListAndItemPojo;
-import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListPojo;
 
 public interface WishListService {
-	
-	   WishListPojo addWishList(WishListPojo wishListPojo) throws ApplicationException;
-//	   
-//	   WishlistPojo updateWishList(WishlistPojo wishlistPojo) throws ApplicationException;
-//	   
-//	   WishlistPojo getWishList(int wishlistId) throws ApplicationException;
-//	   
-//	   WishlistPojo getWishListByUserId(int userId) throws ApplicationException;
-//	   
-//	   boolean removeWishList(WishlistPojo wishListPojo) throws ApplicationException;
-//	    
-//	   ProductPojo addProduct(ProductPojo productPojo) throws ApplicationException;
-//	    
-//	   ProductPojo updateProduct(ProductPojo productPojo) throws ApplicationException;
-//	    
-//	   ProductPojo getWishListItem(int productId) throws ApplicationException;
-//	    
-//	   List<ProductPojo> getAllItemsOfWishlist(int wishlistId) throws ApplicationException;
-//	    
-//	   boolean removeProduct(int productId) throws ApplicationException;
-//	    
-//	   boolean checkIfExistsInCart(int wishlistId, int productId) throws ApplicationException;
-//	    
-//	   boolean checkIfNoQty(int wishlistId, int productId) throws ApplicationException;
+  
+  	WishListPojo addWishList(WishListPojo wishList) throws ApplicationException;
 
+	WishListPojo updateWishList(WishListPojo wishListPojo) throws ApplicationException;
+	
+	WishListPojo getWishList(int wishListId) throws ApplicationException;
+
+	WishListPojo getWishListByUserId(int userId) throws ApplicationException;
+
+	boolean removeWishList(WishListPojo wishList) throws ApplicationException;
 
 }

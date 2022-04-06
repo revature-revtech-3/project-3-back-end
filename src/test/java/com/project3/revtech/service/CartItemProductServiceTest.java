@@ -1,6 +1,8 @@
 package com.project3.revtech.service;
 
 import com.project3.revtech.dao.CartItemRepository;
+
+
 import com.project3.revtech.dao.CartRepository;
 import com.project3.revtech.dao.DiscountRepository;
 import com.project3.revtech.dao.ProductRepository;
@@ -34,6 +36,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(SpringExtension.class)
 @RunWith(SpringRunner.class)
 public class CartItemProductServiceTest {
+	
     @MockBean
     private CartRepository cartRepository;
 
@@ -60,6 +63,7 @@ public class CartItemProductServiceTest {
 
     @Before
     public void beforeClass() {
+    	
     }
 
     @Test
@@ -72,6 +76,7 @@ public class CartItemProductServiceTest {
         assertEquals(testObj.toString(), cartAndItems.toString());
 
     }
+    
     @Test
     public void testGetCartItemProductService() throws ApplicationException {
         when(this.cartRepository.getById(eq(1))).thenReturn(cartTestObj());
@@ -81,7 +86,5 @@ public class CartItemProductServiceTest {
         assertEquals(1, cartAndItems.getUserId());
         assertEquals(testObj.toString(), cartAndItems.toString());
     }
-
-
-
+    
 }
