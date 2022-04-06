@@ -1,3 +1,7 @@
+CREATE DATABASE shopme;
+
+\c shopme
+
 DROP TABLE IF EXISTS user_details;
 
 CREATE TABLE user_details(
