@@ -2,6 +2,7 @@ package com.project3.revtech.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -39,8 +40,8 @@ public class EmailDiscountServiceImpl {
 	// todo add custom exceptions
 	public List<SentEmailsPojo> sendByDiscount(DiscountPojo discount) {
 		
-		//List<SentEmailsPojo> sentEmails = new ArrayList<SentEmailsPojo>();
-		List<WishListEntity> wishedDiscounts = wlpuRepository.findByProductId(discount.getProductId());
+		//temporary
+		List<WishListEntity> wishedDiscounts = new LinkedList<WishListEntity>();
 			
 		for(WishListEntity wishListEntity : wishedDiscounts)
 		{

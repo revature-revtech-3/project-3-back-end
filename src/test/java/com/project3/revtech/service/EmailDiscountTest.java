@@ -72,7 +72,7 @@ public class EmailDiscountTest {
 		SentEmailsPojo sentEmail = new SentEmailsPojo(1,1,1,"demoreceiveracct1@gmail.com",new BigDecimal(.5),"Hello");
 		sentEmails.add(sentEmail);
 		
-		when(wlpuRepository.findByProductId(1)).thenReturn(wishlist);
+	//	when(wlpuRepository).thenReturn(wishlist);
 		
 		String messageText ="Name" + "Just went on Sale \n"
 				+ "GET " + discount.getDiscountPercentage().multiply(new BigDecimal(100)) + "% OFF!!!!!";	

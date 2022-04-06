@@ -31,7 +31,7 @@ public class WishListEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "wish_list_id")
+	@Column(name = "wishlist_id")
 	private int wishListId;
 	
 	@NotNull

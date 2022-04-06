@@ -12,7 +12,7 @@ import com.project3.revtech.entity.WishListEntity;
 @Repository
 public interface WishListProductUserRepository extends JpaRepository<WishListEntity, Integer>{
 
-	List<WishListEntity> findByProductId(int productID);
+	//List<WishListEntity> findByProductId(int productID);
 	
 	
 }
