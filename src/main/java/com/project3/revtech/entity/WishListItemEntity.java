@@ -57,6 +57,12 @@ public class WishListItemEntity {
 		this.productId = productId;
 		this.wishListQty = wishListQty;
 	}
+
+	public WishListItemEntity(int wishListId, int productId) {
+		super();
+		this.wishListId = wishListId;
+		this.productId = productId;
+	}
 	
 	
 }

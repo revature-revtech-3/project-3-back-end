@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project3.revtech.exception.ApplicationException;
+import com.project3.revtech.joinedpojo.WishListAndItemPojo;
 import com.project3.revtech.pojo.WishListPojo;
 import com.project3.revtech.service.WishListServiceImpl;
 
@@ -18,25 +21,29 @@ import com.project3.revtech.service.WishListServiceImpl;
 @RequestMapping("api/wishList")
 @CrossOrigin
 public class WishListController {
-	
-	  @Autowired
-	    WishListServiceImpl wishListService;
 
-	    @PostMapping("add/wishLists")
-	    ResponseEntity<WishListPojo> addWishList(@RequestBody WishListPojo wishList) throws ApplicationException {
-	        System.out.println(wishList);
-	    	return ResponseEntity.ok()
-	                .header("Content-type", "application/json")
-	                .body(wishListService.addWishList(wishList));
+	@Autowired
+	WishListServiceImpl wishListService;
 
-	    }
+	//add wishlist when an user registers an account
+	@PostMapping("add/wishLists")
+	ResponseEntity<WishListPojo> addWishList(@RequestBody WishListPojo wishList) throws ApplicationException {
+		
+		System.out.println("this is addwishlist from controller"+wishList);
+		return ResponseEntity.ok().header("Content-type", "application/json")
+				.body(wishListService.addWishList(wishList));
 
-	    @PutMapping("update/wishLists")
-	    ResponseEntity<WishListPojo> updateWishList(@RequestBody WishListPojo wishList) throws ApplicationException {
-	        return ResponseEntity.ok()
-	                .header("Content-type", "application/json")
-	                .body(wishListService.updateWishList(wishList));
+	}
 
-	    }
+	@PutMapping("update/wishLists")
+	ResponseEntity<WishListPojo> updateWishList(@RequestBody WishListPojo wishList) throws ApplicationException {
+		return ResponseEntity.ok().header("Content-type", "application/json")
+				.body(wishListService.updateWishList(wishList));
+	}
 
+    @GetMapping("user/{bid}/get")
+    WishListPojo getWishList(@PathVariable("bid") int userId)throws ApplicationException  {
+    	System.out.println("this is from controller"+wishListService.getListByUserId(userId));
+        return wishListService.getListByUserId(userId);
+    }
 }

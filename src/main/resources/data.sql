@@ -10,6 +10,12 @@ VALUES(1, 2);
 INSERT INTO user_details(user_id, email, username, password, first_name, last_name, address, contact)
 VALUES(1 ,'admin@example.com', 'admin', '$2a$10$MPZozc4ZGXGAPYfcahvwZusPR9opwnWomMoIXYFB0Dk6hpdi0ZCde', 'John', 'Doe', '35 Enterprise Ln, Los Angeles, CA 90001','555-222-5555');
 
+INSERT INTO user_details(user_id, email, username, password, first_name, last_name, address, contact)
+VALUES(2 ,'hello@example.com', 'hello123', '123456', 'hello', 'there', '35 Enterprise Ln, Los Angeles, CA 90001','555-222-5555');
+
+INSERT INTO user_details(user_id, email, username, password, first_name, last_name, address, contact)
+VALUES(3 ,'test@example.com', 'test123', '123456', 'test', 'there', '35 Enterprise Ln, Los Angeles, CA 90001','555-222-5555');
+
 -- #------- PRODUCT DATA --------
 
 INSERT INTO product_details(image_url, product_category, product_cost, product_description, product_name, product_qty, product_removed, product_sku)

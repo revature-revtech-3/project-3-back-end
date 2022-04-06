@@ -15,10 +15,13 @@ import com.project3.revtech.pojo.WishListPojo;
 public interface WishListRepository extends JpaRepository<WishListEntity, Integer> {
 
 	WishListEntity findByWishListId(int wishListId);
-
+	
 	@Query("SELECT wl FROM WishListEntity wl WHERE wl.userEntity.userId=:userWlId")
 	WishListEntity getWishListByUserId(@Param("userWlId") int userId);
-	//WishListEntity findByUserId(int userId);
+	
+
+
+	WishListEntity findByUserId(int userId);
 
 //	WishListEntity findByUserIdAndWishListRemovedFalse(int userId);
 

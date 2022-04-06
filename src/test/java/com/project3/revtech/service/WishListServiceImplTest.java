@@ -82,7 +82,6 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserEntity(user);
-		wishList.setUserEntity(user);
 
 		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
 		WishListPojo wishListPojo = new WishListPojo();
@@ -110,7 +109,6 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserEntity(user);
-		wishList.setUserEntity(user);
 
 		when(this.wishListRepository.findByWishListId(anyInt())).thenReturn(wishList);
 		WishListPojo actualWishList = this.wishListServiceImpl.getWishList(123);
@@ -136,10 +134,9 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserEntity(user);
-		wishList.setUserEntity(user);
 
 		when(this.wishListRepository.getWishListByUserId(anyInt())).thenReturn(wishList);
-		WishListPojo actualWishListByUserId = this.wishListServiceImpl.getWishListByUserId(1);
+		WishListPojo actualWishListByUserId = this.wishListServiceImpl.getListByUserId(1);
 		assertEquals(123, actualWishListByUserId.getWishListId());
 		assertEquals(1, actualWishListByUserId.getUserId());
 		verify(this.wishListRepository).getWishListByUserId(anyInt());
