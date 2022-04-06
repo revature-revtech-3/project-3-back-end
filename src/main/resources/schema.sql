@@ -157,4 +157,10 @@ CREATE TABLE wish_items(
 );
 	 
 
+CREATE TABLE reset_password_table (
+	reset_id INT GENERATED ALWAYS AS IDENTITY,
+	reset_password_token  VARCHAR(100),
+	user_email INT UNIQUE,
+	FOREIGN KEY(user_email) REFERENCES user_details (user_id) ON DELETE CASCADE
+);	
 
