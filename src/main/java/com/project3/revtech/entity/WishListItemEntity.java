@@ -26,43 +26,19 @@ public class WishListItemEntity {
 	@Column(name = "wish_item_id")
 	private int wishItemId;
 	
-	@Column(name = "wish_list_id")
-	private int wishListId;
-	
-	@Column(name = "product_id")
-	private int productId;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "wish_list_id", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "wish_list_id")
 	private WishListEntity wishListEntity;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "product_id")
 	private ProductEntity productEntity;
 
-	@Column(name = "wish_item_qty")
-	private int wishListQty;
-
-	public WishListItemEntity(int wishItemId, int wishListId, int productId, int wishListQty) {
+	public WishListItemEntity(WishListEntity wishListEntity, ProductEntity productEntity) {
 		super();
-		this.wishItemId = wishItemId;
-		this.wishListId = wishListId;
-		this.productId = productId;
-		this.wishListQty = wishListQty;
+		this.wishListEntity = wishListEntity;
+		this.productEntity = productEntity;
 	}
 
-	public WishListItemEntity(int wishListId, int productId, int wishListQty) {
-		super();
-		this.wishListId = wishListId;
-		this.productId = productId;
-		this.wishListQty = wishListQty;
-	}
-
-	public WishListItemEntity(int wishListId, int productId) {
-		super();
-		this.wishListId = wishListId;
-		this.productId = productId;
-	}
-	
 	
 }
