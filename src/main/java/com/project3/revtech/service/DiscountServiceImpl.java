@@ -19,7 +19,8 @@ import com.project3.revtech.exception.ApplicationException;
 @Transactional
 public class DiscountServiceImpl implements DiscountService{
 	
-	
+	@Autowired
+	EmailDiscountServiceImpl emailDiscountService;
 	
 	@Autowired
 	DiscountRepository discountRepository;	
@@ -50,6 +51,9 @@ public class DiscountServiceImpl implements DiscountService{
 		
 //		Discount returnDiscount =
 		discountRepository.saveAndFlush(newDiscount);
+		
+		//Emails wishlist users about the discount
+		emailDiscountService.sendByDiscount(product);
 		
 		return product;
 	}
