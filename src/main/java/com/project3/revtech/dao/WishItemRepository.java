@@ -3,6 +3,8 @@ package com.project3.revtech.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.project3.revtech.entity.CartItemEntity;
@@ -13,12 +15,14 @@ import com.project3.revtech.pojo.WishListItemPojo;
 @Repository
 public interface WishItemRepository extends JpaRepository<WishListItemEntity, Integer> {
 	
-	List<WishListItemEntity> findAllByWishListId(int wishListId)throws ApplicationException;
+	@Query("SELECT wl FROM WishListItemEntity wl WHERE wl.wishListEntity.wishListId=:wishListId")
+	List<WishListItemEntity> findAllByWishListId(@Param("wishListId") int wishListId)throws ApplicationException;
 
-	WishListItemEntity findByWishListIdAndProductId(int wishListId, int productId)throws ApplicationException;
+	@Query("SELECT wl FROM WishListItemEntity wl WHERE wl.wishListEntity.wishListId=:wishListId AND wl.productEntity.productId=:productId")
+	WishListItemEntity findByWishListIdAndProductId(@Param("wishListId") int wishListId, @Param("productId") int productId)throws ApplicationException;
 
-	boolean existsByWishListIdAndProductId(int wishListId, int anyInt2)throws ApplicationException;
+	//boolean existsByWishListIdAndProductId(int wishListId, int anyInt2)throws ApplicationException;
 	
-	boolean existsByWishListQtyIsLessThanAndWishListIdAndProductId(int wishListQty, int wishListId, int productId);
+	//boolean existsByWishListQtyIsLessThanAndWishListIdAndProductId(int wishListQty, int wishListId, int productId);
 
 }

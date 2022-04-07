@@ -33,6 +33,7 @@ public class WishListEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "wishlist_id")
 	private int wishListId;
+
 	
 	@NotNull
 	@Column(name = "user_id")
@@ -40,6 +41,7 @@ public class WishListEntity {
 	
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
+
     private UserEntity userEntity; 
     
 	@OneToMany(mappedBy = "wishListEntity")
@@ -58,12 +60,14 @@ public class WishListEntity {
 
 
 
+
 	public WishListEntity(int wishListId, @NotNull int userId, int wishListTotal) {
 		super();
 		this.wishListId = wishListId;
 		this.userId = userId;
 		this.wishListTotal = wishListTotal;
 	}
+
 	
 	
 }
