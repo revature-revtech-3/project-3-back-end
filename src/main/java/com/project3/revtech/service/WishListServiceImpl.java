@@ -1,68 +1,86 @@
 package com.project3.revtech.service;
 
-import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Service;
+
+import com.project3.revtech.dao.UserRepository;
 import com.project3.revtech.dao.WishListRepository;
-import com.project3.revtech.entity.CartEntity;
+import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.joinedpojo.WishListAndItemPojo;
-
-import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListPojo;
 
+
+@Service
+@Transactional
 public class WishListServiceImpl implements WishListService {
 
 	@Autowired
 	WishListRepository wishListRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	@Override
 	public WishListPojo addWishList(WishListPojo wishList) throws ApplicationException {
-		WishListEntity wishListEntity = new WishListEntity(wishList.getWishListId(), wishList.getUserId());
-		WishListEntity returnWishList = wishListRepository.saveAndFlush(wishListEntity);
+		UserEntity user = userRepository.findById(wishList.getUserId()).get();
+		
+		WishListEntity wishListEntity = new WishListEntity(wishList.getUserId());
+		System.out.println("this is addwishlist from service" + wishListEntity);
+		WishListEntity returnWishList = wishListRepository.save(wishListEntity);
+		
 		wishList.setWishListId(returnWishList.getWishListId());
+		wishList.setUserId(returnWishList.getUserId());
+		
+		System.out.println("this is from wishlistservice: " + wishList);
+		return wishList;
+	}
+	
+	@Override
+	public WishListPojo updateWishList(WishListPojo wishListPojo) throws ApplicationException {
+		UserEntity user = userRepository.findById(wishListPojo.getUserId()).get();
+		
+		WishListEntity wishListEntity = new WishListEntity(wishListPojo.getWishListId(), user);
+		WishListEntity returnWishList = wishListRepository.saveAndFlush(wishListEntity);
+		wishListPojo.setWishListId(returnWishList.getWishListId());
+		return wishListPojo;
+	}
+
+	@Override
+	public WishListPojo getWishList(int wishListId) throws ApplicationException {
+		WishListEntity wishListEntity = wishListRepository.findByWishListId(wishListId);
+		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserEntity().getUserId());
 		return wishList;
 	}
 
-
-//	@Override
-//	public WishListAndItemPojo getWishListByUserId(int userId) {
-//		WishListEntity wishListEntity =  wishListRepository.findByUserId(userId);
-//        if(wishListEntity == null) {
-//            WishListAndItemPojo newWishList = new WishListAndItemPojo(wishListEntity.getWishlistId(), wishListEntity.getUserId(), wishListEntity.getWishListItems());
-//            return addCart(newCart);
-//        }
-//        CartPojo cart = new CartPojo(WishListEntity.getCartId(), cartEntity.getUserId(), cartEntity.getCartTotal(), cartEntity.isCartPaid(), cartEntity.isCartRemoved());
-//        return cart;
-//	}
-
-//	@Override
-//	public WishlistPojo updateWishList(WishlistPojo wishlistPojo) throws ApplicationException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public WishListPojo getListByUserId(int userId) throws ApplicationException {
+		WishListPojo newWishList = null;
+		
+		WishListEntity wishListEntity = wishListRepository.getWishListByUserId(userId);
+		//System.out.println("this is from wishlistservice"+ wishListEntity);
 //
-//	@Override
-//	public ProductPojo getWishListItem(int productId) throws ApplicationException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public boolean removeProduct(int productId) throws ApplicationException {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
+		if (wishListEntity == null) {
+			newWishList = new WishListPojo(1, userId);
+			return addWishList(newWishList);
+		}
 
+		//UserEntity user = userRepository.findById(newWishList.getUserId()).get();
 
-//	@Override
-//	public List<WishlistPojo> readWishList(int userId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
 
-	
+		return wishList;
+	}
+
+	@Override
+	public boolean removeWishList(WishListPojo wishListPojo) throws ApplicationException {
+		wishListRepository.deleteById(wishListPojo.getWishListId());
+		return true;
+	}
 
 }
+
