@@ -12,6 +12,9 @@ VALUES(1, 2);
 INSERT INTO user_details(user_id, email, username, password, first_name, last_name, address, contact)
 VALUES(DEFAULT ,'admin@example.com', 'admin', '$2a$10$MPZozc4ZGXGAPYfcahvwZusPR9opwnWomMoIXYFB0Dk6hpdi0ZCde', 'John', 'Doe', '35 Enterprise Ln, Los Angeles, CA 90001','555-222-5555');
 
+
+INSERT INTO user_details(user_id, email, username, password, first_name, last_name, address, contact)
+VALUES(2 ,'demoreceiveracct1@gmail.com', 'Tommy', '$2a$10$MPZozc4ZGXGAPYfcahvwZusPR9opwnWomMoIXYFB0Dk6hpdi0ZCde', 'Tommy', 'girl', '55 Enterprise Ln, QUEENS, NY 92001','665-222-5555');
 -- #------- PRODUCT DATA --------
 
 INSERT INTO product_details(image_url, product_category, product_cost, product_description, product_name, product_qty, product_removed, product_sku)

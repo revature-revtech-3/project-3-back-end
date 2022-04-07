@@ -12,10 +12,10 @@ import com.project3.revtech.pojo.WishListPojo;
 
 
 @Service
-public class WishListServiceImpl implements WishListService {
-	
-	@Autowired 
-	WishListRepository wishListRepository; 
+public class WishListServiceImpl implements WishListService {	
+
+	@Autowired
+	WishListRepository wishListRepository;
 
 
 	@Override
