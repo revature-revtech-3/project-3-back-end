@@ -76,6 +76,5 @@ public class WishListServiceImpl implements WishListService {
 		return true;
 	}
 
-
 }
 
