@@ -13,6 +13,8 @@ import com.project3.revtech.pojo.WishListItemPojo;
 @Repository
 public interface WishItemRepository extends JpaRepository<WishListItemEntity, Integer> {
 	
+	List<WishListItemEntity> findAllByProductId(int productId)throws ApplicationException;
+	
 	List<WishListItemEntity> findAllByWishListId(int wishListId)throws ApplicationException;
 
 	WishListItemEntity findByWishListIdAndProductId(int wishListId, int productId)throws ApplicationException;
