@@ -1,0 +1,24 @@
+version: '3'
+services:
+  my-postgres:
+    image: postgres
+    ports:
+      - "8888:5432"
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+    volumes:
+      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./src/main/resources/data.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+  revtech-backend-service:
+    image: revtech-backend
+    build: .
+    ports:
+      - 9999:7777
+    depends_on:
+      - my-postgres
+    links:
+      - my-postgres
+      
+      
+      
+      

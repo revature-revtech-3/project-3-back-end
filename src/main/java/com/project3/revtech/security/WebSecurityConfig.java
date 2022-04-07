@@ -87,7 +87,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests().antMatchers("/api/cart-items/**").permitAll().and()
       .authorizeRequests().antMatchers("/file").permitAll().and()
       .authorizeRequests().antMatchers("/file/**").permitAll().and()
-      .authorizeRequests().antMatchers("/api/cart-and-items").permitAll().and()
+      .authorizeRequests().antMatchers("/api/reset_password/**").permitAll().and()
       .authorizeRequests().antMatchers("/api/cart-and-items/**").permitAll().and()
        .authorizeRequests().antMatchers("/api/cart").permitAll().and()
        .authorizeRequests().antMatchers("/api/cart/**").permitAll().and()
