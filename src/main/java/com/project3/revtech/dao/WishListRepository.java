@@ -21,7 +21,7 @@ public interface WishListRepository extends JpaRepository<WishListEntity, Intege
 	
 
 
-	WishListEntity findByUserId(int userId);
+	//WishListEntity findByUserId(int userId);
 
 //	WishListEntity findByUserIdAndWishListRemovedFalse(int userId);
 

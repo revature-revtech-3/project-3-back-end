@@ -10,7 +10,7 @@ public interface WishListItemService {
 	
     WishListItemPojo addItem(WishListItemPojo wishListItemPojo) throws ApplicationException;
     
-    WishListItemPojo updateItem(WishListItemPojo wishListItemPojo) throws ApplicationException;
+   // WishListItemPojo updateItem(WishListItemPojo wishListItemPojo) throws ApplicationException;
     
     WishListItemPojo getWishListItem(int wishListId) throws ApplicationException;
     
@@ -18,9 +18,9 @@ public interface WishListItemService {
     
     boolean removeItem(int itemId) throws ApplicationException;
 	
-    boolean checkIfExistsInWishList(int wishListId, int productId) throws ApplicationException;
+   // boolean checkIfExistsInWishList(int wishListId, int productId) throws ApplicationException;
     
-    boolean checkIfNoQty(int wishListId, int productId) throws ApplicationException;
+   // boolean checkIfNoQty(int wishListId, int productId) throws ApplicationException;
 
 
 }

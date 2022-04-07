@@ -48,7 +48,7 @@ public class WishListAndItemPojoPrototype {
     }
 
     public static WishListItemEntity wishListItemTestObj() {
-    	WishListItemEntity item = new WishListItemEntity(1, 1, 1, 3);
+    	WishListItemEntity item = new WishListItemEntity();
     	item.setProductEntity(productTestObj());
     	return item;
     }
@@ -88,12 +88,12 @@ public class WishListAndItemPojoPrototype {
                 tempProduct.getProductQty(), tempProduct.getImageUrl(),
                 tempProduct.isProductRemoved(), tempDiscount.getDiscountId(), 
                 tempDiscount.getDiscountDescription(), tempDiscount.getDiscountPercentage());
-        return new WishItemDiscountPojo(
-        		tempItem.getWishItemId(),
-        		tempItem.getWishListId(),
-        		tempItem.getProductId(),
-        		tempItem.getWishListQty(),
-        		tempPAD);
+//        return new WishItemDiscountPojo(
+//        		tempItem.getWishItemId(),
+//        		tempItem.getWishListId(),
+//        		tempItem.getProductId(),
+//        		tempPAD);
+        return null;
     }
     
     public static List<WishItemDiscountPojo> wishItemDiscountPojoTestList() {

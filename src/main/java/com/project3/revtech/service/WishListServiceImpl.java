@@ -30,14 +30,14 @@ public class WishListServiceImpl implements WishListService {
 	public WishListPojo addWishList(WishListPojo wishList) throws ApplicationException {
 		UserEntity user = userRepository.findById(wishList.getUserId()).get();
 		
-		WishListEntity wishListEntity = new WishListEntity(wishList.getUserId());
-		System.out.println("this is addwishlist from service" + wishListEntity);
+		WishListEntity wishListEntity = new WishListEntity(user);
+		//System.out.println("this is addwishlist from service" + wishListEntity);
 		WishListEntity returnWishList = wishListRepository.save(wishListEntity);
 		
 		wishList.setWishListId(returnWishList.getWishListId());
-		wishList.setUserId(returnWishList.getUserId());
+		//wishList.setUserId(returnWishList.getUserId());
 		
-		System.out.println("this is from wishlistservice: " + wishList);
+		//System.out.println("this is from wishlistservice: " + wishList);
 		return wishList;
 	}
 	
@@ -60,19 +60,12 @@ public class WishListServiceImpl implements WishListService {
 
 	@Override
 	public WishListPojo getListByUserId(int userId) throws ApplicationException {
-		WishListPojo newWishList = null;
-		
 		WishListEntity wishListEntity = wishListRepository.getWishListByUserId(userId);
 		//System.out.println("this is from wishlistservice"+ wishListEntity);
-//
-		if (wishListEntity == null) {
-			newWishList = new WishListPojo(1, userId);
-			return addWishList(newWishList);
-		}
 
-		//UserEntity user = userRepository.findById(newWishList.getUserId()).get();
-
-		WishListPojo wishList = new WishListPojo(wishListEntity.getWishListId(), wishListEntity.getUserId());
+		WishListPojo wishList = new WishListPojo();
+		wishList.setWishListId(wishListEntity.getWishListId());
+		wishList.setUserId(wishListEntity.getUserEntity().getUserId());
 
 		return wishList;
 	}

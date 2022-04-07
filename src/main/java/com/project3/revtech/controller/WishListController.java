@@ -29,7 +29,7 @@ public class WishListController {
 	@PostMapping("add/wishLists")
 	ResponseEntity<WishListPojo> addWishList(@RequestBody WishListPojo wishList) throws ApplicationException {
 		
-		System.out.println("this is addwishlist from controller"+wishList);
+		//System.out.println("this is addwishlist from controller"+wishList);
 		return ResponseEntity.ok().header("Content-type", "application/json")
 				.body(wishListService.addWishList(wishList));
 
