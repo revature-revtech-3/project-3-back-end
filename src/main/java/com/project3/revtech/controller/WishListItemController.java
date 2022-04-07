@@ -28,19 +28,19 @@ public class WishListItemController {
 
 	    @PostMapping("add/items")
 	    ResponseEntity<WishListItemPojo> addItem(@RequestBody WishListItemPojo wishListItem) throws ApplicationException {
-	    	System.out.println(wishListItem);
+	    	//System.out.println(wishListItem);
 	        return ResponseEntity.ok()
 	                .header("Content-type", "application/json")
 	                .body(wishListItemService.addItem(wishListItem));
 	    }
 
-	    @PutMapping("update/items")
-	    ResponseEntity<WishListItemPojo> updateItem(@RequestBody WishListItemPojo wishListItem) throws ApplicationException {
-
-	        return ResponseEntity.ok()
-	                .header("Content-type", "application/json")
-	                .body(wishListItemService.updateItem(wishListItem));
-	    }
+//	    @PutMapping("update/items")
+//	    ResponseEntity<WishListItemPojo> updateItem(@RequestBody WishListItemPojo wishListItem) throws ApplicationException {
+//
+//	        return ResponseEntity.ok()
+//	                .header("Content-type", "application/json")
+//	                .body(wishListItemService.updateItem(wishListItem));
+//	    }
 
 
 	    @DeleteMapping("{bid}/delete")

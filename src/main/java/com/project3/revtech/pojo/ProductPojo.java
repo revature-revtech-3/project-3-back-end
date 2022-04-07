@@ -2,6 +2,9 @@ package com.project3.revtech.pojo;
 
 import java.math.BigDecimal;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class ProductPojo {
 
 	private int productId;

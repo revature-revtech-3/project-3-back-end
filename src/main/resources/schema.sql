@@ -150,7 +150,6 @@ CREATE TABLE wish_items(
 	wish_item_id INT GENERATED ALWAYS AS IDENTITY,
 	wish_list_id INT,
 	product_id INT,
-	wish_item_qty INT,
 	PRIMARY KEY(wish_item_id),
 	FOREIGN KEY(wish_list_id) REFERENCES wish_list_details(wish_list_id),
 	FOREIGN KEY(product_id) REFERENCES product_details(product_id)
