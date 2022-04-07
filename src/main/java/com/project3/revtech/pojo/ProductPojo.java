@@ -17,11 +17,6 @@ public class ProductPojo {
 	private String imageUrl;
 	private boolean productRemoved;
 
-	public ProductPojo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public ProductPojo(int productId, String productSku, String productName,
 					   BigDecimal productCost, String productCategory, String productDescription,
 					   int productQty, String imageUrl, boolean productRemoved) {

@@ -54,7 +54,7 @@ public class EmailDiscountServiceImpl {
 				emailService.sendMessage(wishListEntity.getUserEntity().getEmail(),"Discount",messageText);
 				sent.setProductId(1);
 				sent.setDiscountId(discount.getDiscountId());
-				sent.setUserId(wishListEntity.getUserId());
+				sent.setUserId(wishListEntity.getUserEntity().getUserId());
 				sent.setEmail(wishListEntity.getUserEntity().getEmail());
 				sent.setDiscount(discount.getDiscountPercentage());
 				sent.setProductName("name");
@@ -64,7 +64,7 @@ public class EmailDiscountServiceImpl {
 			} catch(Exception e) {
 				sent.setProductId(0);
 				sent.setDiscountId(discount.getDiscountId());
-				sent.setUserId(wishListEntity.getUserId());
+				sent.setUserId(wishListEntity.getUserEntity().getUserId());
 				sent.setEmail(wishListEntity.getUserEntity().getEmail());
 				sent.setDiscount(discount.getDiscountPercentage());
 				sent.setProductName("Message failed");
