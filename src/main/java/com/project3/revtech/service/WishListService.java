@@ -15,7 +15,7 @@ public interface WishListService {
 	
 	WishListPojo getWishList(int wishListId) throws ApplicationException;
 
-	WishListPojo getWishListByUserId(int userId) throws ApplicationException;
+	WishListPojo getListByUserId(int userId) throws ApplicationException;
 
 	boolean removeWishList(WishListPojo wishList) throws ApplicationException;
 

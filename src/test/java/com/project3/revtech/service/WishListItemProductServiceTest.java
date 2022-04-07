@@ -30,7 +30,6 @@ import com.project3.revtech.joinedpojo.WishListAndItemPojo;
 import com.project3.revtech.pojo.WishListItemPojo;
 
 import static com.project3.revtech.prototype.WishListAndItemPojoPrototype.*;
-import static com.project3.revtech.prototype.WishListAndItemPojoPrototype.wishListAndItemsTestObj;
 @ContextConfiguration(classes = {   WishListItemProductServiceImpl.class,
         							WishListItemServiceImpl.class,
         							ProductDiscountServiceImpl.class,
@@ -76,26 +75,17 @@ public class WishListItemProductServiceTest {
 	
 
 
-		@Test
-	    public void testGetWishListItemProductService() throws ApplicationException {
-	        when(wishListRepository.getById(eq(1))).thenReturn(wishListTestObj());
-	        WishListAndItemPojo wishListAndItems = wishListItemProductService.getAllWishListItemProducts(1);
-	        WishListAndItemPojo testObj = wishListAndItemsTestObj();
-	        assertNotNull(wishListAndItems);
-	        assertEquals(1, wishListAndItems.getUserId());
-	        assertEquals(testObj.toString(), wishListAndItems.toString());
-	    }
+//		@Test
+//	    public void testGetWishListItemProductService() throws ApplicationException {
+//	        when(wishListRepository.getById(eq(1))).thenReturn(wishListTestObj());
+//	        WishListAndItemPojo wishListAndItems = wishListItemProductService.getAllWishListItemProducts(1);
+//	        WishListAndItemPojo testObj = wishListAndItemsTestObj();
+//	        assertNotNull(wishListAndItems);
+//	        assertEquals(1, wishListAndItems.getUserId());
+//	        assertEquals(testObj.toString(), wishListAndItems.toString());
+//	    }
 
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
+  
 	
 	
 

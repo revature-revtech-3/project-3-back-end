@@ -52,7 +52,6 @@ public class WishListItemServiceImplTest {
 
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
-		wishList.setUserId(123);
 		wishList.setWishListItems(new ArrayList<>());
 		wishList.setWishListTotal(1);
 		wishList.setUserEntity(user);
@@ -141,7 +140,6 @@ public class WishListItemServiceImplTest {
 
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
-		wishList.setUserId(1);
 		wishList.setWishListItems(new ArrayList<>());
 		wishList.setWishListTotal(1);
 		wishList.setUserEntity(user);
@@ -211,7 +209,6 @@ public class WishListItemServiceImplTest {
 		wishList1.setWishListItems(new ArrayList<>());
 		wishList1.setUserEntity(user1);
 		wishList1.setWishListTotal(1);
-		wishList1.setUserId(123);
 
 		DiscountEntity discount2 = new DiscountEntity();
 		discount2.setDiscountDescription("3");
@@ -301,7 +298,6 @@ public class WishListItemServiceImplTest {
 		wishList1.setWishListItems(new ArrayList<>());
 		wishList1.setWishListTotal(1);
 		wishList1.setUserEntity(user);
-		wishList1.setUserId(123);
 
 		DiscountEntity discount = new DiscountEntity();
 		discount.setDiscountDescription("3");
@@ -388,7 +384,6 @@ public class WishListItemServiceImplTest {
 		wishList.setWishListItems(new ArrayList<>());
 		wishList.setWishListTotal(1);
 		wishList.setUserEntity(user);
-		wishList.setUserId(123);
 
 		DiscountEntity discount = new DiscountEntity();
 		discount.setDiscountDescription("3");
@@ -456,7 +451,6 @@ public class WishListItemServiceImplTest {
 		wishList1.setWishListItems(new ArrayList<>());
 		wishList1.setWishListTotal(1);
 		wishList1.setUserEntity(user1);
-		wishList1.setUserId(123);
 
 		DiscountEntity discount2 = new DiscountEntity();
 		discount2.setDiscountDescription("3");
