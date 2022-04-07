@@ -6,13 +6,13 @@ import java.util.List;
 
 import com.project3.revtech.entity.DiscountEntity;
 import com.project3.revtech.entity.ProductEntity;
+import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.entity.WishListItemEntity;
 import com.project3.revtech.joinedpojo.ProductAndDiscountPojo;
 import com.project3.revtech.joinedpojo.WishItemDiscountPojo;
 import com.project3.revtech.joinedpojo.WishListAndItemPojo;
 import com.project3.revtech.pojo.WishListPojo;
-
 public class WishListAndItemPojoPrototype {
 	
 //	public static WishListAndItemPojo wishListAndItemsTestObj() {
@@ -20,24 +20,26 @@ public class WishListAndItemPojoPrototype {
 //        WishListEntity wishListEntity = wishListTestObj();
 //        return new WishListAndItemPojo(
 //        		wishListEntity.getWishListId(),
-//        		wishListEntity.getUserId(),
+//        		wishListEntity.getUserEntity().getUserId(),
 //        		wishListEntity.getWishListTotal(),
 //        		wishItems);
 //    }
 	
-    public static WishListEntity wishListTestObj() {
-        WishListEntity wishList = new WishListEntity(1, 1, 100);
-        wishList.setWishListItems(wishListItemTestList());
-        return wishList;
-    }
-    
-    public static WishListPojo wishListPojoTestObj() {
-    	WishListEntity wishListEntity = wishListTestObj();
-        return new WishListPojo(
-        		wishListEntity.getWishListId(),
-        		wishListEntity.getUserId(),
-        		wishListEntity.getWishListTotal());
-    }
+//    public static WishListEntity wishListTestObj() {
+//		UserEntity user = userRepository.findById(wishListPojo.getUserId()).get();
+//
+//        WishListEntity wishList = new WishListEntity(1, , 100);
+//        wishList.setWishListItems(wishListItemTestList());
+//        return wishList;
+//    }
+//    
+//    public static WishListPojo wishListPojoTestObj() {
+//    	WishListEntity wishListEntity = wishListTestObj();
+//        return new WishListPojo(
+//        		wishListEntity.getWishListId(),
+//        		wishListEntity.getUserId(),
+//        		wishListEntity.getWishListTotal());
+//    }
     
     public static List<WishListItemEntity> wishListItemTestList() {
         List<WishListItemEntity> items = new ArrayList<WishListItemEntity>();
