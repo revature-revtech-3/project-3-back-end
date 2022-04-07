@@ -36,6 +36,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(SpringExtension.class)
 @RunWith(SpringRunner.class)
 public class CartItemProductServiceTest {
+	
     @MockBean
     private CartRepository cartRepository;
 
@@ -62,11 +63,12 @@ public class CartItemProductServiceTest {
 
     @Before
     public void beforeClass() {
+    	
     }
 
     @Test
     public void testGetCartItemProductServiceByUser() throws ApplicationException {
-        when(cartRepository.findByUserIdAndCartRemovedFalseAndCartPaidFalse(eq(1))).thenReturn(cartTestObj());
+        when(this.cartRepository.findByUserIdAndCartRemovedFalseAndCartPaidFalse(eq(1))).thenReturn(cartTestObj());
         CartAndItemsPojo cartAndItems = cartItemProductService.getAllCartItemProductsForUser(1);
         CartAndItemsPojo testObj = cartAndItemsTestObj();
         assertNotNull(cartAndItems);
@@ -74,16 +76,15 @@ public class CartItemProductServiceTest {
         assertEquals(testObj.toString(), cartAndItems.toString());
 
     }
+    
     @Test
     public void testGetCartItemProductService() throws ApplicationException {
-        when(cartRepository.getById(eq(1))).thenReturn(cartTestObj());
+        when(this.cartRepository.getById(eq(1))).thenReturn(cartTestObj());
         CartAndItemsPojo cartAndItems = cartItemProductService.getAllCartItemProducts(1);
         CartAndItemsPojo testObj = cartAndItemsTestObj();
         assertNotNull(cartAndItems);
         assertEquals(1, cartAndItems.getUserId());
         assertEquals(testObj.toString(), cartAndItems.toString());
     }
-
-
-
+    
 }
