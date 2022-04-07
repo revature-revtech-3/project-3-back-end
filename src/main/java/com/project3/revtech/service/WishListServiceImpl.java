@@ -76,11 +76,5 @@ public class WishListServiceImpl implements WishListService {
 		return true;
 	}
 
-	@Override
-	public WishListPojo addWishList(WishListPojo wishList) throws ApplicationException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
 
