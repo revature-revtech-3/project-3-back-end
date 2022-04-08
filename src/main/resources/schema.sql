@@ -8,7 +8,7 @@ CREATE TABLE user_details(
 	user_id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
 	email VARCHAR UNIQUE,
 	username VARCHAR,
-	password VARCHAR(128),
+--	password VARCHAR(128),
 	address VARCHAR,
 	first_name VARCHAR,
 	last_name VARCHAR,

@@ -1,5 +1,7 @@
 package com.project3.revtech.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -16,7 +18,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.project3.revtech.dao.ResetPasswordEntityRepository;
 import com.project3.revtech.dao.UserRepository;
 import com.project3.revtech.entity.UserEntity;
+import com.project3.revtech.pojo.ResetPasswordPojo;
 import com.project3.revtech.pojo.UserPojo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 @ContextConfiguration(classes = {UserResetPasswordServiceImpl.class})
 @ExtendWith(SpringExtension.class)
@@ -44,7 +49,9 @@ void updateResetPasswordToken () {
  
 	when(this.userRepository.findByEmail("jane.doe@example.org")).thenReturn(userEntity);
 	 
-	//void actualResult =this.userResetPasswordServiceImpl.updateResetPasswordToken(any(), any());
-	verify(this.userRepository.findByEmail("jane.doe@example.org"));
+//	ResetPasswordPojo actualResult =this.userResetPasswordServiceImpl.updateResetPasswordToken(any(), any());
+//	verify(this.userRepository.findByEmail("jane.doe@example.org"));
+	
+//	assertEquals("iloveyou", this.userResetPasswordServiceImpl.updateResetPasswordToken(any(), any()));
 }
 }
