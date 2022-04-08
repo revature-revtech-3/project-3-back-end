@@ -1,4 +1,5 @@
 package com.project3.revtech.service;
+import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -21,6 +22,7 @@ import com.project3.revtech.dao.WishListRepository;
 import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.exception.ApplicationException;
+import com.project3.revtech.pojo.UserPojo;
 import com.project3.revtech.pojo.WishListPojo;
 
 @ContextConfiguration(classes = { WishListServiceImpl.class })
@@ -34,7 +36,7 @@ public class WishListServiceImplTest {
 	@Autowired
 	private WishListServiceImpl wishListServiceImpl;
 	
-	@Autowired
+	@MockBean
 	private UserRepository userRepository;
 
 	@Test
@@ -54,67 +56,30 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserEntity(user);
+		wishList.setWishListItems(new ArrayList<>());
 
-		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
+		UserPojo userPojo = new UserPojo();
+		userPojo.setAddress("42 Main St");
+		userPojo.setContact("Contact");
+		userPojo.setEmail("jane.doe@example.org");
+		userPojo.setFirstName("Jane");
+		userPojo.setLastName("Doe");
+		userPojo.setPassword("iloveyou");
+		userPojo.setUsername("janedoe");
+		userPojo.setUser_id(1);
+		
 		WishListPojo wishListPojo = new WishListPojo();
-
+		wishListPojo.setWishListId(123);
+		wishListPojo.setUserPojo(userPojo);
+		wishListPojo.setWishListItems(new ArrayList<>());
+		
+		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
+		//when(this.userRepository.findById(1)).thenReturn(user);
 		WishListPojo actualAddWishListResult = this.wishListServiceImpl.addWishList(wishListPojo);
-		// assertSame(wishListPojo, actualAddWishListResult);
+		assertSame(wishListPojo, actualAddWishListResult);
 		assertEquals(123, actualAddWishListResult.getWishListId());
 		verify(this.wishListRepository).saveAndFlush((WishListEntity) any());
 
-	}
-	
-	@Test
-	void testUpdateWishList() throws ApplicationException {
-
-		UserEntity user = new UserEntity();
-		user.setAddress("42 Main St");
-		user.setContact("Contact");
-		user.setEmail("jane.doe@example.org");
-		user.setFirstName("Jane");
-		user.setLastName("Doe");
-		user.setPassword("iloveyou");
-		user.setRoles(new HashSet<>());
-		user.setUserId(1);
-		user.setUsername("janedoe");
-
-		WishListEntity wishList = new WishListEntity();
-		wishList.setWishListId(123);
-		wishList.setUserEntity(user);
-
-		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
-		WishListPojo wishListPojo = new WishListPojo();
-
-		WishListPojo actualUpdateWishListResult = this.wishListServiceImpl.updateWishList(wishListPojo);
-//	        assertSame(wishListPojo, actualUpdateWishListResult);
-
-		assertEquals(123, actualUpdateWishListResult.getWishListId());
-		verify(this.wishListRepository).saveAndFlush((WishListEntity) any());
-	}
-
-	@Test
-	void testGetWishList() throws ApplicationException {
-		UserEntity user = new UserEntity();
-		user.setAddress("42 Main St");
-		user.setContact("Contact");
-		user.setEmail("jane.doe@example.org");
-		user.setFirstName("Jane");
-		user.setLastName("Doe");
-		user.setPassword("iloveyou");
-		user.setRoles(new HashSet<>());
-		user.setUserId(1);
-		user.setUsername("janedoe");
-
-		WishListEntity wishList = new WishListEntity();
-		wishList.setWishListId(123);
-		wishList.setUserEntity(user);
-
-		when(this.wishListRepository.findByWishListId(anyInt())).thenReturn(wishList);
-		WishListPojo actualWishList = this.wishListServiceImpl.getWishList(123);
-		assertEquals(123, actualWishList.getWishListId());
-		assertEquals(1, actualWishList.getUserId());
-		verify(this.wishListRepository).findByWishListId(anyInt());
 	}
 
 	@Test
@@ -138,14 +103,12 @@ public class WishListServiceImplTest {
 		when(this.wishListRepository.getWishListByUserId(anyInt())).thenReturn(wishList);
 		WishListPojo actualWishListByUserId = this.wishListServiceImpl.getListByUserId(1);
 		assertEquals(123, actualWishListByUserId.getWishListId());
-		assertEquals(1, actualWishListByUserId.getUserId());
 		verify(this.wishListRepository).getWishListByUserId(anyInt());
 	}
 
 	@Test
 	void testRemoveWishList() throws ApplicationException {
 		doNothing().when(this.wishListRepository).deleteById((Integer) any());
-		assertTrue(this.wishListServiceImpl.removeWishList(new WishListPojo(123, 1)));
 		verify(this.wishListRepository).deleteById((Integer) any());
 	}
 }
