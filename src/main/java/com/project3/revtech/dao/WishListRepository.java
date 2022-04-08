@@ -1,6 +1,7 @@
 package com.project3.revtech.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +21,6 @@ public interface WishListRepository extends JpaRepository<WishListEntity, Intege
 	
 	@Query("SELECT wl FROM WishListEntity wl WHERE wl.userEntity.userId=:userWlId")
 	WishListEntity getWishListByUserId(@Param("userWlId") int userId);
-	
 
 
 	//WishListEntity findByUserId(int userId);
