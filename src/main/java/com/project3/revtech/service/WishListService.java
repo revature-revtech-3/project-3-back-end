@@ -1,9 +1,6 @@
 package com.project3.revtech.service;
 
-import java.util.List;
-
 import com.project3.revtech.exception.ApplicationException;
-import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.WishListPojo;
 
 public interface WishListService {
@@ -14,7 +11,7 @@ public interface WishListService {
 	
 	WishListPojo getWishList(int wishListId) throws ApplicationException;
 
-	WishListPojo getWishListByUserId(int userId) throws ApplicationException;
+	WishListPojo getListByUserId(int userId) throws ApplicationException;
 
 	boolean removeWishList(WishListPojo wishList) throws ApplicationException;
 

@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.project3.revtech.dao.UserRepository;
 import com.project3.revtech.dao.WishListRepository;
 import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.entity.WishListEntity;
@@ -25,11 +27,15 @@ import com.project3.revtech.pojo.WishListPojo;
 @ExtendWith(SpringExtension.class)
 public class WishListServiceImplTest {
 
+
 	@MockBean
 	private WishListRepository wishListRepository;
 
 	@Autowired
 	private WishListServiceImpl wishListServiceImpl;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@Test
 	void testAddWishList() throws ApplicationException {
@@ -48,10 +54,7 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserEntity(user);
-		wishList.setUserId(1);
-		wishList.setWishListTotal(5);
-		wishList.setUserEntity(user);
-		wishList.setWishListItems(new ArrayList<>());
+
 		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
 		WishListPojo wishListPojo = new WishListPojo();
 
@@ -79,10 +82,6 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserEntity(user);
-		wishList.setUserId(1);
-		wishList.setWishListTotal(5);
-		wishList.setUserEntity(user);
-		wishList.setWishListItems(new ArrayList<>());
 
 		when(this.wishListRepository.saveAndFlush((WishListEntity) any())).thenReturn(wishList);
 		WishListPojo wishListPojo = new WishListPojo();
@@ -110,10 +109,6 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserEntity(user);
-		wishList.setUserId(1);
-		wishList.setWishListTotal(5);
-		wishList.setUserEntity(user);
-		wishList.setWishListItems(new ArrayList<>());
 
 		when(this.wishListRepository.findByWishListId(anyInt())).thenReturn(wishList);
 		WishListPojo actualWishList = this.wishListServiceImpl.getWishList(123);
@@ -139,16 +134,12 @@ public class WishListServiceImplTest {
 		WishListEntity wishList = new WishListEntity();
 		wishList.setWishListId(123);
 		wishList.setUserEntity(user);
-		wishList.setUserId(1);
-		wishList.setWishListTotal(5);
-		wishList.setUserEntity(user);
-		wishList.setWishListItems(new ArrayList<>());
 
-		when(this.wishListRepository.findByUserId(anyInt())).thenReturn(wishList);
-		WishListPojo actualWishListByUserId = this.wishListServiceImpl.getWishListByUserId(1);
+		when(this.wishListRepository.getWishListByUserId(anyInt())).thenReturn(wishList);
+		WishListPojo actualWishListByUserId = this.wishListServiceImpl.getListByUserId(1);
 		assertEquals(123, actualWishListByUserId.getWishListId());
 		assertEquals(1, actualWishListByUserId.getUserId());
-		verify(this.wishListRepository).findByUserId(anyInt());
+		verify(this.wishListRepository).getWishListByUserId(anyInt());
 	}
 
 	@Test
