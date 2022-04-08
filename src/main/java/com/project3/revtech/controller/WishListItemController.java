@@ -17,36 +17,24 @@ import com.project3.revtech.pojo.WishListItemPojo;
 
 import com.project3.revtech.service.WishListItemServiceImpl;
 
-
 @RestController
 @RequestMapping("api/wishList-items")
 @CrossOrigin
 public class WishListItemController {
-	
-	  @Autowired
-	    WishListItemServiceImpl wishListItemService;
 
-	    @PostMapping("add/items")
-	    ResponseEntity<WishListItemPojo> addItem(@RequestBody WishListItemPojo wishListItem) throws ApplicationException {
-	        return ResponseEntity.ok()
-	                .header("Content-type", "application/json")
-	                .body(wishListItemService.addItem(wishListItem));
-	    }
+	@Autowired
+	WishListItemServiceImpl wishListItemService;
 
-	    @PutMapping("update/items")
-	    ResponseEntity<WishListItemPojo> updateItem(@RequestBody WishListItemPojo wishListItem) throws ApplicationException {
+	@PostMapping("add/items")
+	ResponseEntity<WishListItemPojo> addItem(@RequestBody WishListItemPojo wishListItem) throws ApplicationException {
+		return ResponseEntity.ok().header("Content-type", "application/json")
+				.body(wishListItemService.addItem(wishListItem));
+	}
 
-	        return ResponseEntity.ok()
-	                .header("Content-type", "application/json")
-	                .body(wishListItemService.updateItem(wishListItem));
-	    }
-
-
-	    @DeleteMapping("{bid}/delete")
-	    ResponseEntity<Boolean> removeItem(@PathVariable("bid") int wishListItemId) throws ApplicationException {
-	        return ResponseEntity.ok()
-	                .header("Content-type", "application/json")
-	                .body(wishListItemService.removeItem(wishListItemId));
-	    }
+	@DeleteMapping("{bid}/delete")
+	ResponseEntity<Boolean> removeItem(@PathVariable("bid") int wishListItemId) throws ApplicationException {
+		return ResponseEntity.ok().header("Content-type", "application/json")
+				.body(wishListItemService.removeItem(wishListItemId));
+	}
 
 }

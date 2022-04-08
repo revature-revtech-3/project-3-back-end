@@ -34,7 +34,7 @@ public class DiscountController {
 	}
 	
 	@PostMapping("add/discounts")
-	DiscountPojo addDiscount( @Valid @RequestBody DiscountPojo discount) throws ApplicationException{
+	DiscountPojo addDiscount(@Valid @RequestBody  DiscountPojo discount) throws ApplicationException{
 		return discountService.addDiscount(discount);
 	}
 	

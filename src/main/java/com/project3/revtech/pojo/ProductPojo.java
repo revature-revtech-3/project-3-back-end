@@ -2,6 +2,9 @@ package com.project3.revtech.pojo;
 
 import java.math.BigDecimal;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class ProductPojo {
 
 	private int productId;
@@ -13,11 +16,6 @@ public class ProductPojo {
 	private int productQty;
 	private String imageUrl;
 	private boolean productRemoved;
-
-	public ProductPojo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public ProductPojo(int productId, String productSku, String productName,
 					   BigDecimal productCost, String productCategory, String productDescription,

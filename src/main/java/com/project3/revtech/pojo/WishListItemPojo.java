@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class WishListItemPojo {
 	private int wishItemId;
-	private int wishListId;
-	private int productId;
-	private int wishListQty;
+	private WishListPojo wishListPojo;
+	private ProductPojo productPojo;
 	
 }
