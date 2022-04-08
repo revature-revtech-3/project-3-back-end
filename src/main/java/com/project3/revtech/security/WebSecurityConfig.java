@@ -94,6 +94,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests().antMatchers("/combined/Disc/Products").permitAll().and()
       .authorizeRequests().antMatchers("/api/test/**").permitAll().and()
       .authorizeRequests().antMatchers("/cart/{bid}").permitAll().and()
+      .authorizeRequests().antMatchers("/api/create/bundles").permitAll().and()       //<---bundles team may change this api path
       .authorizeRequests().antMatchers("/user/{bid}").permitAll()
 	  .anyRequest().authenticated();
 	   http.headers().frameOptions().disable();
