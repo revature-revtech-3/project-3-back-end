@@ -271,10 +271,6 @@ public class WishListItemServiceImplTest {
 		verify(this.wishItemRepository).save((WishListItemEntity) any());
 	}
 
-
-
-
-
 	@Test
 	void testRemoveItem() throws ApplicationException {
 		doNothing().when(this.wishItemRepository).deleteById((Integer) any());
