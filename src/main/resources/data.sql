@@ -112,5 +112,5 @@ INSERT INTO discount_details(product_id, discount_description, discount_percenta
 -- #------- WishList DATA --------
 INSERT INTO wish_list_details(user_id,wish_list_total) VALUES (1,2);
 
-INSERT INTO wish_items (wish_list_id,product_id) Values (1,1),(1,2),(1,3);
+INSERT INTO wish_items (wish_list_id,product_id) Values (1,1),(1,2),(1,3),(1,5),(1,6),(1,7),(1,8);
 
