@@ -18,14 +18,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.project3.revtech.dao.ProductRepository;
 import com.project3.revtech.dao.WishItemRepository;
+import com.project3.revtech.dao.WishListRepository;
 import com.project3.revtech.entity.DiscountEntity;
 import com.project3.revtech.entity.ProductEntity;
 import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.entity.WishListItemEntity;
 import com.project3.revtech.exception.ApplicationException;
+import com.project3.revtech.pojo.ProductPojo;
+import com.project3.revtech.pojo.UserPojo;
 import com.project3.revtech.pojo.WishListItemPojo;
+import com.project3.revtech.pojo.WishListPojo;
 
 @ContextConfiguration(classes = { WishListItemServiceImpl.class })
 @ExtendWith(SpringExtension.class)
@@ -33,7 +39,13 @@ public class WishListItemServiceImplTest {
 
 	@MockBean
 	private WishItemRepository wishItemRepository;
+	
+	@MockBean
+	private WishListRepository wishListRepository;
 
+	@MockBean
+	private ProductRepository productRepository;
+	
 	@Autowired
 	private WishListItemServiceImpl wishListItemServiceImpl;
 
@@ -102,27 +114,58 @@ public class WishListItemServiceImplTest {
 		wishListItem.setWishListEntity(wishList);
 		wishListItem.setWishItemId(123);
 		wishListItem.setProductEntity(product1);
+		
+		ProductPojo productPojo = new ProductPojo();
+		productPojo.setImageUrl("https://example.org/example");
+		productPojo.setProductCategory("Product Category");
+		productPojo.setProductCost(BigDecimal.valueOf(42L));
+		productPojo.setProductDescription("Product Description");
+		productPojo.setProductId(123);
+		productPojo.setProductName("Product Name");
+		productPojo.setProductQty(1);
+		productPojo.setProductRemoved(true);
+		productPojo.setProductSku("Product Sku");
+		
+		UserPojo userPojo = new UserPojo();
+		userPojo.setAddress("42 Main St");
+		userPojo.setContact("Contact");
+		userPojo.setEmail("jane.doe@example.org");
+		userPojo.setFirstName("Jane");
+		userPojo.setLastName("Doe");
+		userPojo.setPassword("iloveyou");
+		userPojo.setUsername("janedoe");
+		userPojo.setUser_id(1);
+		
+		WishListPojo wishListPojo = new WishListPojo();
+		wishListPojo.setWishListId(123);
+		wishListPojo.setUserPojo(userPojo);
+		wishListPojo.setWishListItems(new ArrayList<>());
+		wishListPojo.setWishListTotal(1);
+		
+		WishListItemPojo wishListItemPojo = new WishListItemPojo();
+		wishListItemPojo.setWishItemId(123);
+		wishListItemPojo.setWishListPojo(wishListPojo);
+		wishListItemPojo.setProductPojo(productPojo);
 
 		doNothing().when(this.wishItemRepository).deleteById((Integer) any());
-//		when(this.wishItemRepository.existsByWishListQtyIsLessThanAndWishListIdAndProductId(anyInt(), anyInt(),
-//				anyInt())).thenReturn(true);
-		when(this.wishItemRepository.findByWishListIdAndProductId(anyInt(), anyInt())).thenReturn(wishListItem);
-		//when(this.wishItemRepository.existsByWishListIdAndProductId(anyInt(), anyInt())).thenReturn(true);
+		when(this.wishListRepository.findByWishListId(anyInt())).thenReturn(wishList);
+		when(this.wishItemRepository.findByWishListId(anyInt())).thenReturn(wishListItem);
+
+		WishListItemPojo actualAddItemResult = this.wishListItemServiceImpl.addItem(wishListItemPojo);
 		
-		//WishListItemPojo wishListItemPojo = new WishListItemPojo(123, 123, 123);
-		//WishListItemPojo actualAddItemResult = this.wishListItemServiceImpl.addItem(wishListItemPojo);
-		
-//		assertSame(wishListItemPojo, actualAddItemResult);
-//		assertEquals(-1, actualAddItemResult.getWishItemId());
+		assertSame(wishListItemPojo, actualAddItemResult);
+		assertEquals(-1, actualAddItemResult.getWishItemId());
 //		verify(this.wishItemRepository).deleteById((Integer) any());
 //		verify(this.wishItemRepository).existsByWishListIdAndProductId(anyInt(), anyInt());
 //		verify(this.wishItemRepository).existsByWishListQtyIsLessThanAndWishListIdAndProductId(anyInt(), anyInt(),
 //				anyInt());
-		verify(this.wishItemRepository, atLeast(1)).findByWishListIdAndProductId(anyInt(), anyInt());
+//		verify(this.wishItemRepository, atLeast(1)).findByWishListIdAndProductId(anyInt(), anyInt());
 
 	}
 
 	@Test
+<<<<<<< HEAD
+=======
 	void testAddItem2() throws ApplicationException {
 		UserEntity user = new UserEntity();
 		user.setAddress("42 Main St");
@@ -272,6 +315,7 @@ public class WishListItemServiceImplTest {
 	}
 
 	@Test
+>>>>>>> 052555a78d4f175fa03f7763df78c8be5231543a
 	void testRemoveItem() throws ApplicationException {
 		doNothing().when(this.wishItemRepository).deleteById((Integer) any());
 		assertTrue(this.wishListItemServiceImpl.removeItem(123));
