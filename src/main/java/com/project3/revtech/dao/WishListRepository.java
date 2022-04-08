@@ -14,6 +14,8 @@ import com.project3.revtech.pojo.WishListPojo;
 @Repository
 public interface WishListRepository extends JpaRepository<WishListEntity, Integer> {
 
+	
+	
 	WishListEntity findByWishListId(int wishListId);
 	
 	@Query("SELECT wl FROM WishListEntity wl WHERE wl.userEntity.userId=:userWlId")
