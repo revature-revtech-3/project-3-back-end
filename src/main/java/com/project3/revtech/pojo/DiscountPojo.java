@@ -2,6 +2,10 @@ package com.project3.revtech.pojo;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Component;
+
+
+
 public class DiscountPojo {
 
     private int discountId;

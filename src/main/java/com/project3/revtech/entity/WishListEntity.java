@@ -33,19 +33,23 @@ public class WishListEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "wish_list_id")
 	private int wishListId;
-//	
-//	@Column(name = "user_id")
-//	private int userId;
+
+	
 	
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+
     private UserEntity userEntity; 
     
 	@OneToMany(mappedBy = "wishListEntity")
     private List<WishListItemEntity> wishListItems;
 	
-	@Column(name = "wishList_total")
+	@Column(name = "wish_list_total")
 	private int wishListTotal;
+
+	public WishListEntity(UserEntity userEntity) {
+		this.userEntity = userEntity;
+	}
 
 	public WishListEntity(int wishListId, UserEntity userEntity) {
 		super();
@@ -59,19 +63,6 @@ public class WishListEntity {
 		this.userEntity = userEntity;
 		this.wishListItems = wishListItems;
 	}
-
-	public WishListEntity(UserEntity userEntity) {
-		super();
-		this.userEntity = userEntity;
-	}
-
-//	public WishListEntity(int userId) {
-//		super();
-//		this.userId = userId;
-//	}
-
-	
-
 
 	
 	

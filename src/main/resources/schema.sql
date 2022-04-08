@@ -1,3 +1,7 @@
+CREATE DATABASE shopme;
+
+\c shopme
+
 DROP TABLE IF EXISTS user_details;
 
 CREATE TABLE user_details(
@@ -134,6 +138,16 @@ CREATE TABLE purchased_items(
     FOREIGN KEY(cart_id) REFERENCES cart_details(cart_id)
 );
 
+CREATE TABLE bunlde_details(
+bundle_id INT GENERATED ALWAYS AS IDENTITY,
+product_one_id INT,
+product_two_id INT,
+bundle_name VARCHAR,
+bundle_percentage DECIMAL(100, 2),
+PRIMARY KEY(bundle_id),
+FOREIGN KEY(product_one_id) REFERENCES product_details(product_id) ON DELETE CASCADE,
+FOREIGN KEY(product_two_id) REFERENCES product_details(product_id) ON DELETE CASCADE);
+
 DROP TABLE IF EXISTS wish_list_details;
 
 CREATE TABLE wish_list_details (	
@@ -155,5 +169,12 @@ CREATE TABLE wish_items(
 	FOREIGN KEY(product_id) REFERENCES product_details(product_id)
 );
 	 
+
+CREATE TABLE reset_password_table (
+	reset_id INT GENERATED ALWAYS AS IDENTITY,
+	reset_password_token  VARCHAR(100),
+	user_email INT UNIQUE,
+	FOREIGN KEY(user_email) REFERENCES user_details (user_id) ON DELETE CASCADE
+);	
 
 

@@ -34,7 +34,5 @@ build/
 
 src/main/resources/application.yml
 
-*.yml
-
 logs/
 bin/
