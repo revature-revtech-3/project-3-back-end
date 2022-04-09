@@ -37,6 +37,7 @@ public class WishListServiceImpl implements WishListService {
 	@Override
 	public WishListPojo addWishList(WishListPojo wishList) throws ApplicationException {
 		
+		System.out.println(wishList);
 		List<WishListEntity> allWishList = wishListRepository.findAll();  // fetches all wishlist and check if a wishlist exist in the for loop
 		for(WishListEntity awishList : allWishList) {					  // if it does then it will just return the exisiting wishlist
 			if(awishList.getUserEntity().getUserId() == wishList.getUserPojo().getUser_id()) {
