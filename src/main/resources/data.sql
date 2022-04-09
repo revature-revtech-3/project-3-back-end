@@ -100,3 +100,8 @@ INSERT INTO discount_details(product_id, discount_description, discount_percenta
 INSERT INTO discount_details(product_id, discount_description, discount_percentage) VALUES ( 4, 'Deal of the Day', 10 );
 INSERT INTO discount_details(product_id, discount_description, discount_percentage) VALUES ( 6, 'Deal of the Day', 10 );
 
+INSERT INTO bunlde_details(bundle_id, product_one_id, product_two_id, bundle_name,bundle_percentage) VALUES ( default, 5, 6, 'Package', 20 );
+INSERT INTO bunlde_details(bundle_id, product_one_id, product_two_id, bundle_name,bundle_percentage) VALUES ( default, 7, 8, 'Xm', 15 );
+INSERT INTO bunlde_details(bundle_id, product_one_id, product_two_id, bundle_name,bundle_percentage) VALUES ( default, 9, 10, 'CD', 20 );
+INSERT INTO bunlde_details(bundle_id, product_one_id, product_two_id, bundle_name,bundle_percentage) VALUES ( default, 11, 12,'Package2', 10 );
+INSERT INTO bunlde_details(bundle_id, product_one_id, product_two_id, bundle_name,bundle_percentage) VALUES ( default, 13,14, 'Package3', 20 );
