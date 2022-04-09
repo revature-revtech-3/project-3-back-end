@@ -164,8 +164,6 @@ public class WishListItemServiceImplTest {
 	}
 
 	@Test
-<<<<<<< HEAD
-=======
 	void testAddItem2() throws ApplicationException {
 		UserEntity user = new UserEntity();
 		user.setAddress("42 Main St");
@@ -315,7 +313,6 @@ public class WishListItemServiceImplTest {
 	}
 
 	@Test
->>>>>>> 052555a78d4f175fa03f7763df78c8be5231543a
 	void testRemoveItem() throws ApplicationException {
 		doNothing().when(this.wishItemRepository).deleteById((Integer) any());
 		assertTrue(this.wishListItemServiceImpl.removeItem(123));
