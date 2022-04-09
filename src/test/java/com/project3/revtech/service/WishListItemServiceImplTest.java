@@ -163,6 +163,7 @@ public class WishListItemServiceImplTest {
 
 	}
 
+	@Test
 	void testRemoveItem() throws ApplicationException {
 		doNothing().when(this.wishItemRepository).deleteById((Integer) any());
 		assertTrue(this.wishListItemServiceImpl.removeItem(123));
