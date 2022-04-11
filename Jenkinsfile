@@ -29,7 +29,7 @@ pipeline {
                
                sh "docker images rm -f revtech-backend"
                    
-               sh "docker-compose up -d"
+               sh "docker-compose up"
             }
         }
         stage('testing') {
