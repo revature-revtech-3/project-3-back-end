@@ -31,5 +31,15 @@ pipeline {
                sh "docker-compose up -d"
             }
         }
+        stage('testing') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
     }
 }
