@@ -17,6 +17,7 @@ import com.project3.revtech.entity.UserEntity;
 import com.project3.revtech.entity.WishListEntity;
 import com.project3.revtech.entity.WishListItemEntity;
 import com.project3.revtech.exception.ApplicationException;
+import com.project3.revtech.joinedpojo.ProductAndDiscountPojo;
 import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.pojo.UserPojo;
 import com.project3.revtech.pojo.WishListItemPojo;
@@ -37,7 +38,6 @@ public class WishListServiceImpl implements WishListService {
 	@Override
 	public WishListPojo addWishList(WishListPojo wishList) throws ApplicationException {
 		
-		System.out.println(wishList);
 		List<WishListEntity> allWishList = wishListRepository.findAll();  // fetches all wishlist and check if a wishlist exist in the for loop
 		for(WishListEntity awishList : allWishList) {					  // if it does then it will just return the exisiting wishlist
 			if(awishList.getUserEntity().getUserId() == wishList.getUserPojo().getUser_id()) {
@@ -48,6 +48,7 @@ public class WishListServiceImpl implements WishListService {
 		}
 		
 		UserEntity user = userRepository.findById(wishList.getUserPojo().getUser_id()).get();
+		System.out.println(user);
 		WishListEntity wishListEntity = new WishListEntity(user);
 		WishListEntity returnWishList = wishListRepository.saveAndFlush(wishListEntity);
 		
@@ -77,9 +78,15 @@ public class WishListServiceImpl implements WishListService {
 			WishListItemPojo items = new WishListItemPojo();
 			BeanUtils.copyProperties(wishItem, items);
 			
-			ProductPojo product = new ProductPojo();
+			ProductAndDiscountPojo product = new ProductAndDiscountPojo();
 			BeanUtils.copyProperties(wishItem.getProductEntity(), product);
-			items.setProductPojo(product);
+			items.setProductAndDiscountPojo(product);
+			
+			if(wishItem.getProductEntity().getDiscountEntity() != null) {
+				items.getProductAndDiscountPojo().setDiscountId(wishItem.getProductEntity().getDiscountEntity().getDiscountId());
+				items.getProductAndDiscountPojo().setDiscountDescription(wishItem.getProductEntity().getDiscountEntity().getDiscountDescription());
+				items.getProductAndDiscountPojo().setDiscountPercentage(wishItem.getProductEntity().getDiscountEntity().getDiscountPercentage());
+			}
 			wishItemPojo.add(items);
 		}
 		
