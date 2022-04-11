@@ -25,10 +25,21 @@ pipeline {
         stage('staging') {
             steps {
             	echo 'deploy step'
-            	
                sh "docker-compose down"
+               
+               sh "docker images rm -f revtech-backend"
                    
                sh "docker-compose up"
+            }
+        }
+        stage('testing') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
             }
         }
     }
