@@ -28,7 +28,6 @@ public class WishListController {
 	// add wishlist when an user registers an account
 	@PostMapping("add/wishLists")
 	ResponseEntity<WishListPojo> addWishList(@RequestBody WishListPojo wishList) throws ApplicationException {
-		System.out.println(wishList);
 		return ResponseEntity.ok().header("Content-type", "application/json")
 				.body(wishListService.addWishList(wishList));
 
