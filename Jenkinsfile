@@ -10,6 +10,7 @@ pipeline {
         stage('clone code') {
             steps {
                 // Get some code from a GitHub repository
+                sh "docker volume prune -f"
                 git (url: 'https://github.com/revature-rev-tech2/project-3-back-end.git', branch:'main')
                 
                 echo 'clone step'
@@ -25,10 +26,21 @@ pipeline {
         stage('staging') {
             steps {
             	echo 'deploy step'
-            	
                sh "docker-compose down"
+               
+               sh "docker image rm -f revtech-backend"
                    
-               sh "docker-compose up -d"
+               sh "docker-compose up"
+            }
+        }
+        stage('testing') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
             }
         }
     }
