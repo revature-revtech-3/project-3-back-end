@@ -25,8 +25,9 @@ pipeline {
         stage('staging') {
             steps {
             	echo 'deploy step'
-            	
                sh "docker-compose down"
+               
+               sh "docker images rm -f revtech-backend"
                    
                sh "docker-compose up -d"
             }
