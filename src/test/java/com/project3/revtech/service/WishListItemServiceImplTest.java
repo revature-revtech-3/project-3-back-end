@@ -145,7 +145,7 @@ public class WishListItemServiceImplTest {
 		WishListItemPojo wishListItemPojo = new WishListItemPojo();
 		wishListItemPojo.setWishItemId(123);
 		wishListItemPojo.setWishListPojo(wishListPojo);
-		wishListItemPojo.setProductPojo(productPojo);
+		wishListItemPojo.setProductAndDiscountPojo(productPojo);
 
 		doNothing().when(this.wishItemRepository).deleteById((Integer) any());
 		when(this.wishListRepository.findByWishListId(anyInt())).thenReturn(wishList);
