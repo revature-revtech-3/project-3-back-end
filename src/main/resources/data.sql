@@ -114,7 +114,7 @@ INSERT INTO discount_details(product_id, discount_description, discount_percenta
 -- #------- WishList DATA --------
 INSERT INTO wish_list_details(user_id,wish_list_total) VALUES (1,2);
 
-INSERT INTO wish_items (wish_list_id,product_id) Values (1,1),(1,2),(1,3),(1,5),(1,6),(1,7),(1,8);
+--INSERT INTO wish_items (wish_list_id,product_id) Values (1,1),(1,2),(1,3),(1,5),(1,6),(1,7),(1,8);
 INSERT INTO bunlde_details(bundle_id, product_one_id, product_two_id, bundle_name,bundle_percentage) VALUES ( default, 5, 6, 'Package', 20 );
 INSERT INTO bunlde_details(bundle_id, product_one_id, product_two_id, bundle_name,bundle_percentage) VALUES ( default, 7, 8, 'Xm', 15 );
 INSERT INTO bunlde_details(bundle_id, product_one_id, product_two_id, bundle_name,bundle_percentage) VALUES ( default, 9, 10, 'CD', 20 );
