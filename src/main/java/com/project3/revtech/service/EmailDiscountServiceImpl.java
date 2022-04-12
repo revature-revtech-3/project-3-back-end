@@ -54,7 +54,7 @@ public class EmailDiscountServiceImpl {
 
 				// Creates email message
 				String messageText = wishItemEntity.getProductEntity().getProductName() + "Just went on Sale \n"
-				+ "GET " + discount.getDiscountPercentage().multiply(new BigDecimal(100)) + "% OFF!!!!!";			
+				+ "GET " + discount.getDiscountPercentage() + "% OFF!!!!!";			
 				// not sure if necessary, Create return to test
 				try {
 					// wish-Item -> wish-list-details -> users join call
@@ -105,7 +105,7 @@ public class EmailDiscountServiceImpl {
 			{
 				
 				String messageText = bundle.getProductOnePojo().getProductName() + "Just went on Sale in the " + bundle.getBundleName() + " with the " + bundle.getProductTwoPojo().getProductName() + " \n"
-				+ "GET " + bundle.getBundlePercentage().multiply(new BigDecimal(100)) + "% OFF THE BUNDLE!!!!!!!!!";			
+				+ "GET " + bundle.getBundlePercentage()  + "% OFF THE BUNDLE!!!!!!!!!";			
 				// not sure if necessary
 				try {
 					// wish-Item -> wish-list-details -> users join call
@@ -140,7 +140,7 @@ public class EmailDiscountServiceImpl {
 				if(!sentUsers.contains(wishItemEntity.getWishListEntity().getUserEntity().getUserId()))
 				{
 					String messageText = bundle.getProductTwoPojo().getProductName() + "Just went on Sale in the " + bundle.getBundleName() + " with the " + bundle.getProductOnePojo().getProductName() + " \n"
-					+ "GET " + bundle.getBundlePercentage().multiply(new BigDecimal(100)) + "% OFF!!!!!";			
+					+ "GET " + bundle.getBundlePercentage() + "% OFF!!!!!";			
 					// not sure if necessary
 					try {
 						// wish-Item -> wish-list-details -> users join call
