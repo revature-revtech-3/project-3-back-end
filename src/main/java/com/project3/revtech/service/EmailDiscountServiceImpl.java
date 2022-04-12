@@ -105,7 +105,7 @@ public class EmailDiscountServiceImpl {
 			{
 				
 				String messageText = bundle.getProductOnePojo().getProductName() + "Just went on Sale in the " + bundle.getBundleName() + " with the " + bundle.getProductTwoPojo().getProductName() + " \n"
-				+ "GET " + bundle.getBundlePercentage() + "% OFF THE BUNDLE!!!!!!!!!";			
+				+ "GET " + bundle.getBundlePercentage()  + "% OFF THE BUNDLE!!!!!!!!!";			
 				// not sure if necessary
 				try {
 					// wish-Item -> wish-list-details -> users join call
@@ -140,7 +140,7 @@ public class EmailDiscountServiceImpl {
 				if(!sentUsers.contains(wishItemEntity.getWishListEntity().getUserEntity().getUserId()))
 				{
 					String messageText = bundle.getProductTwoPojo().getProductName() + "Just went on Sale in the " + bundle.getBundleName() + " with the " + bundle.getProductOnePojo().getProductName() + " \n"
-					+ "GET " + bundle.getBundlePercentage()) + "% OFF!!!!!";			
+					+ "GET " + bundle.getBundlePercentage() + "% OFF!!!!!";			
 					// not sure if necessary
 					try {
 						// wish-Item -> wish-list-details -> users join call
