@@ -23,6 +23,16 @@ pipeline {
                 echo 'build step'
             }
         }
+        stage('testing') {
+            steps {
+                sh "mvn test"
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
         stage('staging') {
             steps {
             	echo 'deploy step'
@@ -31,16 +41,6 @@ pipeline {
                sh "docker image rm -f revtech-backend"
                    
                sh "docker-compose up"
-            }
-        }
-        stage('testing') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
             }
         }
     }
