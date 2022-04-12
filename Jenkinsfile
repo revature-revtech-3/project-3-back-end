@@ -40,7 +40,7 @@ pipeline {
                
                sh "docker image rm -f revtech-backend"
                    
-               sh "docker-compose up"
+               sh "docker-compose up -d"
             }
         }
     }
