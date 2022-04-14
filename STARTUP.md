@@ -70,8 +70,8 @@ TO RUN ANGULAR MATERIAL FOR THEME CHANGING:
 2.	Pick  Custom theme 
 3.	For “Set up HammerJS for gesture” and “Set up browser animations for Angular Material” , 
 Pick it based on your needs. 
-The Previous team picked no for Set up HammerJS for gesture
-The Previous team picked yes for Set up browser animations for Angular Material
+The Previous team picked no for Set up HammerJS for gesture.
+The Previous team picked yes for Set up browser animations for Angular Material.
 4.	Check the code at Styles.scss. Make sure the code is same as the original Styles.scss
 
 Things to note:
