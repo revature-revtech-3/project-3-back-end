@@ -117,9 +117,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
 	@Override
-	public List<ProductPojo> getSecondaryProducts(String productName) throws ApplicationException {
+	public List<ProductPojo> getSecondaryProducts(int productId) throws ApplicationException {
 		// TODO Auto-generated method stub
-		List<ProductEntity> allProductEntity = this.productRepository.getSecondaryProducts(productName);
+		List<ProductEntity> allProductEntity = this.productRepository.getSecondaryProducts(productId);
         List<ProductPojo> allProductPojo = new ArrayList<>();
         allProductEntity.forEach((product) -> {
            ProductPojo productPojo = new  ProductPojo(product.getProductId(), product.getProductSku(),

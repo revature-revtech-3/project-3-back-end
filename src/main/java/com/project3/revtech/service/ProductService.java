@@ -17,7 +17,7 @@ public interface ProductService {
     ProductPojo getADiscountProductService(int  productId) throws ApplicationException;
     List<ProductPojo> getAllDiscountProductService() throws ApplicationException;
 
-    List<ProductPojo> getSecondaryProducts(String productName) throws ApplicationException;
+    List<ProductPojo> getSecondaryProducts(int  productId) throws ApplicationException;
 
 
 }

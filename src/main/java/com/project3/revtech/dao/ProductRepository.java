@@ -17,9 +17,19 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Integer>
 
     //----- Product Custom JPA Queries ----------//
     ProductEntity findByProductId(int productId);
-	
+	/*
    @Query(value="select * from product_details where product_name like %:name% ", nativeQuery = true )
     //@Query("select p from ProductEntity p where p.product_name like %:?% ")
     List<ProductEntity> getSecondaryProducts(@Param("name") String productName);
-    		//productEntity
+    */
+    /*
+    @Query(value="select * from product_details where product_category like %:name% ", nativeQuery = true )
+    //@Query("select p from ProductEntity p where p.product_name like %:?% ")
+    List<ProductEntity> getSecondaryProducts(@Param("name") String productCategory);
+    		//productEntity 
+  * from product_details where product_category like (select product_category from product_details where product_id = :number)
+	*/
+    @Query(value="select * from product_details p where p.product_category like (select product_category from product_details p where p.product_id =:number) ", nativeQuery = true )
+    List<ProductEntity> getSecondaryProducts(@Param("number") int productId);
+    
 }
