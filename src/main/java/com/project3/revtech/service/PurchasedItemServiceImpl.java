@@ -78,4 +78,19 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
         return returningItems;
     }
 
+	@Override
+	public List<PurchasedItemPojo> findByMostPurchasedItems() {
+		List<PurchasedItemEntity> mostItems = this.purchasedItemRepository.findByMostPurchasedItems();
+		List<PurchasedItemPojo> mostItemsPojo = new ArrayList<>();
+        mostItems.forEach((tempProduct) -> {
+           
+            PurchasedItemPojo productPojo = new  PurchasedItemPojo(tempProduct.getItemId(), tempProduct.getTransactionId(),
+                    tempProduct.getUserId(), tempProduct.getCartId(),
+                    tempProduct.getProductId(), tempProduct.getItemQty(),
+                    tempProduct.getPurchaseCost(), tempProduct.getPurchaseDate());
+            mostItemsPojo.add(productPojo);
+        });
+        return mostItemsPojo;
+	}
+
 }

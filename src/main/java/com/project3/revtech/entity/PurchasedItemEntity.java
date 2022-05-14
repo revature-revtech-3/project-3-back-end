@@ -52,6 +52,7 @@ public class PurchasedItemEntity {
     @CreatedDate
     @Column(name = "purchase_date")
     private Date purchaseDate;
+    
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "transaction_id", nullable = false, insertable = false, updatable = false)
@@ -70,6 +71,7 @@ public class PurchasedItemEntity {
         this.itemQty = itemQty;
         this.purchaseCost = purchaseCost;
         this.purchaseDate = purchaseDate;
+       
     }
 
     public PurchasedItemEntity(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
@@ -80,6 +82,7 @@ public class PurchasedItemEntity {
         this.itemQty = itemQty;
         this.purchaseCost = purchaseCost;
         this.purchaseDate = purchaseDate;
+       
     }
 
     public PurchasedItemEntity(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost) {
@@ -89,6 +92,7 @@ public class PurchasedItemEntity {
         this.productId = productId;
         this.itemQty = itemQty;
         this.purchaseCost = purchaseCost;
+       
     }
 
 }
