@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path ="api/purchased-items")
+@RequestMapping(path ="api/order-details")
 public class OrderDetailsController {
 
 	@Autowired
@@ -39,7 +39,7 @@ public class OrderDetailsController {
         return purchasedItemService.getAllPurchasedProductsByUserId(userId);
     }*/
     
-    @GetMapping("user/order/{cid}")
+    @GetMapping("order/{cid}")
     List<PurchasedItemEntity> findOrder(@PathVariable("cid") int cartId) {	
     	List<PurchasedItemEntity> grabOrder = orderDetailsRespository.findOrder(cartId);
     	return grabOrder;
