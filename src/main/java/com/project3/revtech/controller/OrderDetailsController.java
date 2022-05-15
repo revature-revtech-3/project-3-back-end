@@ -24,12 +24,15 @@ public class OrderDetailsController {
 	@Autowired
 	CartRepository cartRepository;
     
+	
+	//http://localhost:7777/api/purchased-items/order/{ID}
     @GetMapping("order/{cid}")
     List<PurchasedItemEntity> findOrder(@PathVariable("cid") int cartId) {	
     	List<PurchasedItemEntity> grabOrder = orderDetailsRespository.findOrder(cartId);
     	return grabOrder;
     }
     
+  //http://localhost:7777/api/purchased-items/order/user/{ID}
     @GetMapping("order/user/{uid}")
     List<CartEntity> findUserOrder(@PathVariable("uid") int userId) {
     	List<CartEntity> userOrders = cartRepository.findUserOrder(userId);
