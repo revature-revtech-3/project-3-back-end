@@ -23,21 +23,6 @@ public class OrderDetailsController {
     OrderDetailsRespository orderDetailsRespository;
 	@Autowired
 	CartRepository cartRepository;
-
-    /*@PostMapping("many/post")
-    boolean addManyItems(@RequestBody ArrayList<PurchasedItemPojo> items) {
-        return purchasedItemService.addMultipleItems(items);
-    }*/
-
-    /*@GetMapping("transaction/{bid}/get")
-    List<PurchasedItemProduct> getItemsByTransactionId(@PathVariable("bid") int transactionId) {
-        return purchasedItemService.getAllPurchasedProductsByTransactionId(transactionId);
-    }*/
-
-    /*@GetMapping("user/{bid}/get")
-    List<PurchasedItemProduct> getItemsByUserId(@PathVariable("bid") int userId) {
-        return purchasedItemService.getAllPurchasedProductsByUserId(userId);
-    }*/
     
     @GetMapping("order/{cid}")
     List<PurchasedItemEntity> findOrder(@PathVariable("cid") int cartId) {	
@@ -47,10 +32,7 @@ public class OrderDetailsController {
     
     @GetMapping("order/{uid}")
     List<CartEntity> findUserOrder(@PathVariable("uid") int userId) {
-    	System.out.println("Hello?");
     	List<CartEntity> userOrders = cartRepository.findUserOrder(userId);
-    	System.out.println("Hello?");
-    	
     	return userOrders;
     }
 }
