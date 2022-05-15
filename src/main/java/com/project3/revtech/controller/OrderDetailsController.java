@@ -5,6 +5,7 @@ import com.project3.revtech.entity.PurchasedItemEntity;
 import com.project3.revtech.joinedpojo.PurchasedItemProduct;
 import com.project3.revtech.pojo.PurchasedItemPojo;
 import com.project3.revtech.service.PurchasedItemService;
+import com.project3.revtech.dao.CartRepository;
 import com.project3.revtech.dao.OrderDetailsRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,7 +20,9 @@ import java.util.List;
 public class OrderDetailsController {
 
 	@Autowired
-    PurchasedItemService purchasedItemService;
+    OrderDetailsRespository orderDetailsRespository;
+	@Autowired
+	CartRepository cartRepository;
 
     /*@PostMapping("many/post")
     boolean addManyItems(@RequestBody ArrayList<PurchasedItemPojo> items) {
@@ -37,17 +40,17 @@ public class OrderDetailsController {
     }*/
     
     @GetMapping("user/order/{cid}")
-    public ArrayList<PurchasedItemEntity> findOrder(@PathVariable("cid") int cartId) {
-    	CartEntity order = OrderDetailsRespository.findCart(cartId);
+    List<PurchasedItemEntity> findOrder(@PathVariable("cid") int cartId) {	
+    	List<PurchasedItemEntity> grabOrder = orderDetailsRespository.findOrder(cartId);
+    	return grabOrder;
+    }
+    
+    @GetMapping("order/{uid}")
+    List<CartEntity> findUserOrder(@PathVariable("uid") int userId) {
+    	System.out.println("Hello?");
+    	List<CartEntity> userOrders = cartRepository.findUserOrder(userId);
+    	System.out.println("Hello?");
     	
-    	ArrayList<PurchasedItemEntity> returnOrder = new ArrayList<>();
-    	boolean orderChecker = order.isCartPaid();
-    	if (orderChecker = true)
-    	{
-    		PurchasedItemEntity grabOrder = OrderDetailsRespository.findOrder(cartId);
-    		returnOrder.add(grabOrder);
-    	}
-    	
-    	return returnOrder;
+    	return userOrders;
     }
 }

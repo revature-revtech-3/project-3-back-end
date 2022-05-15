@@ -14,17 +14,9 @@ public interface OrderDetailsRespository extends JpaRepository<PurchasedItemEnti
 	//List<PurchasedItemEntity> findAllByTransactionId(int transactionId);
     //List<PurchasedItemEntity> findAllByUserId(int userId);
     
-    @Query(value = "SELECT * FROM cart_details WHERE cart_id = cartId", nativeQuery = true)
-	static
-    CartEntity findCart(@Param("cartId") int cartId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Query(value = "SELECT * FROM cart_details WHERE cart_id = :cartId", nativeQuery = true)
+    CartEntity findCart(@Param("cartId") int cartId);
     
-    @Query(value = "SELECT * FROM purchased_items WHERE cart_id = grabCartId", nativeQuery = true)
-	static
-    PurchasedItemEntity findOrder(@Param("cartId") int grabCartId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-}
+    @Query(value = "SELECT * FROM purchased_items WHERE cart_id = :cartId", nativeQuery = true)
+    List<PurchasedItemEntity> findOrder(@Param("cartId") int grabCartId);
+ }

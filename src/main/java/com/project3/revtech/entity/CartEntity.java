@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +33,7 @@ public class CartEntity {
 	private int cartId;
 
 	@OneToOne(mappedBy = "cartEntity")
+	@JsonIgnore
 	private TransactionEntity transactionEntity;
 
 	@Column(name = "user_id")
@@ -38,9 +41,11 @@ public class CartEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
+	@JsonIgnore
 	private UserEntity userEntity;
 
 	@OneToMany(mappedBy = "cartEntity")
+	@JsonIgnore
 	private List<CartItemEntity> cartItems;
 	
 	@Column(name = "cart_total")

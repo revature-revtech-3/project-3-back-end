@@ -20,6 +20,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -44,6 +46,7 @@ public class TransactionEntity {
 	private CartEntity cartEntity;
 
 	@OneToMany(mappedBy = "transactionEntity")
+	@JsonIgnore
 	private List<PurchasedItemEntity> purchasedItems;
 
 

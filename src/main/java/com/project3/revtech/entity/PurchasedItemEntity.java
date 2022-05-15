@@ -2,6 +2,8 @@ package com.project3.revtech.entity;
 
 import org.springframework.data.annotation.CreatedDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -55,10 +57,12 @@ public class PurchasedItemEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "transaction_id", nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private TransactionEntity transactionEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
+    @JsonIgnore
     private ProductEntity productEntity;
 
     public PurchasedItemEntity(int itemId, int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
