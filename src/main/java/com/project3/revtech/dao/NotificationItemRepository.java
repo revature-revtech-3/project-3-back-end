@@ -17,18 +17,18 @@ import com.project3.revtech.pojo.NotificationItemPojo;
 public interface NotificationItemRepository extends JpaRepository<NotificationItemEntity, Integer> {
 	
 
-	@Query("SELECT wl FROM NotificationItemEntity wl WHERE wl.wishListEntity.wishListId=:wishListId")
+	@Query(value= "SELECT wl FROM NotificationItemEntity wl WHERE wl.wishListEntity.wishListId=:wishListId", nativeQuery=true)
 	NotificationItemEntity findByWishListId(@Param("wishListId") int wishListId);
 	
-	@Query("SELECT wl FROM NotificationItemEntity wl WHERE wl.wishListEntity.wishListId=:wishListId")
+	@Query (value= "SELECT wl FROM NotificationItemEntity wl WHERE wl.wishListEntity.wishListId=:wishListId", nativeQuery=true)
 	List<NotificationItemEntity> findAllByWishListId(@Param("wishListId") int wishListId)throws ApplicationException;
 	
 	// Used by EmailDiscountService to find wishlists->users whenever a discount/bundle is added
-	@Query("SELECT wl FROM NotificationItemEntity wl WHERE wl.productEntity.productId=:productId")
+	@Query(value= "SELECT wl FROM NotificationItemEntity wl WHERE wl.productEntity.productId=:productId", nativeQuery=true)
 	List<NotificationItemEntity> findAllByProductId(int productId)throws ApplicationException;
 	
 
-	@Query("SELECT wl FROM NotificationItemEntity wl WHERE wl.wishListEntity.wishListId=:wishListId AND wl.productEntity.productId=:productId")
+	@Query(value ="SELECT wl FROM NotificationItemEntity wl WHERE wl.wishListEntity.wishListId=:wishListId AND wl.productEntity.productId=:productId", nativeQuery=true)
 	NotificationItemEntity findByWishListIdAndProductId(@Param("wishListId") int wishListId, @Param("productId") int productId)throws ApplicationException;
 
 	//boolean existsByWishListIdAndProductId(int wishListId, int anyInt2)throws ApplicationException;

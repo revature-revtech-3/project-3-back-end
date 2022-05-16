@@ -17,7 +17,7 @@ public interface NotificationRepository extends JpaRepository<NotificationEntity
 
 	
 	
-	NotificationEntity findByNotificationId(int NotificationId);
+//	NotificationEntity findByNotificationId(int NotificationId);
 	
 	@Query("SELECT wl FROM NotificationEntity wl WHERE wl.userEntity.userId=:userWlId")
 	NotificationEntity getNotificationByUserId(@Param("userWlId") int userId);
