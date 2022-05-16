@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -24,6 +26,8 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "purchased_items")
 public class PurchasedItemEntity {
@@ -56,13 +60,13 @@ public class PurchasedItemEntity {
     private Date purchaseDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "transaction_id", nullable = false, insertable = false, updatable = false)
     @JsonIgnore
+    @JoinColumn(name = "transaction_id", nullable = false, insertable = false, updatable = false)
     private TransactionEntity transactionEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
     @JsonIgnore
+    @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
     private ProductEntity productEntity;
 
     public PurchasedItemEntity(int itemId, int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {

@@ -1,5 +1,6 @@
 package com.project3.revtech.service;
 
+import com.project3.revtech.dao.OrderDetailsRespository;
 import com.project3.revtech.dao.PurchasedItemRepository;
 import com.project3.revtech.entity.ProductEntity;
 import com.project3.revtech.entity.PurchasedItemEntity;
@@ -20,6 +21,9 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
 
     @Autowired
     PurchasedItemRepository purchasedItemRepository;
+    
+    @Autowired
+    OrderDetailsRespository orderDetailsRepository;
 
     @Override
     public PurchasedItemPojo addItem(PurchasedItemPojo item) {
@@ -77,5 +81,11 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
         }
         return returningItems;
     }
+
+	@Override
+	public List<PurchasedItemProduct> getAllPurchasedProductsByCartId(int cartId) {
+		List<PurchasedItemEntity> allItems = orderDetailsRepository.findOrder(cartId);
+        return getPurchasedItemProducts(allItems);
+	}
 
 }

@@ -19,5 +19,4 @@ public interface CartRepository extends JpaRepository<CartEntity, Integer> {
     
     @Query(value = "SELECT * FROM cart_details WHERE user_id = :userId and cart_paid = true", nativeQuery = true)
     List<CartEntity> findUserOrder(@Param("userId") int usersId);
-
 }
