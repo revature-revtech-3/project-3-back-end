@@ -18,7 +18,8 @@ import java.util.concurrent.TimeUnit;
 @RunWith(Cucumber.class)
     @CucumberOptions(features = "classpath:features", glue = "com.project3.revtech.E2E.steps", plugin = {"pretty",
             "html:src/test/java/resources/reports/html-reports.html"})
-	@Ignore
+	
+	//@Ignore
     public class TestRunner {
     public static WebDriver driver;
     public static WebDriverWait explicitWait;
@@ -37,11 +38,12 @@ import java.util.concurrent.TimeUnit;
     public static AdminRemoveProductPOM adminRemoveProductPOM;
     public static AdminAddProductPOM adminAddProductPOM;
     public static AdminLogoutPOM adminLogoutPOM;
+    public static BestSellerPOM bestSellerPOM;
 
 
     @BeforeClass
     public static void setup() {
-        File file = new File("src/test/resources/chromedriver.exe");
+        File file = new File("C:\\revature\\WebDrivers\\chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -62,6 +64,7 @@ import java.util.concurrent.TimeUnit;
         adminRemoveProductPOM = new AdminRemoveProductPOM(driver);
         adminAddProductPOM = new AdminAddProductPOM(driver);
         adminLogoutPOM = new AdminLogoutPOM(driver);
+        bestSellerPOM = new BestSellerPOM(driver);
 
 
 
