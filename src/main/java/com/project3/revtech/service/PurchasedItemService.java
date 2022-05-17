@@ -12,4 +12,5 @@ public interface PurchasedItemService {
     boolean addMultipleItems(ArrayList<PurchasedItemPojo> itemList);
     List<PurchasedItemProduct> getAllPurchasedProductsByTransactionId(int transactionId);
     List<PurchasedItemProduct> getAllPurchasedProductsByUserId(int userId);
+    List<PurchasedItemProduct> getAllPurchasedProductsByCartId(int cartId);
 }
