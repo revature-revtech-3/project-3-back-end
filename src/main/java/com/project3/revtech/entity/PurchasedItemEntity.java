@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -42,6 +43,9 @@ public class PurchasedItemEntity {
 
     @Column(name = "product_id")
     private int productId;
+    
+    @Column(name = "product_name")
+    private String productName;
 
     @Column(name = "item_qty")
     private int itemQty;
@@ -52,7 +56,6 @@ public class PurchasedItemEntity {
     @CreatedDate
     @Column(name = "purchase_date")
     private Date purchaseDate;
-    
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "transaction_id", nullable = false, insertable = false, updatable = false)
@@ -62,34 +65,37 @@ public class PurchasedItemEntity {
     @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
     private ProductEntity productEntity;
 
-    public PurchasedItemEntity(int itemId, int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
+    public PurchasedItemEntity(int itemId, int transactionId, int userId, int cartId, int productId, String productName, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
         this.itemId = itemId;
         this.transactionId = transactionId;
         this.userId = userId;
         this.cartId = cartId;
         this.productId = productId;
         this.itemQty = itemQty;
+        this.productName = productName;
         this.purchaseCost = purchaseCost;
         this.purchaseDate = purchaseDate;
-       
     }
 
-    public PurchasedItemEntity(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
+    public PurchasedItemEntity(int transactionId, int userId, int cartId, int productId, String productName, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
         this.transactionId = transactionId;
         this.userId = userId;
         this.cartId = cartId;
         this.productId = productId;
+        this.productName = productName;
         this.itemQty = itemQty;
         this.purchaseCost = purchaseCost;
         this.purchaseDate = purchaseDate;
+      
        
     }
 
-    public PurchasedItemEntity(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost) {
+    public PurchasedItemEntity(int transactionId, int userId, int cartId, int productId, String productName, int itemQty, BigDecimal purchaseCost) {
         this.transactionId = transactionId;
         this.userId = userId;
         this.cartId = cartId;
         this.productId = productId;
+        this.productName = productName;
         this.itemQty = itemQty;
         this.purchaseCost = purchaseCost;
        

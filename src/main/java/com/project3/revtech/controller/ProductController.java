@@ -69,9 +69,9 @@ public class ProductController {
         return productService.getAllProductService();
     }
     
-//    @GetMapping("products/getallbyasc")
-//    	List<ProductEntity>findProductByAscOrder() throws ApplicationException{
-//    	return productSort.findProductByAscOrder(null);
+//    @GetMapping("products/getevery")
+//    	List<ProductPojo>getEveryProduct() throws ApplicationException{
+//    	return productService.getAllProductService();
 //    }
 
 }

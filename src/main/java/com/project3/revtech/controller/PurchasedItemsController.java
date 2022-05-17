@@ -34,9 +34,16 @@ public class PurchasedItemsController {
         return purchasedItemService.getAllPurchasedProductsByUserId(userId);
     }
     
-    @GetMapping("purchasedItems")
-    List<PurchasedItemPojo>findByMostPurchasedItems(){
+//    @PostMapping("user/{bid}/get")
+//    List<PurchasedItemProduct> getItemsByUserId1(@PathVariable("bid") int userId) {
+//        return purchasedItemService.getAllPurchasedProductsByUserId(userId);
+//    }
+//    
+    	@GetMapping("purchasedItems")
+    	List<PurchasedItemProduct>findByMostPurchasedItems(){
     	return purchasedItemService.findByMostPurchasedItems();
-    }
+   }
+    
+    
 
 }
