@@ -32,5 +32,8 @@ public class PurchasedItemsController {
     List<PurchasedItemProduct> getItemsByUserId(@PathVariable("bid") int userId) {
         return purchasedItemService.getAllPurchasedProductsByUserId(userId);
     }
+    
+    @GetMapping("admin/trackpurchase")
+    List<PurchasedItemProduct> getpurchases(){return purchasedItemService.getAllPurchases();};
 
 }

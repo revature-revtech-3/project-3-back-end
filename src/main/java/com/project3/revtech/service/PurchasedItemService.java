@@ -12,4 +12,9 @@ public interface PurchasedItemService {
     boolean addMultipleItems(ArrayList<PurchasedItemPojo> itemList);
     List<PurchasedItemProduct> getAllPurchasedProductsByTransactionId(int transactionId);
     List<PurchasedItemProduct> getAllPurchasedProductsByUserId(int userId);
+<<<<<<< Updated upstream
+=======
+    List<PurchasedItemProduct> getAllPurchasedProductsByCartId(int cartId);
+    List<PurchasedItemProduct> getAllPurchases();
+>>>>>>> Stashed changes
 }

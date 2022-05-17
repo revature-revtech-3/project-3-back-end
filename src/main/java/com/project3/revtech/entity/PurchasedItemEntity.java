@@ -91,4 +91,16 @@ public class PurchasedItemEntity {
         this.purchaseCost = purchaseCost;
     }
 
+	public PurchasedItemEntity(int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate,
+			ProductEntity productEntity) {
+		super();
+		this.productId = productId;
+		this.itemQty = itemQty;
+		this.purchaseCost = purchaseCost;
+		this.purchaseDate = purchaseDate;
+		this.productEntity = productEntity;
+	}
+    
+    
+
 }
