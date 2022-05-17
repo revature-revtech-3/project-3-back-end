@@ -79,9 +79,4 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
     }
 
 	
-	@Override
-	public List<PurchasedItemProduct> getAllPurchases(){
-		List<PurchasedItemEntity> allItems = purchasedItemRepository.findAllByPurchase();
-        return getPurchasedItemProducts(allItems);
-	}
 }
