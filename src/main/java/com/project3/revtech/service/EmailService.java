@@ -13,17 +13,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 // this may need to be moved to controller
 @Service
-@CrossOrigin
-public class EmailService {
-	
-
-	
-	@Autowired
-	private JavaMailSender emailSender;
+public interface EmailService {
 	
 
 	// sends message
-	public void sendMessage(String to, String subject, String text) {
+	default void sendMessage(String to, String subject, String text) {
+		
+		
 		
 		// here for testing purposes
 	/*	emailSender.setHost("smtp.gmail.com");
@@ -40,10 +36,12 @@ public class EmailService {
 	    
         emailSender.setJavaMailProperties(props);  */
 		
-		SimpleMailMessage message = new SimpleMailMessage();
+		/*SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo(to);
 		message.setSubject(subject);
 		message.setText(text);
 		emailSender.send(message);
-	}
+		System.out.println("Email Sent Successfully!");
+	}*/
+}
 }
