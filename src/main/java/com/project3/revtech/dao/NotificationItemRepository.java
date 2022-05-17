@@ -33,6 +33,11 @@ public interface NotificationItemRepository extends JpaRepository<NotificationIt
 
 	//boolean existsByWishListIdAndProductId(int wishListId, int anyInt2)throws ApplicationException;
 	
-	//boolean existsByWishListQtyIsLessThanAndWishListIdAndProductId(int wishListQty, int wishListId, int productId);
+//	boolean existsByWishListQtyIsLessThanAndWishListIdAndProductId(int wishListQty, int wishListId, int productId);
+	
+	@Query(value ="SELECT * FROM discount_details INNER JOIN product_details on discount_details.product_id=product_details.product_id	WHERE product_details.product_qty < 10", nativeQuery=true)
+	List<NotificationItemEntity> findByProductandQty() throws ApplicationException;
+	
+	
 
 }
