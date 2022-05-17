@@ -21,13 +21,13 @@ public class EmailServiceImpl implements EmailService {
 	@Override
 	public void sendMessage(String to, String subject, String text) {
 		SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom ("RevEmail123456@gmail.com");
-		message.setTo("jsinghers13@gmail.com");
+		message.setFrom ("revtech@support.com");
+		message.setTo(to);
 		message.setSubject("Transaction Complete");
 		message.setText("Thank you for choosing RevTech! "
 				+ "Your transaction has been completed. "
 				+ "Please allow 5-10 business days for shipping information. "
-				+ "Contact RevTech Support with any further questions.");
+				+ "Contact RevTech Support with any further questions. ");
 		emailSender.send(message);
 		System.out.println("Email Sent Successfully!");
 		

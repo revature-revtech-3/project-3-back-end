@@ -96,6 +96,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests().antMatchers("/cart/{bid}").permitAll().and()
       
       .authorizeRequests().antMatchers("/api/notification").permitAll().and()
+      .authorizeRequests().antMatchers("/api/notification/{id}").permitAll().and()
 
       .authorizeRequests().antMatchers("/api/create/bundles").permitAll().and()
       .authorizeRequests().antMatchers("/user/{bid}").permitAll().and()
