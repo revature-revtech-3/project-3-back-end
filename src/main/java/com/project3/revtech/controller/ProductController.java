@@ -1,5 +1,6 @@
 package com.project3.revtech.controller;
 
+import com.project3.revtech.dao.ProductRepository;
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.service.ProductService;
@@ -56,12 +57,17 @@ public class ProductController {
     }
 
     //  Get endPoint Api - List All Products
-    // http://localhost:7777/api/products/getAll
+    // http://localhost:7777/api/products/getall
     //@GetMapping("products")
     //For Rowel Team Product - JWT Specific Mapping
     @GetMapping("products/getall")
     List<ProductPojo> getAllProducts() throws ApplicationException{
         return productService.getAllProductService();
     }
-
+    
+    @GetMapping("products/getsecondary/{pid}")
+    List<ProductPojo> getSecondaryProducts(@PathVariable("pid") int productId) throws ApplicationException{
+		return productService.getSecondaryProducts(productId);
+    }
+    
 }
