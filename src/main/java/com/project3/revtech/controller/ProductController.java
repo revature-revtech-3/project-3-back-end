@@ -65,7 +65,7 @@ public class ProductController {
         return productService.getAllProductService();
     }
     
-    @GetMapping("products/byname/{pid}")
+    @GetMapping("products/getsecondary/{pid}")
     List<ProductPojo> getSecondaryProducts(@PathVariable("pid") int productId) throws ApplicationException{
 		return productService.getSecondaryProducts(productId);
     }
