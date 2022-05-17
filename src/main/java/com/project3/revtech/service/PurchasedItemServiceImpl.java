@@ -78,20 +78,10 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
         return returningItems;
     }
 
-<<<<<<< Updated upstream
-=======
-	@Override
-	public List<PurchasedItemProduct> getAllPurchasedProductsByCartId(int cartId) {
-		List<PurchasedItemEntity> allItems = orderDetailsRepository.findOrder(cartId);
-        return getPurchasedItemProducts(allItems);
-	}
-	
 	
 	@Override
 	public List<PurchasedItemProduct> getAllPurchases(){
 		List<PurchasedItemEntity> allItems = purchasedItemRepository.findAllByPurchase();
         return getPurchasedItemProducts(allItems);
 	}
-
->>>>>>> Stashed changes
 }
