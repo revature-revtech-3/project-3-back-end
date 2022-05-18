@@ -38,6 +38,12 @@ import java.util.concurrent.TimeUnit;
     public static AdminRemoveProductPOM adminRemoveProductPOM;
     public static AdminAddProductPOM adminAddProductPOM;
     public static AdminLogoutPOM adminLogoutPOM;
+
+    public static EmailNotificationsPOM emailNotificationsPOM;
+
+
+    
+
     public static NotificationPOM notificationPOM;
     public static BestSellerPOM bestSellerPOM;
     public static ListOfSecondaryProductsPOM secondaryProductsPOM;
@@ -45,6 +51,7 @@ import java.util.concurrent.TimeUnit;
     @BeforeClass
     public static void setup() {
         File file = new File ("C:\\WebDrivers\\chromedriver.exe");
+
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -65,8 +72,13 @@ import java.util.concurrent.TimeUnit;
         adminRemoveProductPOM = new AdminRemoveProductPOM(driver);
         adminAddProductPOM = new AdminAddProductPOM(driver);
         adminLogoutPOM = new AdminLogoutPOM(driver);
+
+        emailNotificationsPOM= new EmailNotificationsPOM(driver); 
+
+
         notificationPOM = new NotificationPOM(driver);
         bestSellerPOM = new BestSellerPOM(driver);
+
 
         System.out.println("Set up complete!");
     }
