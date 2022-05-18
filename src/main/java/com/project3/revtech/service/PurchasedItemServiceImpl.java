@@ -28,7 +28,7 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
     @Override
     public PurchasedItemPojo addItem(PurchasedItemPojo item) {
         PurchasedItemEntity newItemEntity = new PurchasedItemEntity(  item.getTransactionId(), item.getUserId(), item.getCartId(),
-                                                    item.getProductId(), item.getItemQty(), item.getPurchaseCost(),
+                                                    item.getProductId(), item.getProductName(), item.getItemQty(), item.getPurchaseCost(),
                                                     item.getPurchaseDate()
         );
         newItemEntity = purchasedItemRepository.saveAndFlush(newItemEntity);
@@ -74,7 +74,7 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
                     tempProduct.isProductRemoved());
 
             PurchasedItemProduct temp = new PurchasedItemProduct(   item.getItemId(), item.getTransactionId(), item.getUserId(),
-                                                                    item.getCartId(), item.getProductId(), item.getItemQty(),
+                                                                    item.getCartId(), item.getProductId(), item.getProductName(), item.getItemQty(),
                                                                     item.getPurchaseCost(), item.getPurchaseDate(), productPojo
             );
             returningItems.add(temp);
@@ -82,6 +82,26 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
         return returningItems;
     }
 
+//	@Override
+//	public List<PurchasedItemProduct> findByMostPurchasedItems() {
+//		List<PurchasedItemProduct> mostItems = this.purchasedItemRepository.findByMostPurchasedItems();
+//		List<PurchasedItemProduct> mostItemsPojo = new ArrayList<>();
+//        mostItems.forEach((tempProduct) -> {
+//           
+//            PurchasedItemProduct productPojo = new  PurchasedItemProduct(tempProduct.getItemId(), tempProduct.getTransactionId(),
+//                    tempProduct.getUserId(), tempProduct.getCartId(),
+//                    tempProduct.getProductId(), tempProduct.getProductName(), tempProduct.getItemQty(),
+//                    tempProduct.getPurchaseCost(), tempProduct.getPurchaseDate(), tempProduct.getProduct());
+//            mostItemsPojo.add(productPojo);
+//        });
+//        return mostItemsPojo;
+//	}
+	
+	 @Override
+	    public List<PurchasedItemProduct> findByMostPurchasedItems() {
+	        List<PurchasedItemEntity> allItems = purchasedItemRepository.findByMostPurchasedItems();
+	        return getPurchasedItemProducts(allItems);
+	    }
 	@Override
 	public List<PurchasedItemProduct> getAllPurchasedProductsByCartId(int cartId) {
 		List<PurchasedItemEntity> allItems = orderDetailsRepository.findOrder(cartId);

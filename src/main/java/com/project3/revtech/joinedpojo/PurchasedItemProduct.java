@@ -23,6 +23,7 @@ public class PurchasedItemProduct {
     private int userId;
     private int cartId;
     private int productId;
+    private String productName;
     private int itemQty;
     private BigDecimal purchaseCost;
     private Date purchaseDate;

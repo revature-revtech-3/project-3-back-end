@@ -1,5 +1,6 @@
 package com.project3.revtech.controller;
 
+import com.project3.revtech.entity.PurchasedItemEntity;
 import com.project3.revtech.joinedpojo.PurchasedItemProduct;
 import com.project3.revtech.pojo.PurchasedItemPojo;
 import com.project3.revtech.service.PurchasedItemService;
@@ -32,5 +33,17 @@ public class PurchasedItemsController {
     List<PurchasedItemProduct> getItemsByUserId(@PathVariable("bid") int userId) {
         return purchasedItemService.getAllPurchasedProductsByUserId(userId);
     }
+    
+//    @PostMapping("user/{bid}/get")
+//    List<PurchasedItemProduct> getItemsByUserId1(@PathVariable("bid") int userId) {
+//        return purchasedItemService.getAllPurchasedProductsByUserId(userId);
+//    }
+//    
+    	@GetMapping("purchasedItems")
+    	List<PurchasedItemProduct>findByMostPurchasedItems(){
+    	return purchasedItemService.findByMostPurchasedItems();
+   }
+    
+    
 
 }
