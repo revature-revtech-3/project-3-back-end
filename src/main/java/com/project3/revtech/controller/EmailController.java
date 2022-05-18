@@ -41,7 +41,7 @@ public class EmailController {
 			return "Message sent";	
 	} */
 	
-	@PostMapping("/notification/{id}")
+	@PostMapping("/enotif/{id}")
 	public void getEmail (@PathVariable("id") int userId) {
 		String email = emailRepository.getEmail(userId);
 		emailServiceImpl.sendMessage(email, null, null);
