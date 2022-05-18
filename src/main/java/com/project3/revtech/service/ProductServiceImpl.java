@@ -115,5 +115,21 @@ public class ProductServiceImpl implements ProductService {
         });
         return allProductPojo;
     }
+
+	@Override
+	public List<ProductPojo> getSecondaryProducts(int productId) throws ApplicationException {
+		// TODO Auto-generated method stub
+		List<ProductEntity> allProductEntity = this.productRepository.getSecondaryProducts(productId);
+        List<ProductPojo> allProductPojo = new ArrayList<>();
+        allProductEntity.forEach((product) -> {
+           ProductPojo productPojo = new  ProductPojo(product.getProductId(), product.getProductSku(),
+                    product.getProductName(), product.getProductCost(),
+                    product.getProductCategory(), product.getProductDescription(),
+                    product.getProductQty(), product.getImageUrl(),
+                    product.isProductRemoved());
+           allProductPojo.add(productPojo);
+        });
+        return allProductPojo;
+	}
     
 }

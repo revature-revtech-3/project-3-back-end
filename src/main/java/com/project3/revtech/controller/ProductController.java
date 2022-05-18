@@ -1,9 +1,13 @@
 package com.project3.revtech.controller;
-
+import java.math.BigDecimal;
+import com.project3.revtech.dao.ProductSortRepository;
+import com.project3.revtech.entity.ProductEntity;
+import com.project3.revtech.dao.ProductRepository;
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.pojo.ProductPojo;
 import com.project3.revtech.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +19,8 @@ import java.util.List;
 @RequestMapping(path ="api")
 public class ProductController {
 
+	//@Autowired
+	//ProductSortRepository productSort;
     @Autowired
     ProductService productService;
 
@@ -56,12 +62,21 @@ public class ProductController {
     }
 
     //  Get endPoint Api - List All Products
-    // http://localhost:7777/api/products/getAll
+    // http://localhost:7777/api/products/getall
     //@GetMapping("products")
     //For Rowel Team Product - JWT Specific Mapping
     @GetMapping("products/getall")
     List<ProductPojo> getAllProducts() throws ApplicationException{
         return productService.getAllProductService();
     }
+    
+//    @GetMapping("products/getevery")
+//    	List<ProductPojo>getEveryProduct() throws ApplicationException{
+//    	return productService.getAllProductService();
+//    }
 
+    @GetMapping("products/getsecondary/{pid}")
+    List<ProductPojo> getSecondaryProducts(@PathVariable("pid") int productId) throws ApplicationException{
+		return productService.getSecondaryProducts(productId);
+    }
 }

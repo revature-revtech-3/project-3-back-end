@@ -21,7 +21,7 @@ import com.project3.revtech.service.WishListServiceImpl;
 @RequestMapping("api/wishList")
 @CrossOrigin
 public class WishListController {
-
+ 
 	@Autowired
 	WishListServiceImpl wishListService;
 

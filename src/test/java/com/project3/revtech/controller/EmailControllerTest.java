@@ -2,6 +2,7 @@ package com.project3.revtech.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ public class EmailControllerTest {
     public void contextLoadsHPath() throws Exception {
         assertThat(emailController).isNotNull();
     }
-  /*  
+ 
     @Test
     public void emailNotificationPositiveTest() throws Exception {
     
@@ -42,7 +43,7 @@ public class EmailControllerTest {
                  mockMvc.perform(MockMvcRequestBuilders.post("/api/notification/{id}/post")
     }
     
-    */
+   
     
  
   //------------------------NEGATIVE TEST--------------------------  
