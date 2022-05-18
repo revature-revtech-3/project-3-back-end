@@ -11,7 +11,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 sh "docker volume prune -f"
-                git (url: 'https://github.com/revature-rev-tech2/project-3-back-end.git', branch:'main')
+                git (url: 'https://github.com/revature-revtech-3/project-3-back-end.git', branch:'presentation')
                 
                 echo 'clone step'
             }
