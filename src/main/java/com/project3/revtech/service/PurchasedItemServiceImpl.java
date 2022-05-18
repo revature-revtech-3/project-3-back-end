@@ -107,5 +107,4 @@ public class PurchasedItemServiceImpl implements PurchasedItemService{
 		List<PurchasedItemEntity> allItems = orderDetailsRepository.findOrder(cartId);
         return getPurchasedItemProducts(allItems);
 	}
-
 }
