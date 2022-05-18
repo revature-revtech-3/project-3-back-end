@@ -5,10 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-<<<<<<< HEAD
-=======
 import org.springframework.data.repository.query.Param;
->>>>>>> main
 import org.springframework.stereotype.Repository;
 
 import com.project3.revtech.entity.ProductEntity;
