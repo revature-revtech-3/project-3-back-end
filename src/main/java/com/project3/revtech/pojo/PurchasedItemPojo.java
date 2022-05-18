@@ -16,6 +16,7 @@ public class PurchasedItemPojo {
     private int userId;
     private int cartId;
     private int productId;
+    private String productName;
     private int itemQty;
     private BigDecimal purchaseCost;
     private Date purchaseDate;
@@ -24,32 +25,36 @@ public class PurchasedItemPojo {
         super();
     }
 
-    public PurchasedItemPojo(int itemId, int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
+    public PurchasedItemPojo(int itemId, int transactionId, int userId, int cartId, int productId, String productName, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
         this.itemId = itemId;
         this.transactionId = transactionId;
         this.userId = userId;
         this.cartId = cartId;
         this.productId = productId;
+        this.productName = productName;
         this.itemQty = itemQty;
         this.purchaseCost = purchaseCost;
         this.purchaseDate = purchaseDate;
     }
 
-    public PurchasedItemPojo(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
+    public PurchasedItemPojo(int transactionId, int userId, int cartId, int productId, String productName, int itemQty, BigDecimal purchaseCost, Date purchaseDate) {
         this.transactionId = transactionId;
         this.userId = userId;
         this.cartId = cartId;
         this.productId = productId;
+        this.productName = productName;
         this.itemQty = itemQty;
         this.purchaseCost = purchaseCost;
         this.purchaseDate = purchaseDate;
+       
     }
 
-    public PurchasedItemPojo(int transactionId, int userId, int cartId, int productId, int itemQty, BigDecimal purchaseCost) {
+    public PurchasedItemPojo(int transactionId, int userId, int cartId, int productId, String productName, int itemQty, BigDecimal purchaseCost) {
         this.transactionId = transactionId;
         this.userId = userId;
         this.cartId = cartId;
         this.productId = productId;
+        this.productName = productName;
         this.itemQty = itemQty;
         this.purchaseCost = purchaseCost;
     }
@@ -94,7 +99,15 @@ public class PurchasedItemPojo {
         this.productId = productId;
     }
 
-    public int getItemQty() {
+    public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public int getItemQty() {
         return itemQty;
     }
 
@@ -117,4 +130,7 @@ public class PurchasedItemPojo {
     public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
+
+    
+    
 }
