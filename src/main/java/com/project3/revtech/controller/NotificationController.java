@@ -14,27 +14,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project3.revtech.exception.ApplicationException;
 import com.project3.revtech.joinedpojo.WishListAndItemPojo;
-import com.project3.revtech.pojo.WishListPojo;
-import com.project3.revtech.service.WishListServiceImpl;
+import com.project3.revtech.pojo.NotificationPojo;
+import com.project3.revtech.service.NotificationServiceImpl;
 
 @RestController
-@RequestMapping("api/wishList")
+@RequestMapping("api/Notification")
 @CrossOrigin
-public class WishListController {
- 
-	@Autowired
-	WishListServiceImpl wishListService;
+public class NotificationController {
 
-	// add wishlist when an user registers an account
-	@PostMapping("add/wishLists")
-	ResponseEntity<WishListPojo> addWishList(@RequestBody WishListPojo wishList) throws ApplicationException {
+	@Autowired
+	NotificationServiceImpl NotificationService;
+
+	// add Notification when an user registers an account
+	@PostMapping("add/Notifications")
+	ResponseEntity<NotificationPojo> addNotification(@RequestBody NotificationPojo Notification) throws ApplicationException {
 		return ResponseEntity.ok().header("Content-type", "application/json")
-				.body(wishListService.addWishList(wishList));
+				.body(NotificationService.addNotification(Notification));
 
 	}
 
 	@GetMapping("user/{bid}/get")
-	WishListPojo getWishList(@PathVariable("bid") int userId) throws ApplicationException {
-		return wishListService.getListByUserId(userId);
+	NotificationPojo getNotification(@PathVariable("bid") int userId) throws ApplicationException {
+		return NotificationService.getListByUserId(userId);
 	}
 }
