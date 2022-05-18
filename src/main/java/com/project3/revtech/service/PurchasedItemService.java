@@ -16,4 +16,5 @@ public interface PurchasedItemService {
     List<PurchasedItemProduct> getAllPurchasedProductsByTransactionId(int transactionId);
     List<PurchasedItemProduct> getAllPurchasedProductsByUserId(int userId);
     List<PurchasedItemProduct> findByMostPurchasedItems();
+    List<PurchasedItemProduct> getAllPurchasedProductsByCartId(int cartId);
 }

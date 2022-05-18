@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @RunWith(Cucumber.class)
     @CucumberOptions(features = "classpath:features", glue = "com.project3.revtech.E2E.steps", plugin = {"pretty",
             "html:src/test/java/resources/reports/html-reports.html"})
-	
+
 	//@Ignore
     public class TestRunner {
     public static WebDriver driver;
@@ -39,11 +39,11 @@ import java.util.concurrent.TimeUnit;
     public static AdminAddProductPOM adminAddProductPOM;
     public static AdminLogoutPOM adminLogoutPOM;
     public static BestSellerPOM bestSellerPOM;
-
+    public static ListOfSecondaryProductsPOM secondaryProductsPOM;
 
     @BeforeClass
     public static void setup() {
-        File file = new File("C:\\revature\\WebDrivers\\chromedriver.exe");
+        File file = new File("src/test/resources/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -66,8 +66,6 @@ import java.util.concurrent.TimeUnit;
         adminLogoutPOM = new AdminLogoutPOM(driver);
         bestSellerPOM = new BestSellerPOM(driver);
 
-
-
         System.out.println("Set up complete!");
     }
 
@@ -77,5 +75,3 @@ import java.util.concurrent.TimeUnit;
         System.out.println("teardown complete!");
     }
 }
-
-

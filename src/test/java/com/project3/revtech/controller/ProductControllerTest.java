@@ -126,6 +126,11 @@ public class ProductControllerTest {
     public void shouldDeleteProductLoggedIn() throws Exception {
         this.mockMvc.perform(delete("/api/products/delete/{pid}",18)).andDo(print()).andExpect(status().isOk());
     }
-
+    @Test
+    @WithMockUser(roles = "ADMIN", username = "admin")
+    public void shouldProduct() throws Exception {
+        
+    	this.mockMvc.perform(get("/api/products/getsecondary/14")).andDo(print()).andExpect(status().isOk());
+    }
 
 }

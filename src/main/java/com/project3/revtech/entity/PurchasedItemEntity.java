@@ -2,9 +2,13 @@ package com.project3.revtech.entity;
 
 import org.springframework.data.annotation.CreatedDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -23,6 +27,8 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "purchased_items")
 public class PurchasedItemEntity {
@@ -58,10 +64,12 @@ public class PurchasedItemEntity {
     private Date purchaseDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "transaction_id", nullable = false, insertable = false, updatable = false)
     private TransactionEntity transactionEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
     private ProductEntity productEntity;
 
