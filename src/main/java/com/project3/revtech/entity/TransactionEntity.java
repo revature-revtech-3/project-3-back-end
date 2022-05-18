@@ -17,12 +17,19 @@ import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "transaction_details")
 public class TransactionEntity {
@@ -44,6 +51,7 @@ public class TransactionEntity {
 	private CartEntity cartEntity;
 
 	@OneToMany(mappedBy = "transactionEntity")
+	@JsonIgnore
 	private List<PurchasedItemEntity> purchasedItems;
 
 

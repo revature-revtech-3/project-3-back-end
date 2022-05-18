@@ -2,6 +2,7 @@ package com.project3.revtech.controller;
 
 import com.project3.revtech.dao.ProductDataRepository;
 import com.project3.revtech.entity.ProductDataEntity;
+import com.project3.revtech.entity.PurchasedItemEntity;
 import com.project3.revtech.joinedpojo.PurchasedItemProduct;
 import com.project3.revtech.pojo.ProductDataPojo;
 import com.project3.revtech.pojo.PurchasedItemPojo;
@@ -48,4 +49,13 @@ public class PurchasedItemsController {
     @GetMapping("admin/sum")
     int getsum(){return productDataRepository.findSum();};
 
+//    @PostMapping("user/{bid}/get")
+//    List<PurchasedItemProduct> getItemsByUserId1(@PathVariable("bid") int userId) {
+//        return purchasedItemService.getAllPurchasedProductsByUserId(userId);
+//    }
+//    
+    	@GetMapping("purchasedItems")
+    	List<PurchasedItemProduct>findByMostPurchasedItems(){
+    	return purchasedItemService.findByMostPurchasedItems();
+   }
 }
