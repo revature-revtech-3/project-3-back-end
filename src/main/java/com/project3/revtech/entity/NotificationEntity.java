@@ -30,7 +30,7 @@ public class NotificationEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "wish_list_id")
-	private int NotificationId;
+	private int notificationId;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
@@ -48,13 +48,13 @@ public class NotificationEntity {
 
 	public NotificationEntity(int NotificationId, UserEntity userEntity) {
 		super();
-		this.NotificationId = NotificationId;
+		this.notificationId = NotificationId;
 		this.userEntity = userEntity;
 	}
 
 	public NotificationEntity(int NotificationId, UserEntity userEntity, List<NotificationItemEntity> NotificationItems) {
 		super();
-		this.NotificationId = NotificationId;
+		this.notificationId = NotificationId;
 		this.userEntity = userEntity;
 		this.NotificationItems = NotificationItems;
 	}

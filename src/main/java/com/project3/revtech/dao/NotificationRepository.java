@@ -9,23 +9,19 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.project3.revtech.entity.NotificationEntity;
-import com.project3.revtech.entity.WishListItemEntity;
 import com.project3.revtech.pojo.NotificationPojo;
 
 @Repository
 public interface NotificationRepository extends JpaRepository<NotificationEntity, Integer> {
 
-	
-	
-//	NotificationEntity findByNotificationId(int NotificationId);
+	NotificationEntity findByNotificationId(int NotificationId);
 	
 	@Query("SELECT wl FROM NotificationEntity wl WHERE wl.userEntity.userId=:userWlId")
 	NotificationEntity getNotificationByUserId(@Param("userWlId") int userId);
 
-
 	//NotificationEntity findByUserId(int userId);
 
-//	NotificationEntity findByUserIdAndNotificationRemovedFalse(int userId);
+	//NotificationEntity findByUserIdAndNotificationRemovedFalse(int userId);
 
 
 	
