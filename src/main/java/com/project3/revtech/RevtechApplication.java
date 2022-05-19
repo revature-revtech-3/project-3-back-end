@@ -12,5 +12,5 @@ public class RevtechApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RevtechApplication.class, args);
 	}
-	
+
 }
