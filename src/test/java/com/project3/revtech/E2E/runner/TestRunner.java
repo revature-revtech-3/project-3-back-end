@@ -65,8 +65,8 @@ import java.util.concurrent.TimeUnit;
         adminRemoveProductPOM = new AdminRemoveProductPOM(driver);
         adminAddProductPOM = new AdminAddProductPOM(driver);
         adminLogoutPOM = new AdminLogoutPOM(driver);
-
-
+        
+        secondaryProductsPOM = new ListOfSecondaryProductsPOM(driver);
 
         System.out.println("Set up complete!");
     }

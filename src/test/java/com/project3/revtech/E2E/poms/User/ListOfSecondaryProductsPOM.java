@@ -13,6 +13,11 @@ public class ListOfSecondaryProductsPOM {
         PageFactory.initElements(webDriver, this);
 	}
 	
-    @FindBy(xpath = "//body/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/app-product-page[1]/section[1]/div[1]/mat-card[2]/div[1]/div[1]/div[1]/button[1]")
+	@FindBy(tagName = "button")
+	//@FindBy(xpath = "//body/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/app-store-product[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/div[1]/div[1]/div[1]/div[1]/mat-card[1]/div[2]/p[3]/button[1]")
+	public WebElement viewDetails;
+	
+    @FindBy(tagName = "button")
+	//@FindBy(xpath = "//body/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/app-product-page[1]/section[1]/div[1]/mat-card[2]/div[1]/div[1]/div[1]/button[1]")
     public WebElement secondaryProducts;
 }
